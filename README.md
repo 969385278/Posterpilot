@@ -32,17 +32,17 @@
 
 [完整案例](docs/demo/golden-demo-red-mansion.md)保留检索失败后改写查询、工具调用和评测边界。案例前后可用评测信号不同，不能把综合分变化直接当成排版优化的净提升。
 
-### AI 视觉迭代示意：《梦红楼》人物油画版
+### AI 视觉迭代示意：《梦红楼》淡彩人物画版
 
-大幅人物半身油画，搭配纵向毛笔行书；用简洁的抽象色块背景突出人物神情，去除园林景色。迭代重点：适度放大左下角活动信息，调整日期、时间的分行与间距。
+米色绢纸底、细线人物与赭红淡彩，搭配纵向毛笔行书；以少量枝石和留白衬托主角。迭代重点：适度放大左下角活动信息，调整日期、时间的分行与间距。
 
 > 两图由生图模型直接生成与定向编辑，**非 PosterPilot 运行结果**，不作为 Agent 优化或评测证据。书法字属于生成图像，不代表当前渲染器可复现；活动信息为虚构示例。
 
-| 初版（油画风格） | 迭代优化版（信息排版） |
+| 初版（淡彩人物画） | 迭代优化版（信息排版） |
 |---|---|
-| <img src="docs/demo/assets/menghonglou-oil-initial.png" alt="梦红楼人物油画初版，AI 风格编辑示意" width="420"> | <img src="docs/demo/assets/menghonglou-oil-optimized.png" alt="梦红楼人物油画排版迭代版，非 Agent 运行结果" width="420"> |
+| <img src="docs/demo/assets/menghonglou-ink-initial.png" alt="梦红楼淡彩人物画初版，AI 风格参考生成示意" width="420"> | <img src="docs/demo/assets/menghonglou-ink-optimized.png" alt="梦红楼淡彩人物画排版迭代版，非 Agent 运行结果" width="420"> |
 
-[迭代说明与完整提示词](docs/demo/menghonglou-oil-iteration.md) · [此前的摄影社书法风格示意](docs/demo/assets/calligraphy-photography-concept.png)
+[迭代说明、参考图来源边界与提示词](docs/demo/menghonglou-ink-iteration.md) · [此前的摄影社书法风格示意](docs/demo/assets/calligraphy-photography-concept.png)
 
 ## 代码结构
 
