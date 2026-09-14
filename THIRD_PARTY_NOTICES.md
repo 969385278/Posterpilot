@@ -22,6 +22,8 @@ Python/npm dependencies retain their upstream licenses. DeepGaze, CLIP, PyTorch 
 
 `docs/demo/assets/calligraphy-photography-concept.png` was generated directly with Codex's built-in image generation tool for this repository's visual concept section. It is not a PosterPilot workflow output, benchmark, or before/after optimization result. Its calligraphy is part of the generated raster image, not an extracted or bundled font. The club, date and venue are fictional demonstration information. The generation prompt is preserved in [the concept notes](docs/demo/calligraphy-photography-prompt.md). No third-party reference image was supplied for this concept.
 
+`docs/demo/assets/menghonglou-concept-initial.png` and `menghonglou-concept-optimized.png` show an AI-generated design and a subsequent image edit guided by human-specified layout changes, both made with Codex's built-in image generation tool. They are not PosterPilot Agent outputs or measured optimization results. The initial concept used no external reference image; the edit used that generated initial image. Their calligraphy is raster artwork, not redistributed font software, and the event details are fictional. Prompts and limitations are recorded in [the iteration notes](docs/demo/menghonglou-concept-iteration.md).
+
 ## Project code
 
 Public visibility is not itself a grant of an MIT/Apache or other broad project license. No repository-wide license has been selected in this publication pass. Third-party licenses apply to their own materials, not automatically to the complete project.

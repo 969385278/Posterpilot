@@ -32,15 +32,17 @@
 
 [完整案例](docs/demo/golden-demo-red-mansion.md)保留检索失败后改写查询、工具调用和评测边界。案例前后可用评测信号不同，不能把综合分变化直接当成排版优化的净提升。
 
-### AI 风格示意：书法摄影社招新海报
+### AI 视觉迭代示意：《梦红楼》
 
-毛笔行书标题、手写辅助信息与满版摄影背景的视觉探索。
+国风戏剧海报，采用毛笔行书与满版园林画面。迭代重点：放大时间地点、移至左下方避开人物，并减弱文字背后的视觉干扰。
 
-> 此图由生图模型直接生成，**不是 PosterPilot 工作流的运行产物**，也不代表当前确定性渲染器能够复现其中的书法笔触。仅用于展示风格方向；不作为功能、优化效果或评测结果的证明。活动信息为虚构示例。
+> 两图由生图模型直接生成与定向编辑，**非 PosterPilot 运行结果**，不作为 Agent 优化或评测证据。书法字属于生成图像，不代表当前渲染器可复现；活动信息为虚构示例。
 
-<img src="docs/demo/assets/calligraphy-photography-concept.png" alt="AI 生成的书法摄影社招新风格示意图，非 PosterPilot 运行产物" width="480">
+| 初版（AI 生成） | 迭代优化版（同图编辑） |
+|---|---|
+| <img src="docs/demo/assets/menghonglou-concept-initial.png" alt="梦红楼初版，AI 生成的设计示意" width="420"> | <img src="docs/demo/assets/menghonglou-concept-optimized.png" alt="梦红楼迭代版，基于初版定向编辑，非 Agent 运行结果" width="420"> |
 
-[查看原图](docs/demo/assets/calligraphy-photography-concept.png) · [生成提示词与来源说明](docs/demo/calligraphy-photography-prompt.md)
+[迭代说明与完整提示词](docs/demo/menghonglou-concept-iteration.md) · [此前的摄影社书法风格示意](docs/demo/assets/calligraphy-photography-concept.png)
 
 ## 代码结构
 
