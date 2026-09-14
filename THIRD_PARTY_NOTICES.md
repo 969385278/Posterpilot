@@ -18,6 +18,10 @@ The repository includes short, structured design-rule summaries with links to DE
 
 Python/npm dependencies retain their upstream licenses. DeepGaze, CLIP, PyTorch and downloaded model weights must be used under their respective licenses and terms; weights are not included here. Commercial model APIs require the user's own account and access.
 
+## AI-generated concept artwork
+
+`docs/demo/assets/calligraphy-photography-concept.png` was generated directly with Codex's built-in image generation tool for this repository's visual concept section. It is not a PosterPilot workflow output, benchmark, or before/after optimization result. Its calligraphy is part of the generated raster image, not an extracted or bundled font. The club, date and venue are fictional demonstration information. The generation prompt is preserved in [the concept notes](docs/demo/calligraphy-photography-prompt.md). No third-party reference image was supplied for this concept.
+
 ## Project code
 
 Public visibility is not itself a grant of an MIT/Apache or other broad project license. No repository-wide license has been selected in this publication pass. Third-party licenses apply to their own materials, not automatically to the complete project.

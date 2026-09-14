@@ -22,13 +22,25 @@
 - 支持可控文字和布局调整，不支持任意主视觉对象的精确局部编辑。
 - `BackgroundTasks` 是进程内后台任务，不是生产级可靠队列。SSE 不承诺模型 token 级实时输出。
 
-## 效果示例
+## 案例展示
+
+### 真实运行案例：生成与一轮优化
 
 | 初版 | 一轮优化后 |
 |---|---|
 | ![初版海报](docs/demo/assets/red-mansion-initial.png) | ![优化版海报](docs/demo/assets/red-mansion-round-1.png) |
 
 [完整案例](docs/demo/golden-demo-red-mansion.md)保留检索失败后改写查询、工具调用和评测边界。案例前后可用评测信号不同，不能把综合分变化直接当成排版优化的净提升。
+
+### AI 风格示意：书法摄影社招新海报
+
+毛笔行书标题、手写辅助信息与满版摄影背景的视觉探索。
+
+> 此图由生图模型直接生成，**不是 PosterPilot 工作流的运行产物**，也不代表当前确定性渲染器能够复现其中的书法笔触。仅用于展示风格方向；不作为功能、优化效果或评测结果的证明。活动信息为虚构示例。
+
+<img src="docs/demo/assets/calligraphy-photography-concept.png" alt="AI 生成的书法摄影社招新风格示意图，非 PosterPilot 运行产物" width="480">
+
+[查看原图](docs/demo/assets/calligraphy-photography-concept.png) · [生成提示词与来源说明](docs/demo/calligraphy-photography-prompt.md)
 
 ## 代码结构
 
@@ -126,4 +138,4 @@ npm --prefix apps/web run build
 
 仓库排除了简历、头像、原始设计 PDF、旧摄像头/表情代码、虚拟环境、模型缓存、日志、数据库和运行产物。示例海报是明确选取的演示资料。
 
-第三方字体、案例和模型各有独立许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。本次仅公开代码，未擅自选择 MIT 等整仓开源许可；第三方许可不代表整个项目使用同一许可。
+第三方字体、案例和模型各有独立许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。本次公开代码及明确列出的演示资料，未擅自选择 MIT 等整仓开源许可；第三方许可不代表整个项目使用同一许可。
