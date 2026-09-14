@@ -1,0 +1,17 @@
+{
+  "name": "posterpilot",
+  "private": true,
+  "version": "0.2.0",
+  "scripts": {
+    "dev": "npm run run:all",
+    "dev:api": ".\\.venv\\Scripts\\python.exe -m uvicorn app.main:app --app-dir apps/api --host 127.0.0.1 --port 8787 --reload",
+    "dev:deepgaze": "powershell -ExecutionPolicy Bypass -File .\\scripts\\run_deepgaze.ps1",
+    "dev:web": "npm --prefix apps/web run dev",
+    "run:all": "powershell -ExecutionPolicy Bypass -File .\\scripts\\run_all.ps1",
+    "test": "npm run verify",
+    "test:web": "npm --prefix apps/web run test",
+    "build": "npm run build:web",
+    "build:web": "npm --prefix apps/web run build",
+    "verify": "powershell -ExecutionPolicy Bypass -File .\\scripts\\verify.ps1"
+  }
+}

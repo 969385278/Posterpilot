@@ -1,0 +1,126 @@
+{
+  "retrieved_at": "2026-09-10T17:52:14.856849+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 106991594,
+    "ns": 6,
+    "title": "File:(Albi) Moulin-rouge. La Goulue et Valentin le desossé - Toulouse-Lautrec 1891 - Inv.138.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 28770892,
+        "width": 3633,
+        "height": 5120,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg/960px-%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1127,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg/1920px-%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg/960px-%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1127,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg/1920px-%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:(Albi)_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=106991594",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2021-06-26 05:49:15",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "(Albi) Moulin-rouge. La Goulue et Valentin le desossé - Toulouse-Lautrec 1891 - Inv.138",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "May 2021 in Tarn|Artworks without Wikidata item|PD-old-100-expired|Moulin-rouge. La Goulue et Valentin le desossé - Toulouse-Lautrec 1891 - Inv.138|CC-PD-Mark|Files with coordinates missing SDC location of creation|Occitanie photographs taken on 2021-05-21|Creator Henri de Toulouse-Lautrec missing SDC depicts|Images by Archaeodontosaurus Albi Musée Toulouse-Lautrec",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "valued",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "GPSLatitude": {
+            "value": "43.929444",
+            "source": "commons-desc-page"
+          },
+          "GPSLongitude": {
+            "value": "2.142789",
+            "source": "commons-desc-page"
+          },
+          "GPSMapDatum": {
+            "value": "WGS-84",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "DateTimeOriginal": {
+            "value": "Taken on 21 May 2021",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "<a href=\"//commons.wikimedia.org/wiki/User:Archaeodontosaurus\" title=\"User:Archaeodontosaurus\">Didier Descouens</a>",
+            "source": "commons-desc-page"
+          },
+          "Permission": {
+            "value": "<div class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:No_Facebook.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/No_Facebook.svg/120px-No_Facebook.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"80\" height=\"18\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/No_Facebook.svg/250px-No_Facebook.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"14\"></a></span>\nThis file is copyrighted and has been released under a license which is incompatible with <a rel=\"nofollow\" class=\"external text\" href=\"https://www.facebook.com/legal/terms\">Facebook's licensing terms</a>. <b>It is <u>not</u> permitted to upload this file at Facebook.</b></div><div class=\"responsive-license-cc layouttemplate licensetpl\" dir=\"ltr\" lang=\"en\"><div class=\"rlicense-icons\"><span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"w:en:Creative Commons\"><img alt=\"w:en:Creative Commons\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/120px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"90\" height=\"36\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/79/CC_some_rights_reserved.svg/250px-CC_some_rights_reserved.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"744\" data-file-height=\"300\"></span></span><br>\n<span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"attribution\"><img alt=\"attribution\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/40px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Cc-by_new_white.svg/60px-Cc-by_new_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span> <span class=\"skin-invert\" typeof=\"mw:File\"><span title=\"share alike\"><img alt=\"share alike\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/40px-Cc-sa_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"24\" height=\"24\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Cc-sa_white.svg/60px-Cc-sa_white.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"64\" data-file-height=\"64\"></span></span></div><div class=\"rlicense-text\"><div class=\"rlicense-declaration\">This file is licensed under the <a href=\"https://en.wikipedia.org/wiki/en:Creative_Commons\" class=\"extiw\" title=\"w:en:Creative Commons\">Creative Commons</a> <a href=\"//creativecommons.org/licenses/by-sa/4.0/deed.en\" class=\"extiw\" title=\"creativecommons:by-sa/4.0/deed.en\">Attribution-Share Alike 4.0 International</a> license.</div><div class=\"rlicense-desc\" style=\"text-align:start;\" lang=\"en\">\n<dl><dd>You are free:\n<ul><li><b>to share</b> – to copy, distribute and transmit the work</li>\n<li><b>to remix</b> – to adapt the work</li></ul></dd>\n<dd>Under the following conditions:\n<ul><li><b>attribution</b> – You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.</li>\n<li><b>share alike</b> – If you remix, transform, or build upon the material, you must distribute your contributions under the <a href=\"https://creativecommons.org/share-your-work/licensing-considerations/compatible-licenses\" class=\"extiw\" title=\"ccorg:share-your-work/licensing-considerations/compatible-licenses\">same or compatible license</a> as the original.</li></ul></dd></dl></div><span class=\"licensetpl_link\" style=\"display:none;\">https://creativecommons.org/licenses/by-sa/4.0</span><span class=\"licensetpl_short\" style=\"display:none;\">CC BY-SA 4.0 </span><span class=\"licensetpl_long\" style=\"display:none;\">Creative Commons Attribution-Share Alike 4.0 </span><span class=\"licensetpl_link_req\" style=\"display:none;\">true</span><span class=\"licensetpl_attr_req\" style=\"display:none;\">true</span></div></div>",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "AuthorCount": {
+            "value": 2,
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg/960px-%28Albi%29_Moulin-rouge._La_Goulue_et_Valentin_le_desoss%C3%A9_-_Toulouse-Lautrec_1891_-_Inv.138.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "5aa6cf86a7d85919e2b02f2966fc9d2b0183a5dd9c161af26c2d3d19d433adf8"
+}

@@ -1,0 +1,107 @@
+{
+  "retrieved_at": "2026-09-10T17:52:36.027545+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 46015465,
+    "ns": 6,
+    "title": "File:Artwork by El Lissitzky c1930.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 615959,
+        "width": 1425,
+        "height": 2000,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Artwork_by_El_Lissitzky_c1930.jpg/960px-Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1123,
+        "responsiveUrls": {
+          "2": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Artwork_by_El_Lissitzky_c1930.jpg/960px-Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1123,
+          "srcset": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Artwork_by_El_Lissitzky_c1930.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=46015465",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2017-12-18 04:51:55",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Artwork by El Lissitzky c1930",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Exhibitions in Switzerland|Events in Zürich|PD-Art (PD-old-auto-1996)|German-language posters|Exhibitions in 1929|PD-old-80-1996|CC-PD-Mark|Russian culture in Switzerland|Exhibition posters of Russia|Posters by El Lissitzky|1929 posters of Russia|Relations of the Soviet Union and Switzerland|Exhibitions of Russia abroad|Export advertising posters of Russia",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "\"USSR Russische Ausstellung\" by El Lissitsky, 1929. Note that the boy and girl share an eye, as in traditional <a href=\"//commons.wikimedia.org/wiki/Category:Three_faces_on_one_head\" title=\"Category:Three faces on one head\">three faces on one head</a> depictions...",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1929",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<ul><li><a rel=\"nofollow\" class=\"external free\" href=\"https://www.culture.ru/persons/9437/el-lisickii\">https://www.culture.ru/persons/9437/el-lisickii</a></li>\n<li><a rel=\"nofollow\" class=\"external free\" href=\"https://artchive.ru/artists/65361~El_Lisitskij/works/516099~Plakat_dlja_Russkoj_vystavki_v_Muzee_dekorativnoprikladnogo_iskusstva_v_Tsjurikhe_1929_god\">https://artchive.ru/artists/65361~El_Lisitskij/works/516099~Plakat_dlja_Russkoj_vystavki_v_Muzee_dekorativnoprikladnogo_iskusstva_v_Tsjurikhe_1929_god</a></li></ul>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:El_Lissitzky\" class=\"extiw\" title=\"w:en:El Lissitzky\"><span title=\"Soviet artist, designer, photographer, teacher, typographer and architect (1890–1941)\">El Lissitzky</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Artwork_by_El_Lissitzky_c1930.jpg/960px-Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "d83a3fbc5081826eac75804f8437eecf2525815f5471a9864ba65a73b2ef0378"
+}

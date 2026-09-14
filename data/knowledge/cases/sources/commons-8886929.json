@@ -1,0 +1,103 @@
+{
+  "retrieved_at": "2026-09-10T17:52:08.563811+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 8886929,
+    "ns": 6,
+    "title": "File:Alfons Mucha - 1896 - La Dame aux Camélias - Sarah Bernhardt.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 18067945,
+        "width": 2928,
+        "height": 7804,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/960px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 2132,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/1920px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/960px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 2132,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/1920px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=8886929",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2013-01-29 12:38:09",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "The Lady of the Camellias",
+            "source": "commons-desc-page"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Hans Sachs collection|Retouched pictures|Private art collections|Artworks without Wikidata item|Featured pictures on Wikipedia, English|PD-old-80-expired|CC-PD-Mark|Adam Cuerden's restorations|La Dame aux camélias poster (Mucha)|Files with Assessments template missing SDC Commons no value quality assessment",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Alphonse_Mucha\" class=\"extiw\" title=\"w:en:Alphonse Mucha\"><span title=\"Czech painter, illustrator and graphic artist (1860–1939)\">Alphonse Mucha</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1896<div style=\"display: none;\">date QS:P571,+1896-00-00T00:00:00Z/9</div>",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "Original file from <a rel=\"nofollow\" class=\"external text\" href=\"https://www.loc.gov/pictures/item/00652382/\">Library of Congress</a>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/960px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "f7016898c98820e45a8c54777df4e2dcf79ef18bc7e9682d77cf01d2be8b6014"
+}

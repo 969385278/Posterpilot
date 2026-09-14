@@ -1,0 +1,174 @@
+{
+  "revision": "8e44913e4ff26fc997e6856c1ec40ff4791c98c5",
+  "retrieved_at": "2026-09-11T05:46:11.904493+00:00",
+  "fonts": [
+    {
+      "id": "mashanzheng",
+      "label": "马善政毛笔体",
+      "description": "厚实毛笔，适合国风、传统文化标题",
+      "actual_name": "Ma Shan Zheng Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/mashanzheng",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/mashanzheng/OFL.txt",
+          "sha256": "d7bdb1cee215b689e23c2f95672a6084c790542170648267a55114103d756a08",
+          "bytes": 4397
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/mashanzheng/METADATA.pb",
+          "sha256": "7e21912b6659b58694f0b999e69ad5a95da12fdc453565059727a2467e525f84",
+          "bytes": 844
+        },
+        {
+          "name": "MaShanZheng-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/mashanzheng/MaShanZheng-Regular.ttf",
+          "sha256": "6d2546bb189c732a8ca29af9e22457b152387d158aa459e4ac2ce1e51788b7fb",
+          "bytes": 5857936
+        }
+      ]
+    },
+    {
+      "id": "longcang",
+      "label": "龙藏体",
+      "description": "疏朗手写，适合文艺、书信感标题",
+      "actual_name": "Long Cang Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/longcang",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/longcang/OFL.txt",
+          "sha256": "603546b7219a94bb59bf8294458194a5010119486354092b66a09a3fd61aeacc",
+          "bytes": 4390
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/longcang/METADATA.pb",
+          "sha256": "c7d6c01a886b37dcef3c1e89796424f34240647fedac0d37108309c02fa8f3a3",
+          "bytes": 601
+        },
+        {
+          "name": "LongCang-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/longcang/LongCang-Regular.ttf",
+          "sha256": "e5bf2c3f24ef2327c6f136d8f73e2f9dfdf44896fdbeb35a9515f44777bb91bc",
+          "bytes": 5162508
+        }
+      ]
+    },
+    {
+      "id": "zhimangxing",
+      "label": "志莽行书",
+      "description": "连笔行草，适合短标题；长文字慎用",
+      "actual_name": "Zhi Mang Xing Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zhimangxing",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zhimangxing/OFL.txt",
+          "sha256": "10947328199e369a3e6b4a67e8e5507ed99d5bbb264a1f156415aa9b665e4d15",
+          "bytes": 4397
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zhimangxing/METADATA.pb",
+          "sha256": "a3319526a687b010f28e79bc5fef7072005be36615224df60df37847b2ef0c78",
+          "bytes": 608
+        },
+        {
+          "name": "ZhiMangXing-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zhimangxing/ZhiMangXing-Regular.ttf",
+          "sha256": "644e0cae9b40f0b10ab729a01bd32032e3973bac22be3dccae01bf6ae7fde969",
+          "bytes": 4063532
+        }
+      ]
+    },
+    {
+      "id": "zcoolkuaile",
+      "label": "站酷快乐体",
+      "description": "活泼不规则笔画，适合社团招新、趣味活动",
+      "actual_name": "ZCOOL KuaiLe Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolkuaile",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolkuaile/OFL.txt",
+          "sha256": "538078469839b4a2e7ad22bef4ebe41681a4e53749bb2a072144024f1d6d703d",
+          "bytes": 4398
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolkuaile/METADATA.pb",
+          "sha256": "fc1f48f54521ac41b8aa59d5b44c6b3c7cb7d24b9d4d499564c9febd01f84769",
+          "bytes": 671
+        },
+        {
+          "name": "ZCOOLKuaiLe-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolkuaile/ZCOOLKuaiLe-Regular.ttf",
+          "sha256": "812a6fc1fe54b6d73a419245c32dfeba8aa33104d5be90d1cf6af082007cb71d",
+          "bytes": 1514968
+        }
+      ]
+    },
+    {
+      "id": "zcoolqingkehuangyou",
+      "label": "站酷庆科黄油体",
+      "description": "窄长圆角字形，适合现代醒目标题",
+      "actual_name": "ZCOOL QingKe HuangYou Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolqingkehuangyou",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolqingkehuangyou/OFL.txt",
+          "sha256": "f1bce31b817dee01c1e4ef8bc45d8ecb95f01f4abbf0a985007cb3cd0fd8123d",
+          "bytes": 4419
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolqingkehuangyou/METADATA.pb",
+          "sha256": "254f65c558dd29fdabcec269174fb5d80fbd36350a8df729a85686163840f74f",
+          "bytes": 687
+        },
+        {
+          "name": "ZCOOLQingKeHuangYou-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolqingkehuangyou/ZCOOLQingKeHuangYou-Regular.ttf",
+          "sha256": "54f0c0df4308cd74cd0f2fd3494ae054dbc4a1fd6fa7d71f4807eb4cdd8b4136",
+          "bytes": 8328684
+        }
+      ]
+    },
+    {
+      "id": "zcoolxiaowei",
+      "label": "站酷小薇体",
+      "description": "装饰宋体气质，适合文化、展览标题",
+      "actual_name": "ZCOOL XiaoWei Regular",
+      "license": "OFL-1.1",
+      "source": "https://github.com/google/fonts/tree/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolxiaowei",
+      "files": [
+        {
+          "name": "OFL.txt",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolxiaowei/OFL.txt",
+          "sha256": "a094514ca57cf8f9c5e8d8d1adab5d8cd3a377297ff016f9df2c05b3ecd77f0a",
+          "bytes": 4400
+        },
+        {
+          "name": "METADATA.pb",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolxiaowei/METADATA.pb",
+          "sha256": "aa1ced447d625faa508f81efc73d5f158e5fcecd59dbecb66a27bcb89947bdeb",
+          "bytes": 615
+        },
+        {
+          "name": "ZCOOLXiaoWei-Regular.ttf",
+          "source": "https://raw.githubusercontent.com/google/fonts/8e44913e4ff26fc997e6856c1ec40ff4791c98c5/ofl/zcoolxiaowei/ZCOOLXiaoWei-Regular.ttf",
+          "sha256": "a42b620140f493db42f741351dfbf343c0936d58588ee8004b8b2a218d997ff1",
+          "bytes": 6313808
+        }
+      ]
+    }
+  ]
+}

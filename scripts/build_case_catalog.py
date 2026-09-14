@@ -1,0 +1,49 @@
+"""Combine manually reviewed features with downloaded immutable provenance."""
+import hashlib
+import html
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "apps/api"))
+from app.schemas.poster_case import PosterCase
+
+
+def build(root: Path) -> list[dict]:
+    features = json.loads((root / "reviewed_features.json").read_text(encoding="utf-8"))
+    catalog = []
+    for feature in features:
+        item = dict(feature)
+        page_id = item.pop("page_id")
+        case_id = f"commons-{page_id}"
+        record = json.loads((root / "sources" / f"{case_id}.json").read_text(encoding="utf-8"))
+        page = record["response"]
+        info = page["imageinfo"][0]
+        metadata = info["extmetadata"]
+        if metadata["LicenseShortName"]["value"] != "Public domain":
+            raise ValueError(f"Unexpected rights for {case_id}")
+        digest = hashlib.sha256((root / "images" / f"{case_id}.jpg").read_bytes()).hexdigest()
+        if digest != record["image_sha256"]:
+            raise ValueError(f"Image hash mismatch: {case_id}")
+        creator = html.unescape(re.sub(r"<[^>]*>", "", metadata.get("Artist", {}).get("value", "作者未确认"))).strip()
+        item.update(id=case_id, original_title=page["title"].removeprefix("File:"),
+                    image_asset=f"{case_id}.jpg", status="curated",
+                    analysis_basis="assistant_visual_review", user_acceptance="pending",
+                    source={"creator": creator, "institution": "Wikimedia Commons（原始机构见来源页）",
+                            "source_url": info["descriptionurl"], "image_url": record["image_url"],
+                            "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+                            "rights_url": info["descriptionurl"] + "#Licensing",
+                            "retrieved_at": record["retrieved_at"], "image_sha256": digest})
+        catalog.append(PosterCase.model_validate(item).model_dump(mode="json"))
+    if len({item["id"] for item in catalog}) != len(catalog):
+        raise ValueError("Duplicate reviewed case")
+    return catalog
+
+
+if __name__ == "__main__":
+    root = ROOT / "data/knowledge/cases"
+    catalog = build(root)
+    (root / "catalog.json").write_text(json.dumps(catalog, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Built {len(catalog)} visually reviewed cases; user acceptance remains pending.")

@@ -1,0 +1,6 @@
+--extra-index-url https://download.pytorch.org/whl/cu126
+torch==2.13.0+cu126
+torchvision==0.28.0+cu126
+git+https://github.com/openai/CLIP.git@d05afc436d78f1c48dc0dbf8e5980a9d471f35f6
+git+https://github.com/matthias-k/DeepGaze.git@c87b106e8698497c59998b469c45770e993baca3
+einops==0.8.2

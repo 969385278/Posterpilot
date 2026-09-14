@@ -1,0 +1,48 @@
+{
+  "id": "campus_lecture",
+  "canvas": { "width": 1080, "height": 1440 },
+  "slots": [
+    {
+      "id": "title",
+      "role": "title",
+      "box": { "x": 0.08, "y": 0.08, "width": 0.84, "height": 0.14 },
+      "font_size": 86,
+      "font_family": "Microsoft YaHei",
+      "color": "#F8FAFC",
+      "alignment": "left"
+    },
+    {
+      "id": "subtitle",
+      "role": "subtitle",
+      "box": { "x": 0.08, "y": 0.23, "width": 0.84, "height": 0.06 },
+      "font_size": 32,
+      "font_family": "Microsoft YaHei",
+      "color": "#E2E8F0",
+      "alignment": "left"
+    },
+    {
+      "id": "main_visual",
+      "role": "main_visual",
+      "box": { "x": 0, "y": 0, "width": 1, "height": 1 }
+    },
+    {
+      "id": "event_info",
+      "role": "event_info",
+      "box": { "x": 0.08, "y": 0.76, "width": 0.84, "height": 0.12 },
+      "font_size": 32,
+      "font_family": "Microsoft YaHei",
+      "color": "#F8FAFC",
+      "alignment": "left",
+      "line_spacing": 1.4
+    },
+    {
+      "id": "organizer",
+      "role": "organizer",
+      "box": { "x": 0.08, "y": 0.91, "width": 0.84, "height": 0.05 },
+      "font_size": 24,
+      "font_family": "Microsoft YaHei",
+      "color": "#E2E8F0",
+      "alignment": "left"
+    }
+  ]
+}

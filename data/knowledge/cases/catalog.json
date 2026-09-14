@@ -1,0 +1,560 @@
+[
+  {
+    "id": "commons-8886929",
+    "title": "茶花女：柔和装饰与纵向人物",
+    "original_title": "Alfons Mucha - 1896 - La Dame aux Camélias - Sarah Bernhardt.jpg",
+    "image_asset": "commons-8886929.jpg",
+    "styles": [
+      "新艺术",
+      "低饱和",
+      "装饰边框"
+    ],
+    "scenarios": [
+      "戏剧演出",
+      "文化活动"
+    ],
+    "features": {
+      "palette": "米黄纸色、灰粉背景、棕色轮廓和少量灰绿，整体柔和；配色值为视觉近似，不是原作标准色。",
+      "typography": "顶部宽大的装饰性字形，演员名为较细描边字；只参考字形气质和粗细层级，无法确认具体字体。",
+      "composition": "窄长纵向人物置于拱形装饰框内，标题在顶部，场馆在底部，人物轮廓与文字分区分离。",
+      "hierarchy": "顶部剧名与大幅人物共同突出，演员名次之，场馆位于底部；建议保留标题、主视觉、活动信息三级。"
+    },
+    "palette": [
+      "#EAD4A2",
+      "#AC7377",
+      "#605644",
+      "#79826B"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "serif",
+    "composition_preset": "top_title",
+    "cautions": [
+      "原图比例很窄，不能直接套用到普通竖版；装饰边框和手绘字形仅作气质参考。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Alphonse Mucha",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg/960px-Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Alfons_Mucha_-_1896_-_La_Dame_aux_Cam%C3%A9lias_-_Sarah_Bernhardt.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:08.563811+00:00",
+      "image_sha256": "f7016898c98820e45a8c54777df4e2dcf79ef18bc7e9682d77cf01d2be8b6014"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-41905046",
+    "title": "香珀努瓦：深绿花环与中心人物",
+    "original_title": "F. Champenois imprimeur-éditeur.jpg",
+    "image_asset": "commons-41905046.jpg",
+    "styles": [
+      "新艺术",
+      "中心构图",
+      "繁复装饰"
+    ],
+    "scenarios": [
+      "艺术展览",
+      "文艺社团"
+    ],
+    "features": {
+      "palette": "深青绿外框与米色人物形成明暗层次，粉色花卉作少量点缀；避免把丰富细节误当成高饱和。",
+      "typography": "顶部黑色圆润装饰字配较细的小字说明；具体字体不可从图像可靠确定。",
+      "composition": "大幅人物居中，圆形花环围绕头肩，品牌文字集中顶部浅色区域，边缘较密。",
+      "hierarchy": "人物面部和上身是主要视觉焦点，顶部品牌次之，小字号地址最后；可借鉴主体优先结构。"
+    },
+    "palette": [
+      "#123F3D",
+      "#E1D1AA",
+      "#CA8D85",
+      "#796D4B"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "serif",
+    "composition_preset": "top_title",
+    "cautions": [
+      "适合参考配色与主体关系，不适合在现有背景上自动增添花环或复制人物。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Alphonse Mucha",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:F._Champenois_imprimeur-%C3%A9diteur.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/960px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:F._Champenois_imprimeur-%C3%A9diteur.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:11.165631+00:00",
+      "image_sha256": "c28a54c1a8fa1de2cc7855f3fd6a021e179c0bcdc75d933b57b7549b269982eb"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-107429666",
+    "title": "日本沙龙：黑色剪影与不对称构图",
+    "original_title": "(Albi) Le Divan japonais 1893 lithographie - Toulouse-Lautrec MTH.A3.jpg",
+    "image_asset": "commons-107429666.jpg",
+    "styles": [
+      "剪影",
+      "强对比",
+      "不对称"
+    ],
+    "scenarios": [
+      "演出宣传",
+      "音乐活动"
+    ],
+    "features": {
+      "palette": "大片近黑人物与浅黄背景形成强明暗反差，灰绿中间层和橙发色点缀。",
+      "typography": "顶部自由手绘式标题和小号斜体地址，底部署名更弱；不宣称有可直接匹配的字体文件。",
+      "composition": "黑衣人物占据中右部，舞台与器乐在左侧，标题顺着顶部空处放置，构图不对称。",
+      "hierarchy": "黑色人物剪影突出，标题位于上沿，地址与署名是次级信息；不要靠把全部文字放大来提高醒目度。"
+    },
+    "palette": [
+      "#171721",
+      "#DBCA8C",
+      "#929080",
+      "#C67D54"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "sans",
+    "composition_preset": "top_title",
+    "cautions": [
+      "左侧并非完全留白，排字前仍需检查器乐与手部等主体区域。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Didier Descouens",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:(Albi)_Le_Divan_japonais_1893_lithographie_-_Toulouse-Lautrec_MTH.A3.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9a/%28Albi%29_Le_Divan_japonais_1893_lithographie_-_Toulouse-Lautrec_MTH.A3.jpg/960px-%28Albi%29_Le_Divan_japonais_1893_lithographie_-_Toulouse-Lautrec_MTH.A3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:(Albi)_Le_Divan_japonais_1893_lithographie_-_Toulouse-Lautrec_MTH.A3.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:12.684853+00:00",
+      "image_sha256": "e41df22fcdd80cf978c66b28b48523a24b08cc46baaa8b5423f8ab973ad487a0"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-31793744",
+    "title": "大峡谷：低饱和风景与底部信息区",
+    "original_title": "Grand Canyon National Park, a free government service LCCN2007676131.jpg",
+    "image_asset": "commons-31793744.jpg",
+    "styles": [
+      "低饱和",
+      "风景插画",
+      "信息分区"
+    ],
+    "scenarios": [
+      "户外活动",
+      "旅行宣传"
+    ],
+    "features": {
+      "palette": "粉棕岩壁、灰紫阴影、浅灰绿天空和深蓝黑细节，整体低饱和，深浅层次明显。",
+      "typography": "底部宽厚大写字形，地点名称大于机构信息；中文只借鉴粗细和字号关系。",
+      "composition": "风景占据大部分画面，底部用连续浅色区域承载文字，峡谷曲线形成纵深。",
+      "hierarchy": "先突出景观，再突出目的地名称，机构信息更小；活动信息要有清晰独立承载区。"
+    },
+    "palette": [
+      "#B78780",
+      "#666276",
+      "#D0CEB0",
+      "#222B3C"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "sans",
+    "composition_preset": "bottom_title",
+    "cautions": [
+      "原案例底部是文字色块；本项目仍保持全幅背景，不照搬为上下空白拼接。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Work Projects Administration Poster Collection",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Grand_Canyon_National_Park,_a_free_government_service_LCCN2007676131.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/960px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Grand_Canyon_National_Park,_a_free_government_service_LCCN2007676131.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:17.432969+00:00",
+      "image_sha256": "cf44cf8ab4dbe53884a452aa26d9df12d69f69dbe1da412eecc7f0d677734446"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-22408276",
+    "title": "维克多自行车：双色版画与品牌标题",
+    "original_title": "William Henry Bradley- Victor Bicycles.jpg",
+    "image_asset": "commons-22408276.jpg",
+    "styles": [
+      "单色",
+      "强对比",
+      "装饰边框"
+    ],
+    "scenarios": [
+      "骑行活动",
+      "运动社团"
+    ],
+    "features": {
+      "palette": "近黑深绿与暖米色为主要两色，明暗反差强，不依靠多种鲜艳颜色。",
+      "typography": "顶部 VICTOR 是大号厚重衬线式字形，底部品类较大，地点信息密集且更小。",
+      "composition": "细密植物边框包围中央骑行插画，上下各有文字带，中间主体完整。",
+      "hierarchy": "品牌标题强于底部细节；中部人物和自行车是主题信息，适合示例主次字号差。"
+    },
+    "palette": [
+      "#172E2B",
+      "#E3CDA0"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "serif",
+    "composition_preset": "top_title",
+    "cautions": [
+      "原文件分辨率较低，只作参考缩略图；底部小字拥挤是局限，不作为应模仿的可读性规范。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Will H. Bradley",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley-_Victor_Bicycles.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/William_Henry_Bradley-_Victor_Bicycles.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley-_Victor_Bicycles.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:19.945666+00:00",
+      "image_sha256": "a74d55fa3b74c039c09c22b0059b6b8e0762fbda6c81bec3df5c9e4833d17661"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-24131151",
+    "title": "布拉德利书刊：红黑标题与图案边框",
+    "original_title": "William Henry Bradley - Bradley his book - Google Art Project.jpg",
+    "image_asset": "commons-24131151.jpg",
+    "styles": [
+      "新艺术",
+      "鲜明配色",
+      "图案装饰"
+    ],
+    "scenarios": [
+      "读书活动",
+      "艺术社团"
+    ],
+    "features": {
+      "palette": "黑色轮廓搭配亮黄背景、蓝绿羽毛和红色边花标题，颜色种类多但各自集中。",
+      "typography": "顶部红色哥特式装饰字具有书刊气质，笔画复杂；中文参考应选可读的现有字体而非模拟拉丁字母。",
+      "composition": "人物和大鸟形成两条纵向曲线，四周重复花纹围合，顶部单行标题。",
+      "hierarchy": "大幅插画占主导，红色书名与边框呼应；次级活动信息在新海报中需另设清晰位置。"
+    },
+    "palette": [
+      "#C12822",
+      "#101B16",
+      "#D7CB24",
+      "#77AFB4",
+      "#E9DFC5"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "serif",
+    "composition_preset": "top_title",
+    "cautions": [
+      "这是高装饰密度案例；不保证增加纹样能提高可读性，本项目也不支持在背景中精确增删纹样。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "William Henry Bradley (1868 - 1962)   Born in Boston. Died in New Jersey. Details on Google Art Project",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley_-_Bradley_his_book_-_Google_Art_Project.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/William_Henry_Bradley_-_Bradley_his_book_-_Google_Art_Project.jpg/960px-William_Henry_Bradley_-_Bradley_his_book_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley_-_Bradley_his_book_-_Google_Art_Project.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:22.281818+00:00",
+      "image_sha256": "0d662536950357f1a4e92d1122951919008e2a883ae83d6b50b0470913c58da6"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-24204726",
+    "title": "蓝衣女子：蓝橙对比与叠加文字",
+    "original_title": "William Henry Bradley - The Blue Lady, poster for The Chap-Book - Google Art Project.jpg",
+    "image_asset": "commons-24204726.jpg",
+    "styles": [
+      "蓝橙配色",
+      "文字叠图",
+      "剪影"
+    ],
+    "scenarios": [
+      "读书活动",
+      "音乐活动"
+    ],
+    "features": {
+      "palette": "深蓝和近黑的大面积背景，浅米人物面部与橙色标题点亮局部，形成冷暖对比。",
+      "typography": "橙色大号细衬线式标题分三行，字宽与字号变化突出主要词；字体名称不确定。",
+      "composition": "人物在右侧和上半部，标题叠在左下部深色画面上，背景从上到下连续。",
+      "hierarchy": "橙色大标题和浅色面部形成两个明显焦点，标题不是只能放在顶部。"
+    },
+    "palette": [
+      "#15375D",
+      "#171C32",
+      "#D3845A",
+      "#E8DFC6"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "serif",
+    "composition_preset": "bottom_title",
+    "cautions": [
+      "标题叠图位置仍要检查明暗和主体碰撞；本项目可借鉴排版位置，不复制人物内容。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "William Henry Bradley (1868 - 1962) Details on Google Art Project",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley_-_The_Blue_Lady,_poster_for_The_Chap-Book_-_Google_Art_Project.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/William_Henry_Bradley_-_The_Blue_Lady%2C_poster_for_The_Chap-Book_-_Google_Art_Project.jpg/960px-William_Henry_Bradley_-_The_Blue_Lady%2C_poster_for_The_Chap-Book_-_Google_Art_Project.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:William_Henry_Bradley_-_The_Blue_Lady,_poster_for_The_Chap-Book_-_Google_Art_Project.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:24.649257+00:00",
+      "image_sha256": "81b1c645b69f7c07b7069f6e3f1f7baed8f20dd859081d4ca09db4209446b9c8"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-31912550",
+    "title": "学游泳：活动日期与几何分区",
+    "original_title": "Learn to swim campaign LCCN98516763.jpg",
+    "image_asset": "commons-31912550.jpg",
+    "styles": [
+      "几何分区",
+      "运动感",
+      "活动信息突出"
+    ],
+    "scenarios": [
+      "运动社团",
+      "课程招募"
+    ],
+    "features": {
+      "palette": "暖米色与灰绿背景分区，橙红主体和标题点缀，蓝色水池构成第三个色块。",
+      "typography": "无衬线式大写标题与日期，SWIM 字母沿斜线排列；日期用明显的大字号区分说明文字。",
+      "composition": "中部跳水者连接上下区域，右下日期、左下课程说明，图文按空间分组。",
+      "hierarchy": "活动名最显眼，日期单独放大，课程和主办方较小；适合借鉴活动信息优先。"
+    },
+    "palette": [
+      "#D6C38D",
+      "#82836A",
+      "#BA522D",
+      "#386C85",
+      "#2B2D22"
+    ],
+    "suggested_priority": [
+      "title",
+      "event_info",
+      "main_visual"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "top_title",
+    "cautions": [
+      "倾斜和逐字旋转不属于现有文字渲染能力，借鉴分区与层级，不承诺复刻该字形排列。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Work Projects Administration Poster Collection",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Learn_to_swim_campaign_LCCN98516763.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Learn_to_swim_campaign_LCCN98516763.jpg/960px-Learn_to_swim_campaign_LCCN98516763.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Learn_to_swim_campaign_LCCN98516763.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:27.203717+00:00",
+      "image_sha256": "3c4bdd4be0326a1e7f83983afc0a337c85806629aac184ebf60a7b153a0e0caa"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-32018105",
+    "title": "健康游泳：浅底留白与黑色文字承载区",
+    "original_title": "Swim for health in safe and pure pools LCCN98518824.jpg",
+    "image_asset": "commons-32018105.jpg",
+    "styles": [
+      "浅色留白",
+      "运动插画",
+      "文字叠图"
+    ],
+    "scenarios": [
+      "健康宣传",
+      "运动社团"
+    ],
+    "features": {
+      "palette": "浅灰白水面搭配暖橙人物和赭黄跳板，底部近黑色块与白字形成强对比。",
+      "typography": "底部标题包含描边字与实心粗字的对比，说明用小号窄体风格；无法确定具体字体。",
+      "composition": "人物和跳板沿对角线伸向前景，上方水面较疏，底部文字叠加在深色区域。",
+      "hierarchy": "人物与粗体 FOR HEALTH 共同突出，次级安全说明小一档，最底部机构文字较弱。"
+    },
+    "palette": [
+      "#E5E5DA",
+      "#C56F36",
+      "#B29439",
+      "#191D1A"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "bottom_title",
+    "cautions": [
+      "原图最底部浅色小字对比偏弱，不作为高可读性示范；描边/字体效果受现有渲染器支持范围限制。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Work Projects Administration Poster Collection",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg/960px-Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:30.850016+00:00",
+      "image_sha256": "afad3e17d0972d3592ec2e393ca79df4f4df5094d5f5123da1b67cfa1f2ddfcc"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-3645151",
+    "title": "金分割展览：几何文字与网格节奏",
+    "original_title": "Theo van Doesburg Design for a poster.jpg",
+    "image_asset": "commons-3645151.jpg",
+    "styles": [
+      "几何字体",
+      "单色",
+      "文字主导"
+    ],
+    "scenarios": [
+      "设计展览",
+      "科技社团"
+    ],
+    "features": {
+      "palette": "近黑文字和暖米色纸面，依靠笔画密度和留白建立节奏，不依赖彩色点缀。",
+      "typography": "直角几何字形，字宽和笔画厚度变化明显，部分文字旋转；仅是字形观察而非字体识别。",
+      "composition": "接近方形的文字主导画面，中央紧密横排文字与外围较疏字块相互平衡。",
+      "hierarchy": "中心展览名称由大尺寸粗笔画强调，次级词围绕边缘分组；展示字号、密度和留白如何构成层级。"
+    },
+    "palette": [
+      "#25241E",
+      "#DDCEA0"
+    ],
+    "suggested_priority": [
+      "title",
+      "event_info",
+      "organizer"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "top_title",
+    "cautions": [
+      "原作是海报设计稿且为近方形；不直接迁移画幅、不生成旋转文字，仅借鉴几何气质与分组。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "Theo van Doesburg",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Theo_van_Doesburg_Design_for_a_poster.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg/960px-Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Theo_van_Doesburg_Design_for_a_poster.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:33.172027+00:00",
+      "image_sha256": "8b1bec9fc0b029574419e7350acd85bc04a987f293559d713e2c155db8069422"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-46015465",
+    "title": "苏黎世展览：摄影拼贴与红黑层级",
+    "original_title": "Artwork by El Lissitzky c1930.jpg",
+    "image_asset": "commons-46015465.jpg",
+    "styles": [
+      "摄影拼贴",
+      "红黑配色",
+      "不对称"
+    ],
+    "scenarios": [
+      "艺术展览",
+      "摄影社团"
+    ],
+    "features": {
+      "palette": "灰黑摄影画面与米色亮部，砖红标题和左侧竖条形成强调色，色彩数量受控。",
+      "typography": "窄体无衬线式标题，展览词较大，日期在右下角独立排列；只参考字重和层级。",
+      "composition": "上部双重人像与下部建筑几何拼贴，左侧竖条形成边界，标题覆盖中部深色承载区。",
+      "hierarchy": "人像与红色展览名是主要焦点，右下日期单独集中，场馆信息在左边缘。"
+    },
+    "palette": [
+      "#292B28",
+      "#B45436",
+      "#C6B89C"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "center_title",
+    "cautions": [
+      "文件名约 1930，但来源元数据与画面日期为 1929；作为历史展览设计参考，不复制政治标识，也不承诺人像拼贴编辑。",
+      "案例分析由开发助手视觉检查整理，尚待用户验收；颜色为视觉近似，非原作标准色。"
+    ],
+    "source": {
+      "creator": "El Lissitzky",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Artwork_by_El_Lissitzky_c1930.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Artwork_by_El_Lissitzky_c1930.jpg/960px-Artwork_by_El_Lissitzky_c1930.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:Artwork_by_El_Lissitzky_c1930.jpg#Licensing",
+      "retrieved_at": "2026-09-10T17:52:36.027545+00:00",
+      "image_sha256": "d83a3fbc5081826eac75804f8437eecf2525815f5471a9864ba65a73b2ef0378"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  }
+]

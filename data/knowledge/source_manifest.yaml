@@ -1,0 +1,42 @@
+version: 1
+sources:
+  - id: denso-qr-guideline
+    title: DENSO WAVE QR Code Guidelines
+    source_type: web
+    url: https://www.qrcode.com/en/howto/code.html
+    extraction_mode: external_reference
+    themes:
+      - 二维码静区
+      - 扫码可用性
+    status: processed
+
+  - id: w3c-wcag-2-2
+    title: W3C Web Content Accessibility Guidelines 2.2
+    source_type: web
+    url: https://www.w3.org/WAI/WCAG22/Understanding/
+    extraction_mode: external_reference
+    themes:
+      - 文字对比度
+      - 颜色使用
+    status: processed
+
+  - id: nng-visual-design
+    title: Nielsen Norman Group Visual Design Principles
+    source_type: web
+    url: https://www.nngroup.com/articles/visual-hierarchy-ux-definition/
+    extraction_mode: external_reference
+    themes:
+      - 视觉层级
+      - 接近原则
+      - 共同区域
+    status: processed
+
+  - id: posterpilot-candidate-rules
+    title: PosterPilot 待验证规则
+    source_type: internal
+    extraction_mode: manual
+    themes:
+      - 注意力问题诊断
+      - 优化动作假设
+    selection_rationale: 仅作为候选，不进入生产向量索引，待 PDF 依据补全后审批。
+    status: processed

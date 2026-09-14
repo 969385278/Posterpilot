@@ -1,0 +1,1 @@
+"""PosterPilot API application package."""

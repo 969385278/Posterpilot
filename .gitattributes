@@ -1,0 +1,16 @@
+* text=auto
+*.py text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.jsonl text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.ttf binary
+# Preserve bytes for third-party files whose original hashes are in the manifest.
+data/fonts/open-source/** -text
+data/knowledge/cases/sources/*.json -text

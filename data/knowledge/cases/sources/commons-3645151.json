@@ -1,0 +1,103 @@
+{
+  "retrieved_at": "2026-09-10T17:52:33.172027+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 3645151,
+    "ns": 6,
+    "title": "File:Theo van Doesburg Design for a poster.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 232761,
+        "width": 1106,
+        "height": 1140,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg/960px-Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 825,
+        "responsiveUrls": {
+          "2": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg/960px-Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 825,
+          "srcset": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Theo_van_Doesburg_Design_for_a_poster.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=3645151",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2008-03-01 20:36:06",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "<div class=\"fn\">\n<i>Design for a poser for the Section d'Or exhibition</i>.</div>",
+            "source": "commons-desc-page"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Artworks without Wikidata item|PD Old|Artworks with known accession number|Objects with inscriptions in Dutch needing translation|Cultural Heritage Agency of the Netherlands Art Collection|Pages with complex technique templates|CC-PD-Mark|1920 exhibitions in the Netherlands|1920 posters of the Netherlands|Schenking Van Moorsel|PD-old missing SDC copyright status|Theo van Doesburg. Oeuvrecatalogus, 2000|Typographic designs by Theo van Doesburg",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Theo_van_Doesburg\" class=\"extiw\" title=\"w:en:Theo van Doesburg\"><span title=\"Dutch architect, painter, draughtsman and writer (1883–1931)\">Theo van Doesburg</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "circa April 1920<div style=\"display: none;\">date QS:P571,+1920-04-00T00:00:00Z/10,P1480,Q5727902</div>",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "Geheugen van Nederland : <a rel=\"nofollow\" class=\"external text\" href=\"https://geheugen.delpher.nl/\">Home</a> : <a rel=\"nofollow\" class=\"external text\" href=\"https://resolver.kb.nl/resolve?urn=urn:gvn:ICN01:1916\">Info</a> : <a rel=\"nofollow\" class=\"external text\" href=\"http://resolver.kb.nl/resolve?urn=urn:gvn:ICN01:AB4980&amp;role=image&amp;size=largest\">Pic</a>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Theo_van_Doesburg_Design_for_a_poster.jpg/960px-Theo_van_Doesburg_Design_for_a_poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "8b1bec9fc0b029574419e7350acd85bc04a987f293559d713e2c155db8069422"
+}

@@ -1,0 +1,204 @@
+[
+  {
+    "id": "generation-qr-quiet-zone",
+    "intent": "generation",
+    "query": "校园活动扫码报名；科技风；海报必须包含可扫描二维码，周围有装饰元素。；保留报名二维码内容。",
+    "context": {
+      "intent": "generation",
+      "posterType": "event",
+      "targetAois": [
+        "qr"
+      ],
+      "issue": "",
+      "goal": "校园活动扫码报名",
+      "style": "科技风",
+      "signals": [
+        "海报必须包含可扫描二维码，周围有装饰元素。"
+      ],
+      "userConstraints": [
+        "保留报名二维码内容。"
+      ]
+    },
+    "expected_card_ids": [
+      "qr-quiet-zone-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "optimization-qr-decoration",
+    "intent": "optimization",
+    "query": "提高报名入口可用性；校园活动；ignored；二维码周围存在文字和纹理，用户未完成扫码任务。；不能修改二维码内容。",
+    "context": {
+      "intent": "optimization",
+      "posterType": "event",
+      "targetAois": [
+        "qr"
+      ],
+      "issue": "ignored",
+      "goal": "提高报名入口可用性",
+      "style": "校园活动",
+      "signals": [
+        "二维码周围存在文字和纹理，用户未完成扫码任务。"
+      ],
+      "userConstraints": [
+        "不能修改二维码内容。"
+      ]
+    },
+    "expected_card_ids": [
+      "qr-quiet-zone-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "normal-text-low-contrast",
+    "intent": "optimization",
+    "query": "让活动时间地点容易阅读；摄影背景；ignored；小字号时间地点与背景明度接近。；不能修改时间和地址。",
+    "context": {
+      "intent": "optimization",
+      "posterType": "event",
+      "targetAois": [
+        "time_venue"
+      ],
+      "issue": "ignored",
+      "goal": "让活动时间地点容易阅读",
+      "style": "摄影背景",
+      "signals": [
+        "小字号时间地点与背景明度接近。"
+      ],
+      "userConstraints": [
+        "不能修改时间和地址。"
+      ]
+    },
+    "expected_card_ids": [
+      "text-contrast-wcag-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "equal-weight-hierarchy",
+    "intent": "generation",
+    "query": "突出讲座主题，其次展示时间地点和报名入口；极简；多个信息块不能使用相同视觉权重。；标题优先级最高。",
+    "context": {
+      "intent": "generation",
+      "posterType": "lecture",
+      "targetAois": [
+        "title",
+        "time_venue",
+        "qr"
+      ],
+      "issue": "",
+      "goal": "突出讲座主题，其次展示时间地点和报名入口",
+      "style": "极简",
+      "signals": [
+        "多个信息块不能使用相同视觉权重。"
+      ],
+      "userConstraints": [
+        "标题优先级最高。"
+      ]
+    },
+    "expected_card_ids": [
+      "visual-hierarchy-priority-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "time-venue-proximity",
+    "intent": "optimization",
+    "query": "让读者正确对应日期、时间、场馆和地址；信息型海报；confused；日期和时间相距很远，场馆名称混入主办方信息。；保留全部活动事实。",
+    "context": {
+      "intent": "optimization",
+      "posterType": "lecture",
+      "targetAois": [
+        "time_venue"
+      ],
+      "issue": "confused",
+      "goal": "让读者正确对应日期、时间、场馆和地址",
+      "style": "信息型海报",
+      "signals": [
+        "日期和时间相距很远，场馆名称混入主办方信息。"
+      ],
+      "userConstraints": [
+        "保留全部活动事实。"
+      ]
+    },
+    "expected_card_ids": [
+      "proximity-related-info-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "registration-common-region",
+    "intent": "optimization",
+    "query": "让报名说明和二维码形成一个行动入口；招聘海报；ignored；报名文案、截止日期和二维码混入周围信息。；二维码 quiet zone 不能被边框侵入。",
+    "context": {
+      "intent": "optimization",
+      "posterType": "recruitment",
+      "targetAois": [
+        "qr"
+      ],
+      "issue": "ignored",
+      "goal": "让报名说明和二维码形成一个行动入口",
+      "style": "招聘海报",
+      "signals": [
+        "报名文案、截止日期和二维码混入周围信息。"
+      ],
+      "userConstraints": [
+        "二维码 quiet zone 不能被边框侵入。"
+      ]
+    },
+    "expected_card_ids": [
+      "common-region-info-group-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "color-only-category",
+    "intent": "generation",
+    "query": "区分免费场次和预约场次；多彩；两类场次目前只用红色和绿色区分。；不增加虚构场次。",
+    "context": {
+      "intent": "generation",
+      "posterType": "event",
+      "targetAois": [
+        "any"
+      ],
+      "issue": "",
+      "goal": "区分免费场次和预约场次",
+      "style": "多彩",
+      "signals": [
+        "两类场次目前只用红色和绿色区分。"
+      ],
+      "userConstraints": [
+        "不增加虚构场次。"
+      ]
+    },
+    "expected_card_ids": [
+      "color-not-only-cue-001"
+    ],
+    "excluded_card_ids": []
+  },
+  {
+    "id": "large-title-contrast",
+    "intent": "generation",
+    "query": "让展览标题叠加在主视觉上仍可阅读；艺术摄影；大字号标题叠加在明暗变化剧烈的照片上。；保留标题原文和主视觉。",
+    "context": {
+      "intent": "generation",
+      "posterType": "exhibition",
+      "targetAois": [
+        "title"
+      ],
+      "issue": "",
+      "goal": "让展览标题叠加在主视觉上仍可阅读",
+      "style": "艺术摄影",
+      "signals": [
+        "大字号标题叠加在明暗变化剧烈的照片上。"
+      ],
+      "userConstraints": [
+        "保留标题原文和主视觉。"
+      ]
+    },
+    "expected_card_ids": [
+      "text-contrast-wcag-001"
+    ],
+    "excluded_card_ids": []
+  }
+]

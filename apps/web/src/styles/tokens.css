@@ -1,0 +1,58 @@
+:root {
+  color-scheme: light;
+  font-family:
+    "Segoe UI Variable",
+    "Microsoft YaHei UI",
+    "PingFang SC",
+    system-ui,
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --page: #f5f7fa;
+  --surface: #ffffff;
+  --surface-strong: #edf1f6;
+  --text: #182a40;
+  --text-muted: #586b80;
+  --line: #dbe3ec;
+  --accent: #285cd4;
+  --accent-hover: #1c45b4;
+  --accent-text: #f8faff;
+  --focus: #6388ee;
+  --danger: #9b2f2f;
+  --radius: 16px;
+  --shadow: 0 12px 32px rgb(43 58 92 / 8%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #111722;
+    --surface: #171f2d;
+    --surface-strong: #202a3a;
+    --text: #edf2fb;
+    --text-muted: #aeb8cb;
+    --line: #303b4d;
+    --accent: #7898f4;
+    --accent-hover: #96adf6;
+    --accent-text: #10172a;
+    --focus: #9db3fa;
+    --danger: #ffb3b3;
+    --shadow: 0 24px 70px rgb(2 6 16 / 38%);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #111722;
+  --surface: #171f2d;
+  --surface-strong: #202a3a;
+  --text: #edf2fb;
+  --text-muted: #aeb8cb;
+  --line: #303b4d;
+  --accent: #7898f4;
+  --accent-hover: #96adf6;
+  --accent-text: #10172a;
+  --focus: #9db3fa;
+  --danger: #ffb3b3;
+  --shadow: 0 24px 70px rgb(2 6 16 / 38%);
+}

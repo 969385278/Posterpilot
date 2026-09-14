@@ -1,0 +1,112 @@
+{
+  "retrieved_at": "2026-09-10T17:52:30.850016+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 32018105,
+    "ns": 6,
+    "title": "File:Swim for health in safe and pure pools LCCN98518824.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 307032,
+        "width": 1047,
+        "height": 1536,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg/960px-Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1174,
+        "responsiveUrls": {
+          "2": "https://upload.wikimedia.org/wikipedia/commons/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg/960px-Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1174,
+          "srcset": "https://upload.wikimedia.org/wikipedia/commons/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=32018105",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2018-11-10 04:56:42",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Swim for health in safe and pure pools LCCN98518824",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Swimming in the United States|Images from the Library of Congress|Images uploaded by Fæ|Government of Cleveland, Ohio|Swimming in art|PD US WPA|English-language posters|Supported by Wikimedia UK|Content media by years - Supported by Wikimedia UK - 2014|1940 in Cleveland|WPA health and safety posters|1940 posters of the United States|WPA posters, Ohio",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "<i>Title:</i> Swim for health in safe and pure pools\n<p><i>Abstract:</i> Poster for Cleveland Division of Health promoting swimming as healthy exercise, showing a man and a woman in a swimming pool.\n<i>Physical description:</i> 1 print on board (poster) : silkscreen, color.\n</p>\n<i>Notes:</i> Date stamped on verso: Jul 20 1940.; Work Projects Administration Poster Collection (Library of Congress).; Food and Drug Administration.",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1940",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<p>Library of Congress\n</p>\n<ul><li><i>Catalog:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lccn.loc.gov/98518824\">http://lccn.loc.gov/98518824</a></li>\n<li><i>Image download:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lcweb2.loc.gov/service/pnp/cph/3b40000/3b48000/3b48900/3b48996r.jpg\">http://lcweb2.loc.gov/service/pnp/cph/3b40000/3b48000/3b48900/3b48996r.jpg</a></li>\n<li><i>Original url:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://hdl.loc.gov/loc.pnp/cph.3b48996\">http://hdl.loc.gov/loc.pnp/cph.3b48996</a></li></ul>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "Work Projects Administration Poster Collection",
+            "source": "commons-desc-page"
+          },
+          "Permission": {
+            "value": "This image  is available from the United States <a href=\"//commons.wikimedia.org/wiki/Library_of_Congress\" title=\"Library of Congress\">Library of Congress</a>'s <a rel=\"nofollow\" class=\"external text\" href=\"//www.loc.gov/rr/print/\">Prints and Photographs division</a><br> under the digital ID <a rel=\"nofollow\" class=\"external text\" href=\"https://hdl.loc.gov/loc.pnp/cph.3b48996\">cph.3b48996</a>.<br><small>This tag does not indicate the copyright status of the attached work. <span style=\"white-space:nowrap\">A normal <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Copyright_tags\" title=\"Special:MyLanguage/Commons:Copyright tags\">copyright tag</a> is still required.</span> <span style=\"white-space:nowrap\">See <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Licensing\" title=\"Special:MyLanguage/Commons:Licensing\">Commons:Licensing</a>.</span></small>",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg/960px-Swim_for_health_in_safe_and_pure_pools_LCCN98518824.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "afad3e17d0972d3592ec2e393ca79df4f4df5094d5f5123da1b67cfa1f2ddfcc"
+}

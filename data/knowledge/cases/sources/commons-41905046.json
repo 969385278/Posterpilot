@@ -1,0 +1,103 @@
+{
+  "retrieved_at": "2026-09-10T17:52:11.165631+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 41905046,
+    "ns": 6,
+    "title": "File:F. Champenois imprimeur-éditeur.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 6600062,
+        "width": 5868,
+        "height": 7849,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/960px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1070,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/1920px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/960px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1070,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/1920px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:F._Champenois_imprimeur-%C3%A9diteur.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=41905046",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2015-08-20 14:56:56",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "<div class=\"fn\">\n<div style=\"font-weight:bold;display:inline-block;\"><div style=\"display:inline-block\" dir=\"ltr\" lang=\"en\"><i>Rêveur</i></div></div><div style=\"display: none;\">label QS:Lja,\"夢想\"</div><div style=\"display: none;\">label QS:Lfr,\"Rêverie\"</div><div style=\"display: none;\">label QS:Len,\"Rêveur\"</div><div style=\"display: none;\">label QS:Lru,\"Мечтательность\"</div><div style=\"display: none;\">label QS:Lnl,\"Rêveur\"</div></div>",
+            "source": "commons-desc-page"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Posters by Alfons Mucha|Featured pictures by others nominated by Yann Forget|Files uploaded by Yann Forget|PD-Art (PD-old-auto-expired)|Artworks with Wikidata item|1898 lithographs|PD-old-80-expired|CC-PD-Mark|Files from Gallica|Artworks with Wikidata item missing genre|Featured pictures of posters|Featured pictures in the public domain|Daydreams in art|Artworks digital representation of unknown type of work|Artworks digital representation of 2D work|Artworks with digital representation of different depicts|Featured pictures from Bibliothèque nationale de France|Art Nouveau women with hair flowers|Imprimerie Ferdinand Champenois|Art Nouveau women by Alfons Mucha|Featured pictures of history of Paris|Posters from Gallica",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "featured",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Alphonse_Mucha\" class=\"extiw\" title=\"w:en:Alphonse Mucha\"><span title=\"Czech painter, illustrator and graphic artist (1860–1939)\">Alphonse Mucha</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1897 <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q4292430#P571\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "This file comes from <a rel=\"nofollow\" class=\"external text\" href=\"https://gallica.bnf.fr/\">Gallica Digital Library</a> and is available under the digital ID <a rel=\"nofollow\" class=\"external text\" href=\"https://gallica.bnf.fr/ark:/12148/btv1b90051807\">btv1b90051807</a>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/63/F._Champenois_imprimeur-%C3%A9diteur.jpg/960px-F._Champenois_imprimeur-%C3%A9diteur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "c28a54c1a8fa1de2cc7855f3fd6a021e179c0bcdc75d933b57b7549b269982eb"
+}

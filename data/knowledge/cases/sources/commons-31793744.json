@@ -1,0 +1,112 @@
+{
+  "retrieved_at": "2026-09-10T17:52:17.432969+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=8886929%7C41905046%7C107429666%7C106991594%7C31793744%7C22408276%7C24131151%7C24204726%7C31912550%7C32018105%7C3645151%7C46015465&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 31793744,
+    "ns": 6,
+    "title": "File:Grand Canyon National Park, a free government service LCCN2007676131.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 3924032,
+        "width": 4246,
+        "height": 5716,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/960px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1077,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/1920px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/960px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1077,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/1920px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Grand_Canyon_National_Park,_a_free_government_service_LCCN2007676131.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=31793744",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2018-06-11 11:21:51",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Grand Canyon National Park, a free government service LCCN2007676131",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Images from the Library of Congress|WPA Grand Canyon National Park poster|Images uploaded by Fæ|PD US WPA|Content media by years - Supported by Wikimedia UK - 2014|Files uploaded with WMUK Apple Mac Mini",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "<i>Title:</i> Grand Canyon National Park, a free government service\n<p><i>Abstract:</i> Poster shows view of the Grand Canyon.\n<i>Physical description:</i> 1 print (poster) : screen, color ; 48 x 36 cm.\n</p>\n<i>Notes:</i> Work Projects Administration Poster Collection (Library of Congress).; Title from item.",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1938",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<p>Library of Congress\n</p>\n<ul><li><i>Catalog:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lccn.loc.gov/2007676131\">http://lccn.loc.gov/2007676131</a></li>\n<li><i>Image download:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lcweb2.loc.gov/service/pnp/ppmsca/13300/13397v.jpg\">http://lcweb2.loc.gov/service/pnp/ppmsca/13300/13397v.jpg</a></li>\n<li><i>Original url:</i> <a rel=\"nofollow\" class=\"external free\" href=\"https://hdl.loc.gov/loc.pnp/ppmsca.13397\">https://hdl.loc.gov/loc.pnp/ppmsca.13397</a></li></ul>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "Work Projects Administration Poster Collection",
+            "source": "commons-desc-page"
+          },
+          "Permission": {
+            "value": "This image  is available from the United States <a href=\"//commons.wikimedia.org/wiki/Library_of_Congress\" title=\"Library of Congress\">Library of Congress</a>'s <a rel=\"nofollow\" class=\"external text\" href=\"//www.loc.gov/rr/print/\">Prints and Photographs division</a><br> under the digital ID <a rel=\"nofollow\" class=\"external text\" href=\"https://hdl.loc.gov/loc.pnp/ppmsca.13397\">ppmsca.13397</a>.<br><small>This tag does not indicate the copyright status of the attached work. <span style=\"white-space:nowrap\">A normal <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Copyright_tags\" title=\"Special:MyLanguage/Commons:Copyright tags\">copyright tag</a> is still required.</span> <span style=\"white-space:nowrap\">See <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Licensing\" title=\"Special:MyLanguage/Commons:Licensing\">Commons:Licensing</a>.</span></small>",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg/960px-Grand_Canyon_National_Park%2C_a_free_government_service_LCCN2007676131.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_sha256": "cf44cf8ab4dbe53884a452aa26d9df12d69f69dbe1da412eecc7f0d677734446"
+}
