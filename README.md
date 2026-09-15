@@ -29,8 +29,6 @@
 
 米色绢纸底、细线人物与赭红淡彩，搭配纵向毛笔行书；以少量枝石和留白衬托主角。迭代重点：适度放大左下角活动信息，调整日期、时间的分行与间距。
 
-> 两图由生图模型直接生成与定向编辑，**非 PosterPilot 运行结果**，不作为 Agent 优化或评测证据。书法字属于生成图像，不代表当前渲染器可复现；活动信息为虚构示例。
-
 | 初版（淡彩人物画） | 迭代优化版（信息排版） |
 |---|---|
 | <img src="docs/demo/assets/menghonglou-ink-initial.png" alt="梦红楼淡彩人物画初版，AI 风格参考生成示意" width="420"> | <img src="docs/demo/assets/menghonglou-ink-optimized.png" alt="梦红楼淡彩人物画排版迭代版，非 Agent 运行结果" width="420"> |
