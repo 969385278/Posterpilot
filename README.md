@@ -24,13 +24,6 @@
 
 ## 案例展示
 
-### 真实运行案例：生成与一轮优化
-
-| 初版 | 一轮优化后 |
-|---|---|
-| ![初版海报](docs/demo/assets/red-mansion-initial.png) | ![优化版海报](docs/demo/assets/red-mansion-round-1.png) |
-
-[完整案例](docs/demo/golden-demo-red-mansion.md)保留检索失败后改写查询、工具调用和评测边界。案例前后可用评测信号不同，不能把综合分变化直接当成排版优化的净提升。
 
 ### AI 视觉迭代示意：《梦红楼》淡彩人物画版
 
