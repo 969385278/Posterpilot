@@ -8,7 +8,8 @@ describe('PosterPreview', () => {
     render(<PosterPreview status={null} />);
 
     const image = screen.getByRole('img', { name: '生成结果出现前的海报示例' });
-    expect(image).toHaveAttribute('src', '/templates/default-poster-portrait.png');
+    expect(image).toHaveAttribute('src', '/showcase/nebula-optimized.png');
+    expect(screen.getByText(/非本次任务结果/)).toBeInTheDocument();
     expect(image).toHaveAttribute('width', '1080');
     expect(image).toHaveAttribute('height', '1440');
     expect(image.parentElement).toHaveClass('preview-poster-frame');

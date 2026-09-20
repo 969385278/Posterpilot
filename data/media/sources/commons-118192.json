@@ -1,0 +1,126 @@
+{
+  "retrieved_at": "2026-09-20T10:24:50.896678+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=10036%7C129538%7C118192&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 118192,
+    "ns": 6,
+    "title": "File:Adams The Tetons and the Snake River.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 1865607,
+        "width": 3000,
+        "height": 2402,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Adams_The_Tetons_and_the_Snake_River.jpg/960px-Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 641,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Adams_The_Tetons_and_the_Snake_River.jpg/1920px-Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Adams_The_Tetons_and_the_Snake_River.jpg/960px-Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 641,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Adams_The_Tetons_and_the_Snake_River.jpg/1920px-Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/21/Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Adams_The_Tetons_and_the_Snake_River.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=118192",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2009-04-11 13:59:38",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Adams The Tetons and the Snake River",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "1942 in Wyoming|PD US Government|Images from the National Archives and Records Administration|Iconic photographs|Featured pictures on Wikipedia, English|Commons featured desktop backgrounds|Black and white photographs of landscapes|Featured pictures on Wikipedia, Hebrew|Featured pictures on Wikipedia, Persian|Featured pictures on Wikipedia, Turkish|CC-PD-Mark|Black and white photographs of Wyoming|Grand Teton National Park as photographed by Ansel Adams|NARA images of Wyoming|Black and white photographs of the United States in the 1940s|Files with coordinates missing SDC location of creation|Posted to Wikimedia Foundation Pinterest|Featured pictures of Grand Teton National Park|1942 photographs of the United States|1942 black and white photographs|Featured black and white photographs|Mountains in 1942|Featured photographs in the public domain|Black and white photographs of the Rocky Mountains|Featured pictures from the National Archives and Records Administration|Snake River in Wyoming|Remote views of the Teton Range",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "featured|potd",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "GPSLatitude": {
+            "value": "43.800000",
+            "source": "commons-desc-page"
+          },
+          "GPSLongitude": {
+            "value": "-110.520000",
+            "source": "commons-desc-page"
+          },
+          "GPSMapDatum": {
+            "value": "WGS-84",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "<a href=\"https://en.wikipedia.org/wiki/Ansel_Adams\" class=\"extiw\" title=\"en:Ansel Adams\">Ansel Adams</a> <i>The Tetons and the Snake River</i> (1942) Grand Teton National Park, Wyoming. National Archives and Records Administration, Records of the National Park Service.  (79-AAG-1)",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "1942",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "This tag does not indicate the copyright status of the attached work. <span style=\"white-space:nowrap\">A normal <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Copyright_tags\" title=\"Special:MyLanguage/Commons:Copyright tags\">copyright tag</a> is still required.</span> <span style=\"white-space:nowrap\">See <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Licensing\" title=\"Special:MyLanguage/Commons:Licensing\">Commons:Licensing</a>.</span>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Ansel_Adams\" class=\"extiw\" title=\"w:en:Ansel Adams\"><span title=\"American photographer and environmentalist (1902–1984)\">Ansel Adams</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "Permission": {
+            "value": "Ansel Adams took this photograph while employed by the United States Government, see <a rel=\"nofollow\" class=\"external free\" href=\"https://www.archives.gov/research/ansel-adams/\">https://www.archives.gov/research/ansel-adams/</a> for more information on copyright status.",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/21/Adams_The_Tetons_and_the_Snake_River.jpg/960px-Adams_The_Tetons_and_the_Snake_River.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_asset": "commons-118192.jpg",
+  "image_sha256": "ce455df0ffa5f7285888c93e44f92e55f0f4ed63450d693b1188c8b95636b750"
+}

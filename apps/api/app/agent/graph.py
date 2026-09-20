@@ -37,6 +37,7 @@ def create_hitl_react_graph(
     tools: ReactToolRegistry,
     checkpointer: Any,
     evaluation: EvaluationDependencies | None = None,
+    experience_source: Any | None = None,
 ) -> Any:
     """Compile the persisted end-to-end graph with native human interrupts."""
 
@@ -44,7 +45,7 @@ def create_hitl_react_graph(
         return await retrieve_generation_knowledge(state, retriever=retriever)
 
     async def plan_node(state: PosterAgentState) -> dict[str, object]:
-        return await plan_design(state, text_provider=text_provider)
+        return await plan_design(state, text_provider=text_provider, experience_source=experience_source)
 
     async def generate_node(state: PosterAgentState) -> dict[str, object]:
         return await generate_visual(
@@ -68,7 +69,7 @@ def create_hitl_react_graph(
         )
 
     async def decide_node(state: PosterAgentState) -> dict[str, object]:
-        return await react_decide(state, text_provider=text_provider)
+        return await react_decide(state, text_provider=text_provider, experience_source=experience_source)
 
     async def tool_node(state: PosterAgentState) -> dict[str, object]:
         return await execute_react_tool(state, tools=tools)

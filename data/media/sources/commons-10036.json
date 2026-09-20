@@ -1,0 +1,104 @@
+{
+  "retrieved_at": "2026-09-20T10:24:46.633950+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=10036%7C129538%7C118192&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 10036,
+    "ns": 6,
+    "title": "File:VanGogh-Irises 1.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 281053,
+        "width": 1013,
+        "height": 822,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/VanGogh-Irises_1.jpg/960px-VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 649,
+        "responsiveUrls": {
+          "2": "https://upload.wikimedia.org/wikipedia/commons/6/6a/VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/VanGogh-Irises_1.jpg/960px-VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 649,
+          "srcset": "https://upload.wikimedia.org/wikipedia/commons/6/6a/VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:VanGogh-Irises_1.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=10036",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2004-11-01 15:49:18",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "<div class=\"fn\">\n<div style=\"font-weight:bold;display:inline-block;\"><div style=\"display:inline-block\" dir=\"ltr\" lang=\"en\"><i>Irises <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2282256#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span></i></div></div><div style=\"display: none;\">title QS:P1476,en:\"Irises <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2282256#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>\"</div><div style=\"display: none;\">label QS:Len,\"Irises <span class=\"mw-valign-text-top noprint\" typeof=\"mw:File/Frameless\"><a href=\"https://www.wikidata.org/wiki/Q2282256#P1476\" title=\"Edit this at Wikidata\"><img alt=\"Edit this at Wikidata\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg/20px-OOjs_UI_icon_edit-ltr-progressive.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"10\" height=\"10\" class=\"mw-file-element\" data-file-width=\"20\" data-file-height=\"20\"></a></span>\"</div><div style=\"display: none;\">label QS:Les,\"Lirios\"</div><div style=\"display: none;\">label QS:Lru,\"Ирисы\"</div><div style=\"display: none;\">label QS:Lde,\"Schwertlilien\"</div><div style=\"display: none;\">label QS:Lbe,\"Касачы, карціна ван Гога\"</div><div style=\"display: none;\">label QS:Lsr-ec,\"Ириси\"</div><div style=\"display: none;\">label QS:Lzh,\"鳶尾花 (梵谷)\"</div><div style=\"display: none;\">label QS:Lda,\"Iriser\"</div><div style=\"display: none;\">label QS:Lpnb,\"سوسن\"</div><div style=\"display: none;\">label QS:Lja,\"アイリス\"</div><div style=\"display: none;\">label QS:Lsv,\"Irisar\"</div><div style=\"display: none;\">label QS:Luk,\"Іриси\"</div><div style=\"display: none;\">label QS:Lpa,\"ਸੂਸਨ\"</div><div style=\"display: none;\">label QS:Lkk,\"Сарыгүлдер\"</div><div style=\"display: none;\">label QS:Leo,\"Iridoj\"</div><div style=\"display: none;\">label QS:Lit,\"Iris\"</div><div style=\"display: none;\">label QS:Lfr,\"Iris\"</div><div style=\"display: none;\">label QS:Lht,\"Iris (Van Gogh)\"</div><div style=\"display: none;\">label QS:Lbe-tarask,\"Касачы\"</div><div style=\"display: none;\">label QS:Lko,\"붓꽃\"</div><div style=\"display: none;\">label QS:Lms,\"Bunga-bunga Iris\"</div><div style=\"display: none;\">label QS:Lfa,\"گل‌های زنبق\"</div><div style=\"display: none;\">label QS:Llt,\"Vilkdalgiai\"</div><div style=\"display: none;\">label QS:Lhe,\"אירוסים\"</div><div style=\"display: none;\">label QS:Lpt,\"Lírios\"</div><div style=\"display: none;\">label QS:Ltr,\"İrisler\"</div><div style=\"display: none;\">label QS:Llv,\"Īrisi\"</div><div style=\"display: none;\">label QS:Lhr,\"Irisi\"</div><div style=\"display: none;\">label QS:Lsr,\"Ириси (Винсент ван Гог)\"</div><div style=\"display: none;\">label QS:Laz,\"Süsənlər\"</div><div style=\"display: none;\">label QS:Lhy,\"Հիրիկներ\"</div><div style=\"display: none;\">label QS:Lpt-br,\"Lírios\"</div><div style=\"display: none;\">label QS:Lid,\"Bunga-bunga Iris\"</div><div style=\"display: none;\">label QS:Lth,\"ไอริส\"</div><div style=\"display: none;\">label QS:Lpl,\"Irysy\"</div><div style=\"display: none;\">label QS:Lka,\"ზამბახები\"</div><div style=\"display: none;\">label QS:Lnl,\"Irissen\"</div><div style=\"display: none;\">label QS:Lca,\"Iris\"</div><div style=\"display: none;\">label QS:Lvi,\"Hoa diên vĩ\"</div><div style=\"display: none;\">label QS:Lbg,\"Ириси (картина)\"</div><div style=\"display: none;\">label QS:Lro,\"Iriși\"</div><div style=\"display: none;\">label QS:Larz,\"قزحيه (لوحه)\"</div><div style=\"display: none;\">label QS:Luz,\"Irislar (Surat)\"</div><div style=\"display: none;\">label QS:Lel,\"Ίριδες\"</div><div style=\"display: none;\">label QS:Lmk,\"Перуники\"</div></div>",
+            "source": "commons-desc-page"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Irises by Vincent van Gogh (Saint-Rémy, 1889)|PD-old-100-expired|PD-Art (PD-old-auto-expired)|Artworks with Wikidata item|Artworks with known accession number|Works by Van Gogh by Faille number|CC-PD-Mark|Works by Van Gogh by JH number|PD-Art missing SDC copyright status|PD-old missing SDC copyright status|Artworks digital representation of 2D work",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Artist": {
+            "value": "<bdi><a href=\"https://en.wikipedia.org/wiki/en:Vincent_van_Gogh\" class=\"extiw\" title=\"w:en:Vincent van Gogh\"><span title=\"Dutch painter (1853–1890)\">Vincent van Gogh</span></a></bdi>",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "May 1889<div style=\"display: none;\">date QS:P571,+1889-05-00T00:00:00Z/10</div>",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<a rel=\"nofollow\" class=\"external text\" href=\"http://www.ibiblio.org/wm/paint/auth/gogh/irises/\">Web Museum</a> <a rel=\"nofollow\" class=\"external text\" href=\"http://www.ibiblio.org/wm/paint/auth/gogh/irises/gogh.irises.jpg\">(file)</a>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/VanGogh-Irises_1.jpg/960px-VanGogh-Irises_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_asset": "commons-10036.jpg",
+  "image_sha256": "9933e71df597b67414fff1fd2bdaf43c3c88d0cfc8c8a66ec56f32082ec0d4c1"
+}

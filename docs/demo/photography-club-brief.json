@@ -1,0 +1,20 @@
+{
+  "poster_type": "club_recruitment",
+  "title": "光影摄影社招新",
+  "title_font": "zcoolqingkehuangyou",
+  "subtitle": "把日常拍成故事",
+  "topic": "秋季校园摄影社招新",
+  "target_audience": "喜欢摄影与视觉表达的大学生，无需摄影基础",
+  "event_time": "2026年9月25日 18:30",
+  "location": "学生活动中心一楼",
+  "organizer": "光影摄影社",
+  "style_preferences": ["现代杂志感", "简洁醒目", "满版竖幅摄影主视觉", "文字叠加在画面上"],
+  "color_preferences": ["深青蓝", "暖橙", "奶油白"],
+  "visual_elements": ["一台复古银黑色相机", "夕阳下的校园树影", "轻微胶片颗粒"],
+  "avoid_elements": ["可辨识的真人面孔", "品牌标识", "二维码", "水印", "画面内的文字和数字", "上下纯白留边"],
+  "notes": "仅用于虚构社团的项目演示，不代表真实活动。主画面覆盖整个3:4画布，相机是视觉焦点，顶部和底部保持较平静的图像纹理，给程序中文排版留出可读空间。",
+  "canvas": {"width": 1080, "height": 1440},
+  "attention_priority": ["title", "event_info", "main_visual"],
+  "references": [{"case_id": "commons-24204726", "aspects": ["palette"]}],
+  "attention_layout": true
+}

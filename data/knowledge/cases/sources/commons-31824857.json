@@ -1,0 +1,113 @@
+{
+  "retrieved_at": "2026-09-20T10:24:54.655503+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=128994779%7C128994776%7C151025018%7C31824857%7C122316577%7C31973814&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 31824857,
+    "ns": 6,
+    "title": "File:September. Back to work-back to school, back to books LCCN98509570.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 1984289,
+        "width": 2796,
+        "height": 4096,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/960px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 1172,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/1920px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/960px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 1172,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/1920px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:September._Back_to_work-back_to_school,_back_to_books_LCCN98509570.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=31824857",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2018-10-26 19:41:06",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "September. Back to work-back to school, back to books LCCN98509570",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Images from the Library of Congress|Images uploaded by Fæ|PD US WPA|1940 in Chicago|Content media by years - Supported by Wikimedia UK - 2014|Files uploaded with WMUK Apple Mac Mini|1940 posters of the United States|PD-USGov missing SDC copyright status|WPA posters (Chicago)|September in art|WPA literacy posters",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "<i>Title:</i> September. Back to work--back to school, back to books\n<p><i>Abstract:</i> Poster for WPA Statewide Library Project, showing a boy holding a book in his raised hand.\n<i>Physical description:</i> 1 print on board (poster) : silkscreen, color.\n</p>\n<i>Notes:</i> Work Projects Administration Poster Collection (Library of Congress).; Date stamped on verso: Aug 30 1940.",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "between 1936 and 1940<div style=\"display: none;\">date QS:P,+1950-00-00T00:00:00Z/7,P1319,+1936-00-00T00:00:00Z/9,P1326,+1940-00-00T00:00:00Z/9</div>",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<p>Library of Congress\n</p>\n<ul><li><i>Catalog:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lccn.loc.gov/98509570\">http://lccn.loc.gov/98509570</a></li>\n<li><i>Image download:</i> <a rel=\"nofollow\" class=\"external free\" href=\"http://lcweb2.loc.gov/service/pnp/cph/3f00000/3f05000/3f05100/3f05199v.jpg\">http://lcweb2.loc.gov/service/pnp/cph/3f00000/3f05000/3f05100/3f05199v.jpg</a></li>\n<li><i>Original url:</i> <a rel=\"nofollow\" class=\"external free\" href=\"https://hdl.loc.gov/loc.pnp/cph.3f05199\">https://hdl.loc.gov/loc.pnp/cph.3f05199</a></li></ul>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "Work Projects Administration Poster Collection",
+            "source": "commons-desc-page"
+          },
+          "Permission": {
+            "value": "This image  is available from the United States <a href=\"//commons.wikimedia.org/wiki/Library_of_Congress\" title=\"Library of Congress\">Library of Congress</a>'s <a rel=\"nofollow\" class=\"external text\" href=\"//www.loc.gov/rr/print/\">Prints and Photographs division</a><br> under the digital ID <a rel=\"nofollow\" class=\"external text\" href=\"https://hdl.loc.gov/loc.pnp/cph.3f05199\">cph.3f05199</a>.<br><small>This tag does not indicate the copyright status of the attached work. <span style=\"white-space:nowrap\">A normal <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Copyright_tags\" title=\"Special:MyLanguage/Commons:Copyright tags\">copyright tag</a> is still required.</span> <span style=\"white-space:nowrap\">See <a href=\"//commons.wikimedia.org/wiki/Special:MyLanguage/Commons:Licensing\" title=\"Special:MyLanguage/Commons:Licensing\">Commons:Licensing</a>.</span></small>",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/960px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_asset": "commons-31824857.jpg",
+  "image_sha256": "61074823f16793efe84183bad8a2fe7b5ef5bd4886e441a26aaf02ccda43c411"
+}

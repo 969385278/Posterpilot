@@ -45,9 +45,14 @@ credentials.json
 /docs/resume/
 /docs/pdf/
 /tmp/
+/output/
 /data/experiments/
 /data/offline-demo/
 /data/offline-heatmap-demo/
+/data/datahub-assets/
+/data/datahub-verification/
+/data/datahub-demo/
+/data/reviewed-showcase/
 /data/knowledge/pdf_inventory.json
 .DS_Store
 Thumbs.db

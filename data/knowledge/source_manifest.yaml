@@ -1,5 +1,13 @@
 version: 1
 sources:
+  - id: nng-visual-principles
+    title: Nielsen Norman Group - 5 Principles of Visual Design in UX
+    source_type: web
+    url: https://www.nngroup.com/articles/principles-visual-design/
+    extraction_mode: external_reference
+    themes: [字号层级, 视觉平衡, 次要文字可读性]
+    selection_rationale: 逐段阅读后以中文概括并标明向静态海报迁移的边界；不复制文章配图或长篇正文。
+    status: processed
   - id: denso-qr-guideline
     title: DENSO WAVE QR Code Guidelines
     source_type: web

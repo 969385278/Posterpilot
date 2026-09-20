@@ -556,5 +556,214 @@
     "status": "curated",
     "analysis_basis": "assistant_visual_review",
     "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-128994779",
+    "title": "火星探索者招募：冷暖反差与底部行动标题",
+    "original_title": "P01-Explorers-Wanted-NASA-Recruitment-Poster.jpg",
+    "image_asset": "commons-128994779.jpg",
+    "styles": [
+      "科幻插画",
+      "冷暖对比",
+      "招募"
+    ],
+    "scenarios": [
+      "科技社团招新",
+      "科学讲座",
+      "探索活动"
+    ],
+    "features": {
+      "palette": "橙红地貌与青蓝宇航服形成冷暖对照，深蓝天空和右侧岩壁压住边缘；色值为视觉近似。",
+      "typography": "底部浅黄大写无衬线标题，字形宽窄一致，短词分行；不能据此认定原始字体名称。",
+      "composition": "人物悬在画面中下部，绳索形成纵向方向线，底部标题叠在深色地貌上；是窄长竖版。",
+      "hierarchy": "宇航员和底部招募标题构成主要信息；只适合较短文案，增加日期地点时需另留安静信息区。"
+    },
+    "palette": [
+      "#092036",
+      "#BC4020",
+      "#F5AE47",
+      "#36666D"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "bottom_title",
+    "cautions": [
+      "仅借鉴招募语气、配色和信息分区，不复制宇航员身份、NASA 名称或机构背书。",
+      "原图接近 5:8，中文 3:4 海报需重新排版；底部大字不等于可以自动重绘背景人物。"
+    ],
+    "source": {
+      "creator": "NASA/KSC",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:P01-Explorers-Wanted-NASA-Recruitment-Poster.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/P01-Explorers-Wanted-NASA-Recruitment-Poster.jpg/960px-P01-Explorers-Wanted-NASA-Recruitment-Poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:P01-Explorers-Wanted-NASA-Recruitment-Poster.jpg#Licensing",
+      "retrieved_at": "2026-09-20T10:24:36.431940+00:00",
+      "image_sha256": "5780c5470099861c237be8e682720566cf9f1c7794bbe7ccbd16c5ff54556464"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-128994776",
+    "title": "火星测绘员招募：人物指向与大面积暖色",
+    "original_title": "P04-Surveyors-Wanted-NASA-Recruitment-Poster.jpg",
+    "image_asset": "commons-128994776.jpg",
+    "styles": [
+      "科幻插画",
+      "暖色",
+      "底部标题"
+    ],
+    "scenarios": [
+      "科技社团招新",
+      "地理探索",
+      "科学活动"
+    ],
+    "features": {
+      "palette": "大面积橙黄地貌配深灰青人物，浅黄色标题保持暖色一致；不是蓝橙均分的配色。",
+      "typography": "底部单行粗体无衬线招募文字，字符高而窄；中文近似可选粗标题字体，不复刻拉丁字形。",
+      "composition": "前景双人位于右下，左侧手势把视线引向远方；画面中心地形较空，主体和标题留在下半部。",
+      "hierarchy": "人物群与远处天空共同建立探索主题，最下方标题清晰收束；活动事实需独立分组。"
+    },
+    "palette": [
+      "#EF910D",
+      "#A64419",
+      "#E2BB76",
+      "#243B3F"
+    ],
+    "suggested_priority": [
+      "main_visual",
+      "title",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "bottom_title",
+    "cautions": [
+      "手势引导只是视觉观察，不是真实眼动验证。",
+      "若沿用底部标题，时间地点不能挤入同一窄行；不承诺在现有主视觉中移动人物。"
+    ],
+    "source": {
+      "creator": "NASA/KSC",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:P04-Surveyors-Wanted-NASA-Recruitment-Poster.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/P04-Surveyors-Wanted-NASA-Recruitment-Poster.jpg/960px-P04-Surveyors-Wanted-NASA-Recruitment-Poster.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:P04-Surveyors-Wanted-NASA-Recruitment-Poster.jpg#Licensing",
+      "retrieved_at": "2026-09-20T10:24:39.141508+00:00",
+      "image_sha256": "7728c15c7ff97bb53ec1f297e88634607ea906dfee5fc464c66e28fa4b3b708a"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-31824857",
+    "title": "回到书本：蓝绿双色与阅读主题",
+    "original_title": "September. Back to work-back to school, back to books LCCN98509570.jpg",
+    "image_asset": "commons-31824857.jpg",
+    "styles": [
+      "版画",
+      "蓝绿配色",
+      "阅读"
+    ],
+    "scenarios": [
+      "读书会",
+      "开学活动",
+      "文化活动"
+    ],
+    "features": {
+      "palette": "深蓝背景、橄榄绿标题和衣服、米黄纸面与暗褐信息区组成克制配色；纸张泛黄属于扫描影像。",
+      "typography": "顶部长窄大写月份与底部手写短词、直立粗字形成对比；可借鉴主次差异，不能照搬全部字体混搭。",
+      "composition": "上方大标题、中央举书人物、底部信息分区；抬起的手臂连接主题字与人物。",
+      "hierarchy": "月份和 BOOKS 都很大，形成两个焦点；在单标题海报中应择一突出，避免等强竞争。"
+    },
+    "palette": [
+      "#205676",
+      "#818C45",
+      "#DED1A1",
+      "#373324"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "top_title",
+    "cautions": [
+      "扫描件有纸纹和暗边，不将做旧、原宣传语或月份当作新活动事实。",
+      "可参考双色和信息分区，不把扫描画框当作需要生成的 UI 边框。"
+    ],
+    "source": {
+      "creator": "Work Projects Administration Poster Collection",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:September._Back_to_work-back_to_school,_back_to_books_LCCN98509570.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b3/September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg/960px-September._Back_to_work-back_to_school%2C_back_to_books_LCCN98509570.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "来源页标注 Public domain；保留原作者、原机构与条目权利说明，商用需核对适用地区。",
+      "rights_url": "https://commons.wikimedia.org/wiki/File:September._Back_to_work-back_to_school,_back_to_books_LCCN98509570.jpg#Licensing",
+      "retrieved_at": "2026-09-20T10:24:54.655503+00:00",
+      "image_sha256": "61074823f16793efe84183bad8a2fe7b5ef5bd4886e441a26aaf02ccda43c411"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
+  },
+  {
+    "id": "commons-122316577",
+    "title": "社区节庆：玫红底与重复窗口图形",
+    "original_title": "Wikimania 2022 UK Community Festival poster.png",
+    "image_asset": "commons-122316577.png",
+    "styles": [
+      "现代扁平",
+      "高饱和",
+      "社区活动"
+    ],
+    "scenarios": [
+      "社团招新",
+      "社区节庆",
+      "文化活动"
+    ],
+    "features": {
+      "palette": "玫红统一背景，绿、蓝、橙小色块作点缀，深灰标题与背景的亮度差有限。",
+      "typography": "中心深灰无衬线两级标题，主标题更粗，副标题较小；仅参考层级，不推定具体字体。",
+      "composition": "横版建筑线稿与重复窗口，中心横向标题带，四周少量碎纸装饰。",
+      "hierarchy": "中央文字与彩色窗口共同引导注意；大面积高饱和底色不等于文字对比度足够。"
+    },
+    "palette": [
+      "#CF2F76",
+      "#008BBC",
+      "#278F5B",
+      "#EF9814"
+    ],
+    "suggested_priority": [
+      "title",
+      "main_visual",
+      "event_info"
+    ],
+    "title_font_style": "sans_bold",
+    "composition_preset": "center_title",
+    "cautions": [
+      "原作为横版，仅借鉴配色、重复节奏与标题层级，不能直接拉伸为竖版。",
+      "需重新测量文字可读性，不复制 Wikimania 商标或暗示合作。",
+      "图像按 CC BY-SA 4.0 提供，署名 Katie Crampton (WMUK)；后续改编须遵守同许可要求。"
+    ],
+    "source": {
+      "creator": "Katie Crampton (WMUK)",
+      "institution": "Wikimedia Commons（原始机构见来源页）",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wikimania_2022_UK_Community_Festival_poster.png",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Wikimania_2022_UK_Community_Festival_poster.png/960px-Wikimania_2022_UK_Community_Festival_poster.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "rights": "CC BY-SA 4.0；署名见 creator，原图按原许可提供，未修改图像内容。改编需遵守原许可；机构标志不表示背书。",
+      "rights_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "retrieved_at": "2026-09-20T10:24:56.760902+00:00",
+      "image_sha256": "634fa6ee91598cbce0d1ae49bb2b00eb5762bef9a1e40dc66ec2392923a4c240"
+    },
+    "status": "curated",
+    "analysis_basis": "assistant_visual_review",
+    "user_acceptance": "pending"
   }
 ]

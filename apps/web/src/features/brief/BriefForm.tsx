@@ -5,6 +5,7 @@ import { CaseGallery } from '../design/CaseGallery';
 import { PriorityEditor } from '../design/PriorityEditor';
 import { TitleFontPicker } from './TitleFontPicker';
 import type { PriorityRole } from '../../api/design';
+import showcase from '../../data/showcase.json';
 
 type BriefFormProps = {
   onSubmit: (brief: PosterBriefInput) => void;
@@ -25,19 +26,6 @@ const blankBrief: PosterBriefInput = {
   visual_elements: [],
   avoid_elements: [],
   notes: '',
-};
-
-const demoBrief: PosterBriefInput = {
-  ...blankBrief,
-  topic: '红楼梦研讨分享会',
-  target_audience: '大学生',
-  title: '红楼梦研讨分享会',
-  subtitle: '从人物关系看古典文学',
-  event_time: '2026年7月20日 19:00',
-  location: '图书馆报告厅',
-  organizer: '文学社',
-  style_preferences: ['古典', '克制', '学术'],
-  visual_elements: ['大观园意象', '书页纹理'],
 };
 
 export function BriefForm({ onSubmit, isSubmitting }: BriefFormProps) {
@@ -64,9 +52,14 @@ export function BriefForm({ onSubmit, isSubmitting }: BriefFormProps) {
           <p className="section-kicker">需求输入</p>
           <h2>创建一张可优化的海报</h2>
         </div>
-        <button className="text-action" type="button" onClick={() => setBrief(demoBrief)}>
-          填入演示样例
-        </button>
+      </div>
+
+      <div className="form-span sample-briefs" aria-label="虚构活动样例">
+        <span>填入样例：</span>
+        {showcase.entries.map(sample => <button className="text-action" type="button" key={sample.id}
+          disabled={isSubmitting} onClick={() => setBrief({ ...blankBrief, ...sample.brief,
+            attention_layout: true, use_case_memory: true } as PosterBriefInput)}>{sample.label}</button>)}
+        <p className="form-description">仅填入虚构活动信息，不会立即提交。正式环境仍调用已配置的模型，不会直接复制展示背景。</p>
       </div>
 
       <p className="form-description form-span">只有主标题必填。主题留空时沿用标题；其他信息按需填写，未填写的时间、地点和主办方不会显示。</p>
@@ -132,6 +125,7 @@ export function BriefForm({ onSubmit, isSubmitting }: BriefFormProps) {
       <button className="primary-action form-span" type="submit" disabled={isSubmitting}>
         {isSubmitting ? '正在创建任务' : '开始生成'}
       </button>
+      <label className="inline-checkbox form-span"><input type="checkbox" checked={brief.use_case_memory ?? true} disabled={isSubmitting} onChange={event => setBrief(current => ({ ...current, use_case_memory: event.target.checked }))} />参考已审核的历史经验（不匹配时沿用原流程）</label>
       <p className="form-footnote form-span">生成可能需要一些时间。初版完成后，你可以选择保留结果或继续优化。</p>
     </form>
   );

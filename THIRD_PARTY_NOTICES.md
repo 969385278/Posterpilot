@@ -8,7 +8,11 @@ Windows system fonts are referenced on a Windows development machine; their file
 
 ## Reference posters
 
-Reference images in `data/knowledge/cases/images/` are accompanied by Wikimedia Commons metadata snapshots under `sources/`. Each downloaded source snapshot labels the work `Public domain`; author and institutional source information is retained, and the catalog exposes source links. This is an attribution record, not a guarantee for every jurisdiction or every trademark use. See [case documentation](data/knowledge/cases/README.md).
+Reference images in `data/knowledge/cases/images/` are accompanied by Wikimedia Commons metadata snapshots under `sources/`. Licenses vary: most selected works are marked `Public domain`, while the [Wikimania 2022 poster](https://commons.wikimedia.org/w/index.php?curid=122316577) is by Katie Crampton (WMUK) under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Its image content is unmodified; author, source and license links are retained in the catalog and UI. The excluded [wikiArS workshop photo](https://commons.wikimedia.org/w/index.php?curid=31973814) is by Dvdgmz under [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/); the source thumbnail is retained unmodified along with its attribution metadata. Do not assume a common license for all images. See [case documentation](data/knowledge/cases/README.md) and the per-file metadata. These records are not a guarantee for every jurisdiction or every trademark use.
+
+## Rendering demonstration backgrounds
+
+`data/media/` contains public-domain-source artwork and photography with per-file metadata and hashes. The six images in `apps/web/public/showcase/` are deterministic rendering demonstrations using those backgrounds and the bundled OFL fonts, not outputs of an image-generation model. They include cropping, background treatment and fictional event text. Attribution and transformations are documented in [the media README](data/media/README.md) and the public showcase manifest. Failed readability checks remain disclosed; these assets do not prove user acceptance or model-quality improvement.
 
 ## Design knowledge
 

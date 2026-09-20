@@ -30,7 +30,7 @@ export function HistoryPage({ onBack }: HistoryPageProps) {
           </a>
           <span>本地任务历史</span>
         </div>
-        <div className="topbar-actions"><ThemeSelect /><button className="text-action" type="button" onClick={onBack}>
+        <div className="topbar-actions"><ThemeSelect /><a className="text-action" href="#datahub">案例与反馈</a><button className="text-action" type="button" onClick={onBack}>
           返回工作台
         </button></div>
       </header>

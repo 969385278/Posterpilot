@@ -1,0 +1,112 @@
+{
+  "retrieved_at": "2026-09-20T10:24:59.195109+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=128994779%7C128994776%7C151025018%7C31824857%7C122316577%7C31973814&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 31973814,
+    "ns": 6,
+    "title": "File:Feed the monster wikiArS LGM workshop.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 879597,
+        "width": 2592,
+        "height": 1952,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg/960px-Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 602,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg/1920px-Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg/960px-Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 602,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg/1920px-Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Feed_the_monster_wikiArS_LGM_workshop.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=31973814",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2014-04-03 16:36:41",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Feed the monster wikiArS LGM workshop",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "Taken with HTC Wildfire|Self-published work|Libre Graphics Meeting 2014",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "Poster promoting wikiArS workshop \"Feed the monster!\" at Libre Graphigs Meeting in Leipzig, 2014",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "2014-04-03 15:43:59",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "<a href=\"//commons.wikimedia.org/wiki/User:Dvdgmz\" title=\"User:Dvdgmz\">Dvdgmz</a>",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "CC BY-SA 3.0",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Creative Commons Attribution-Share Alike 3.0",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "true",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "LicenseUrl": {
+            "value": "https://creativecommons.org/licenses/by-sa/3.0",
+            "source": "commons-desc-page"
+          },
+          "Copyrighted": {
+            "value": "True",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "cc-by-sa-3.0",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/25/Feed_the_monster_wikiArS_LGM_workshop.jpg/960px-Feed_the_monster_wikiArS_LGM_workshop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_asset": "commons-31973814.jpg",
+  "image_sha256": "691d0bc4a50b938058f81c9572b0f2ee662a15e84314d8b62ad7e04ebde7d8b6"
+}

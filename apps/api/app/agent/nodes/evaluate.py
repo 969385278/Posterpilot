@@ -15,6 +15,7 @@ from app.schemas.layout import PosterLayout
 from app.schemas.design_control import BackgroundTreatment, DesignControls
 from app.evaluation.design_analysis import analyze_design
 from app.evaluation.goal_verifier import verify_design_goals
+from app.agent.experience_evidence import write_experience_evidence
 
 
 class AttentionClient(Protocol):
@@ -50,9 +51,11 @@ async def evaluate_draft(
         dependencies=dependencies,
         run_directory=run_directory,
     )
+    updates = _design_analysis_updates(state, report, initial=True)
+    write_experience_evidence(state, report, updates, initial=True, run_directory=run_directory)
     return {
         "evaluation_initial": report,
-        **_design_analysis_updates(state, report, initial=True),
+        **updates,
         "events": with_event(
             state,
             node="evaluate_draft",
@@ -82,9 +85,11 @@ async def evaluate_optimized(
         dependencies=dependencies,
         run_directory=run_directory,
     )
+    updates = _design_analysis_updates(state, report, initial=False)
+    write_experience_evidence(state, report, updates, initial=False, run_directory=run_directory)
     return {
         "evaluation_optimized": report,
-        **_design_analysis_updates(state, report, initial=False),
+        **updates,
         "events": with_event(
             state,
             node="evaluate_optimized",

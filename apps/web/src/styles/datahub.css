@@ -1,0 +1,50 @@
+.hub-shell { max-width: 1320px; }
+.hub-intro { padding: 32px 0 20px; max-width: 880px; }
+.hub-intro h1 { font-size: clamp(25px, 3vw, 38px); margin: 0 0 14px; }
+.hub-intro p, .hub-detail p, .hub-lab p { line-height: 1.7; }
+.hub-muted { color: var(--text-muted); font-size: 13px; }
+.hub-stats { display: flex; gap: 40px; flex-wrap: wrap; padding: 20px 0; border-block: 1px solid var(--line); }
+.hub-stats dt { color: var(--text-muted); font-size: 13px; }
+.hub-stats dd { margin: 4px 0 0; font-size: 28px; font-weight: 600; }
+.hub-tabs { display: flex; gap: 12px; overflow-x: auto; margin: 25px 0; }
+.hub-tabs button { white-space: nowrap; border: 0; padding: 12px 18px; background: transparent; color: var(--text-muted); border-radius: 8px; cursor: pointer; }
+.hub-tabs button[aria-pressed="true"] { background: var(--surface-strong); color: var(--text); font-weight: 600; }
+.hub-filters { display: flex; align-items: end; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+.hub-shell label { display: flex; flex-direction: column; gap: 8px; color: var(--text-muted); font-size: 14px; }
+.hub-shell input:not([type="checkbox"]), .hub-shell select, .hub-shell textarea { width: 100%; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--surface); color: var(--text); font: inherit; }
+.hub-shell textarea { min-height: 86px; resize: vertical; }
+.hub-shell .inline-checkbox { flex-direction: row; align-items: center; padding: 10px 0; }
+.hub-shell input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--accent); }
+.hub-shell button:disabled { opacity: .55; cursor: not-allowed; }
+.hub-catalog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.hub-card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.hub-card.is-selected { outline: 2px solid var(--accent); }
+.hub-card-open { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 14px; width: 100%; height: 100%; padding: 14px; border: none; background: transparent; color: var(--text); text-align: left; cursor: pointer; }
+.hub-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: var(--page); }
+.hub-card h2 { margin: 8px 0; font-size: 15px; overflow-wrap: anywhere; }
+.hub-card p { font-size: 12px; line-height: 1.6; color: var(--text-muted); margin: 5px 0; overflow-wrap: anywhere; }
+.hub-status { font-size: 12px; color: var(--accent); }
+.hub-empty { padding: 50px 24px; text-align: center; background: var(--surface); border-radius: 12px; }
+.hub-empty p { margin-bottom: 30px; }
+.hub-detail { margin: 32px 0; padding: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.hub-detail > header { display: flex; justify-content: space-between; gap: 20px; align-items: start; }
+.hub-detail h2 { margin: 0; font-size: 22px; }
+.hub-detail h3 { font-size: 17px; }
+.hub-detail-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+.hub-comparison { display: flex; align-items: start; gap: 12px; }
+.hub-comparison figure { margin: 0; flex: 1; min-width: 0; }
+.hub-comparison img { width: 100%; max-height: 430px; object-fit: contain; background: var(--page); }
+.hub-comparison figcaption { margin-top: 10px; color: var(--text-muted); font-size: 13px; }
+.hub-editor { display: grid; gap: 16px; }
+.hub-review { padding-top: 16px; margin-top: 24px; border-top: 1px solid var(--line); }
+.hub-review ul { color: var(--danger); line-height: 1.8; }
+.hub-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.hub-detail details { margin-top: 20px; }
+.hub-detail summary { cursor: pointer; }
+.hub-detail pre { padding: 12px; background: var(--page); overflow: auto; max-height: 350px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 12px; }
+.hub-detail details p { overflow-wrap: anywhere; }
+.hub-lab-results { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.hub-lab-results > section { padding: 24px; border: 1px solid var(--line); background: var(--surface); border-radius: 12px; }
+.hub-lab-results article + article { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 16px; }
+@media (max-width: 1000px) { .hub-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .hub-catalog, .hub-detail-grid, .hub-lab-results { grid-template-columns: 1fr; } .hub-detail { padding: 16px; } .hub-stats { gap: 24px; } .hub-filters > label { width: 100%; } }

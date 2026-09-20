@@ -31,6 +31,16 @@ export function AgentConsole({
   const [instruction, setInstruction] = useState('');
   const waiting = status === 'waiting_for_human' && checkpoint !== null;
   const traces = checkpoint?.tool_traces ?? completedRounds.flatMap((round) => round.tool_traces);
+  const references = new Map<string, { case_id: string; revision: number; problem: string; lesson: string }>();
+  for (const event of events) {
+    const candidates = event.payload?.experience_candidates;
+    if (!Array.isArray(candidates)) continue;
+    for (const reference of candidates) {
+      if (reference && typeof reference.case_id === 'string' && typeof reference.revision === 'number') {
+        references.set(`${reference.case_id}:${reference.revision}`, reference);
+      }
+    }
+  }
 
   function submitInstruction() {
     const value = instruction.trim();
@@ -100,6 +110,15 @@ export function AgentConsole({
           </ol>
         </section>
       ) : null}
+
+      {references.size > 0 && <section className="agent-citations" aria-label="历史经验参考">
+        <h3>本任务获得的历史经验</h3>
+        <p>下列内容曾提供给模型作为参考，不代表已采纳或已改善效果。当前用户要求优先。</p>
+        {[...references.values()].map(reference => <p key={`${reference.case_id}:${reference.revision}`}>
+          <strong>{reference.problem}</strong><small>{reference.lesson}</small>
+          <small>案例 {reference.case_id.slice(0, 8)} · v{reference.revision} · <a href="#datahub">查看案例与审核</a></small>
+        </p>)}
+      </section>}
 
       {waiting && checkpoint.layout && checkpoint.analysis && onControlledDecision ? (
         <DesignReviewPanel checkpoint={checkpoint} selectedCandidateId={selectedCandidateId} disabled={isSubmitting} onSubmit={onControlledDecision} />

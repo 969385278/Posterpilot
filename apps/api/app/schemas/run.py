@@ -19,6 +19,8 @@ RunEventType = Literal[
     "tool_started",
     "tool_completed",
     "round_completed",
+    "experience_captured",
+    "experience_capture_pending",
 ]
 
 

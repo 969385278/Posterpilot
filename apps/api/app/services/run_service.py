@@ -18,6 +18,8 @@ from app.services.event_bus import EventBus
 from app.rag.case_repository import CaseRepository
 from app.poster.template_loader import TemplateLoader
 from app.schemas.design_control import DesignControls
+from app.persistence.datahub_repository import DataHubRepository
+from app.services.datahub_service import DataHubService
 
 logger = logging.getLogger(__name__)
 
@@ -48,11 +50,19 @@ class RunService:
         artifacts: ArtifactService,
         event_bus: EventBus,
         executor: AgentExecutor | None = None,
+        data_origin: str = "runtime",
     ) -> None:
         self.repository = repository
         self.artifacts = artifacts
         self.event_bus = event_bus
         self.executor = executor
+        self.data_origin = data_origin
+        self.datahub = DataHubService(
+            DataHubRepository(repository.database), artifacts.root.parent / "datahub-assets",
+            include_demo=data_origin == "offline_demo",
+        )
+        if executor is not None and hasattr(executor, "experience_source"):
+            executor.experience_source = self.datahub
 
     @property
     def can_execute(self) -> bool:
@@ -310,6 +320,7 @@ class RunService:
                 node="human_review",
                 payload=checkpoint.model_dump(mode="json"),
             )
+            self._capture_experience(run_id)
             return waiting
 
         result = outcome.result
@@ -321,7 +332,18 @@ class RunService:
         completed = self.repository.update_status(run_id, "completed", current_node="finalize")
         self._emit(run_id, "node_completed", "Agent 闭环执行完成。", node="finalize")
         self._emit(run_id, "run_completed", "任务已完成。", node="finalize")
+        self._capture_experience(run_id)
         return completed
+
+    def _capture_experience(self, run_id: UUID) -> None:
+        # Data curation is a recoverable projection, not a reason to fail a rendered poster.
+        try:
+            cases = self.datahub.capture(self, run_id, origin=self.data_origin)
+            self._emit(run_id, "experience_captured", "本轮证据已收集到 PosterHub，尚未审核或推断用户接受。",
+                       payload={"case_ids": [str(case.id) for case in cases]})
+        except Exception:
+            logger.warning("DataHub capture unavailable for %s; manual capture can retry", run_id, exc_info=True)
+            self._emit(run_id, "experience_capture_pending", "案例证据暂未收集，可在数据工作台重试；不影响已生成海报。")
 
     def _emit_agent_events(self, run_id: UUID, events: list[dict[str, Any]]) -> None:
         tool_nodes = {

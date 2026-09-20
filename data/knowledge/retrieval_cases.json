@@ -200,5 +200,137 @@
       "text-contrast-wcag-001"
     ],
     "excluded_card_ids": []
+  },
+  {
+    "id": "enrichment-type-scale-limited-001",
+    "intent": "optimization",
+    "query": "把主标题、副标题、活动信息分清层次，别用七八种字号。",
+    "context": {
+      "targetAois": [
+        "title"
+      ]
+    },
+    "expected_card_ids": [
+      "type-scale-limited-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-visual-balance-not-symmetry-001",
+    "intent": "optimization",
+    "query": "人物在右边而文字也挤在右边，左边太空，怎么平衡？",
+    "context": {
+      "targetAois": []
+    },
+    "expected_card_ids": [
+      "visual-balance-not-symmetry-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-secondary-text-readable-001",
+    "intent": "optimization",
+    "query": "时间地点是次要信息，但现在灰得读不出来。",
+    "context": {
+      "targetAois": [
+        "event_info"
+      ]
+    },
+    "expected_card_ids": [
+      "secondary-text-readable-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-accent-color-budget-001",
+    "intent": "optimization",
+    "query": "每段文字都是一种鲜艳颜色，没有真正的重点。",
+    "context": {
+      "targetAois": []
+    },
+    "expected_card_ids": [
+      "accent-color-budget-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-whitespace-emphasis-001",
+    "intent": "optimization",
+    "query": "活动信息和主办方贴在一起，需要组间空隙。",
+    "context": {
+      "targetAois": [
+        "title"
+      ]
+    },
+    "expected_card_ids": [
+      "whitespace-emphasis-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-text-local-background-001",
+    "intent": "optimization",
+    "query": "文字落在照片一半亮一半暗的区域，部分字消失了。",
+    "context": {
+      "targetAois": [
+        "title"
+      ]
+    },
+    "expected_card_ids": [
+      "text-local-background-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-thin-font-render-check-001",
+    "intent": "optimization",
+    "query": "书法标题的细笔画和背景混在一起。",
+    "context": {
+      "targetAois": [
+        "title"
+      ]
+    },
+    "expected_card_ids": [
+      "thin-font-render-check-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
+  },
+  {
+    "id": "enrichment-text-spacing-overflow-001",
+    "intent": "optimization",
+    "query": "我加大了两行活动信息的行距，下面一行被裁掉了。",
+    "context": {
+      "targetAois": [
+        "title"
+      ]
+    },
+    "expected_card_ids": [
+      "text-spacing-overflow-001"
+    ],
+    "excluded_card_ids": [
+      "title-confusion-001",
+      "qr-ignored-001"
+    ]
   }
 ]

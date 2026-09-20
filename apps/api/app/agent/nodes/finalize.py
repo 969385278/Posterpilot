@@ -27,6 +27,7 @@ def finalize(state: PosterAgentState) -> dict[str, object]:
         "design_controls": state["design_controls"].model_dump(mode="json") if state.get("design_controls") else {},
         "background_treatment": state["background_treatment"].model_dump(mode="json") if state.get("background_treatment") else {},
         "selected_case_references": state.get("selected_case_context", []),
+        "experience_references": state.get("experience_references", []),
     }
     return {
         "result": result,

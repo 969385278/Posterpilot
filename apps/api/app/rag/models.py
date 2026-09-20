@@ -1,6 +1,6 @@
 from typing import Any, Literal
 
-from pydantic import BaseModel, Field, HttpUrl, model_validator
+from pydantic import BaseModel, Field, HttpUrl, field_serializer, model_validator
 
 from app.schemas.brief import NonEmptyText
 
@@ -31,6 +31,12 @@ class KnowledgeCard(BaseModel):
     review_status: ReviewStatus = "candidate"
     confidence: float = Field(default=0.5, ge=0, le=1)
     tags: list[NonEmptyText] = Field(default_factory=list, max_length=30)
+
+    @field_serializer("source_url")
+    def serialize_source_url(self, value: HttpUrl | None) -> str | None:
+        # Checkpoints use model_dump() in Python mode; HttpUrl itself is not
+        # msgpack-compatible. Restore still validates this string as HttpUrl.
+        return str(value) if value is not None else None
 
     @model_validator(mode="after")
     def validate_source_and_pages(self) -> "KnowledgeCard":

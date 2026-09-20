@@ -163,4 +163,8 @@ def test_real_curated_catalog_has_images_hashes_and_pending_user_acceptance():
     for case in cases:
         assert hashlib.sha256(repo.image_path(case.id).read_bytes()).hexdigest() == case.source.image_sha256
         source = json.loads((repo.directory / "sources" / f"{case.id}.json").read_text(encoding="utf-8"))
-        assert source["response"]["imageinfo"][0]["extmetadata"]["LicenseShortName"]["value"] == "Public domain"
+        license_name = source["response"]["imageinfo"][0]["extmetadata"]["LicenseShortName"]["value"]
+        if license_name != "Public domain":
+            assert license_name == "CC BY-SA 4.0"
+            assert "creativecommons.org/licenses/by-sa/4.0" in str(case.source.rights_url)
+            assert case.source.creator and "未修改" in case.source.rights

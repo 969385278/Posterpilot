@@ -35,6 +35,7 @@ class LangGraphAgentExecutor:
         renderer: PosterRenderer,
         evaluation: EvaluationDependencies | None = None,
         checkpoint_path: Path | str | None = None,
+        experience_source: Any | None = None,
     ) -> None:
         self.retriever = retriever
         self.text_provider = text_provider
@@ -42,6 +43,7 @@ class LangGraphAgentExecutor:
         self.renderer = renderer
         self.evaluation = evaluation
         self.tools = ReactToolRegistry(retriever)
+        self.experience_source = experience_source
         self.checkpoint_path = Path(checkpoint_path).resolve() if checkpoint_path else None
         self._graph: Any | None = None
         self._sqlite_context: Any | None = None
@@ -114,6 +116,7 @@ class LangGraphAgentExecutor:
                 tools=self.tools,
                 checkpointer=checkpointer,
                 evaluation=self.evaluation,
+                experience_source=self.experience_source,
             )
             return self._graph
 

@@ -66,6 +66,9 @@ async def evaluate(*, offline: bool) -> int:
             )
         )
         result_ids = [match.card.id for match in result.matches]
+        forbidden = set(case.excluded_card_ids).intersection(result_ids)
+        if forbidden:
+            failures.append(f"{case.id}: excluded cards returned: {sorted(forbidden)}")
         expected = set(case.expected_card_ids)
         matching_ranks = [index + 1 for index, card_id in enumerate(result_ids) if card_id in expected]
         if matching_ranks:
@@ -93,4 +96,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

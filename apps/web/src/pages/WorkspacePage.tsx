@@ -145,7 +145,9 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
   return (
     <main className="workspace-shell">
       {import.meta.env.VITE_POSTERPILOT_DEMO === 'true' ? (
-        <p role="note">离线流程演示：模型决策和背景是固定测试素材，不代表真实生成质量；未调用付费服务。</p>
+        <p role="note">{import.meta.env.VITE_POSTERPILOT_SHOWCASE === 'true'
+          ? '授权素材排版演示：背景来自已审核的公共领域图片，规划与修改动作固定；实际渲染和规则检查，不调用生图模型或 DeepGaze。'
+          : '离线流程演示：模型决策和背景是固定测试素材，不代表真实生成质量；未调用付费服务。'}</p>
       ) : null}
       <header className="workspace-topbar">
         <div>
@@ -156,6 +158,7 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
         </div>
         <div className="topbar-actions">
           <ThemeSelect />
+          <a className="text-action" href={run ? `#datahub/${run.id}` : '#datahub'}>案例与反馈</a>
           {run ? <button className="text-action" type="button" onClick={resetWorkspace}>新建任务</button> : null}
           <button className="text-action" type="button" onClick={onOpenHistory}>任务历史</button>
         </div>

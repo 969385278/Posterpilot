@@ -1,0 +1,66 @@
+[
+  {
+    "id": "nng-principles",
+    "url": "https://www.nngroup.com/articles/principles-visual-design/",
+    "resolved_url": "https://www.nngroup.com/articles/principles-visual-design/",
+    "title": "5 Principles of Visual Design in UX - NN/G",
+    "checked_at": "2026-09-20T10:30:35.148468+00:00",
+    "response_sha256": "dfa2874ace81f8ea8f8d8ea82152296ff4765d85a8955d64d52bd8628a0d7c27",
+    "checked_excerpts": [
+      "Using relative size to signal importance",
+      "equally distributed (but not necessarily symmetrical)",
+      "reducing text contrast also reduces legibility"
+    ],
+    "review": "已读取上下文；知识卡为中文概括和项目应用建议，不是整篇转载。"
+  },
+  {
+    "id": "nng-hierarchy",
+    "url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+    "resolved_url": "https://www.nngroup.com/articles/visual-hierarchy-ux-definition/",
+    "title": "Visual Hierarchy in UX: Definition - NN/G",
+    "checked_at": "2026-09-20T10:30:38.435510+00:00",
+    "response_sha256": "59f0e342f4ac24e110e5c90654602ceb11a2a557895cb33ae309bc18c9419e11",
+    "checked_excerpts": [
+      "If everything is contrasted, then nothing stands out",
+      "Let it breathe"
+    ],
+    "review": "已读取上下文；知识卡为中文概括和项目应用建议，不是整篇转载。"
+  },
+  {
+    "id": "w3c-local-contrast",
+    "url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18",
+    "resolved_url": "https://www.w3.org/WAI/WCAG22/Techniques/general/G18",
+    "title": "G18: Ensuring that a contrast ratio of at least 4.5:1 exists between text (and images of text)\n          and background behind the text | WAI | W3C",
+    "checked_at": "2026-09-20T10:30:39.324898+00:00",
+    "response_sha256": "c376e72c32b6a1de78478bb05385b6d6248259031d3bca78de29a96486cf25ee",
+    "checked_excerpts": [
+      "background pixels immediately next to the letter"
+    ],
+    "review": "已读取上下文；知识卡为中文概括和项目应用建议，不是整篇转载。"
+  },
+  {
+    "id": "w3c-thin-fonts",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "resolved_url": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "title": "Understanding Success Criterion 1.4.3: Contrast (Minimum) | WAI | W3C",
+    "checked_at": "2026-09-20T10:30:39.976625+00:00",
+    "response_sha256": "3352aaf477e9739155628467c4b62997e18ea4cab917c0eb4fc4fb39c5238a2e",
+    "checked_excerpts": [
+      "particularly thin or unusual fonts may be rendered"
+    ],
+    "review": "已读取上下文；知识卡为中文概括和项目应用建议，不是整篇转载。"
+  },
+  {
+    "id": "w3c-text-spacing",
+    "url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+    "resolved_url": "https://www.w3.org/WAI/WCAG22/Understanding/text-spacing.html",
+    "title": "Understanding Success Criterion 1.4.12: Text Spacing | WAI | W3C",
+    "checked_at": "2026-09-20T10:30:40.617930+00:00",
+    "response_sha256": "48d38892c50739b98b6d7c4d54b83d15152e9c9dbba2a550bc5dec5bead38df2",
+    "checked_excerpts": [
+      "Content is not required to use these text spacing values",
+      "Images of text"
+    ],
+    "review": "已读取上下文；知识卡为中文概括和项目应用建议，不是整篇转载。"
+  }
+]

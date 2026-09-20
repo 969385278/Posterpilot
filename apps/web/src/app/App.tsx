@@ -4,6 +4,9 @@ import { readRoute } from './navigation';
 import { HistoryPage } from '../pages/HistoryPage';
 import { WorkspacePage } from '../pages/WorkspacePage';
 import { ThemeSelect } from '../features/theme/ThemeSelect';
+import { DataHubPage } from '../pages/DataHubPage';
+import { ShowcaseGallery } from '../features/showcase/ShowcaseGallery';
+import showcase from '../data/showcase.json';
 
 const workflow = [
   { title: '描述你的活动', description: '填写主题、时间与地点，把创作意图交给系统。' },
@@ -31,6 +34,7 @@ export function App() {
   if (page === 'history') {
     return <HistoryPage onBack={() => navigate('workspace')} />;
   }
+  if (page === 'datahub') return <DataHubPage key={route.runId ?? 'all'} initialRunId={route.runId} />;
 
   return (
     <main className="app-shell">
@@ -39,6 +43,7 @@ export function App() {
           PosterPilot
         </a>
         <span className="topbar-context">海报创作工作台</span>
+        <a className="text-action" href="#datahub">案例与反馈</a>
         <ThemeSelect />
       </header>
 
@@ -52,17 +57,16 @@ export function App() {
           <button className="primary-action" type="button" onClick={() => navigate('workspace')}>
             创建海报
           </button>
-          <p className="hero-footnote">校园讲座 · 文化活动 · 社团招新</p>
         </div>
 
         <div className="hero-visual">
           <img
-            src="/templates/default-poster-portrait.png"
-            alt="红楼梦文化活动海报示例"
+            src={showcase.entries[0].images.optimized}
+            alt="看见星云：公共领域背景的中文排版演示"
             width="1080"
             height="1440"
           />
-          <div className="hero-caption"><span>创作示例</span><strong>画面、文字与设计依据</strong></div>
+          <div className="hero-caption"><span>授权素材排版演示</span><strong>非生图模型输出</strong></div>
         </div>
       </section>
 
@@ -75,6 +79,7 @@ export function App() {
           </div>
         ))}
       </section>
+      <ShowcaseGallery />
     </main>
   );
 }

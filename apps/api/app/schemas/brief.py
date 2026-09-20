@@ -37,6 +37,7 @@ class PosterBrief(BaseModel):
     references: list[ReferenceSelection] = Field(default_factory=list, max_length=3)
     attention_priority: list[PriorityRole] = Field(default_factory=list, max_length=5)
     attention_layout: bool = True
+    use_case_memory: bool = True
 
     @field_validator("topic", "target_audience", "event_time", "location", "organizer", mode="before")
     @classmethod

@@ -13,6 +13,28 @@
 - **评测驱动优化**：结合版式规则、视觉模型和可选的 DeepGaze 注意力预测；提供注意力辅助布局候选、优化目标检查和轮次对比。
 - **案例与字体选择**：有出处的海报案例 Wiki、设计特点选择和 6 款 OFL 中文标题字体。案例字体仅作风格近似，不是恢复原字体。
 - **运行可追溯**：工作台展示事件、知识引用、工具轨迹、评测结果及每轮正式海报；SSE 展示事件，轮询同步业务状态。
+- **PosterHub 数据回流**：收集每轮证据，整理案例、明确反馈与使用授权，经人工审核后供新任务参考；支持版本记录、撤回与修改重审。
+
+### 配套项目：PosterHub
+
+PosterPilot 负责生成与优化，PosterHub 负责案例库、反馈记录与质量管理。二者共用后端和数据库，数据工作台入口为 `#datahub`，并非两个独立部署的微服务。代码中的 `datahub` 模块名及接口路径保持不变。
+
+PosterHub 的主要实现：
+
+- **轮次记录**：保存修改意见、工具动作、前后图和评测结果；按任务与轮次幂等采集，校验图片内容哈希。
+- **审核与反馈**：分别记录用户反馈和自动评测结果，支持案例编辑、审核发布、驳回、撤回及修改后重审。
+- **版本一致性**：用版本号检查编辑与审核冲突，保留历史快照，不覆盖原始轮次证据。
+- **经验复用**：只将审核通过、场景匹配的案例提供给 Agent，保留来源版本，排除当前任务和默认关闭的离线样例。
+
+代码入口：[后台页面](apps/web/src/pages/DataHubPage.tsx) · [API](apps/api/app/api/routes/datahub.py) · [业务服务](apps/api/app/services/datahub_service.py) · [持久化](apps/api/app/persistence/datahub_repository.py) · [Agent 经验上下文](apps/api/app/agent/experience_context.py)
+
+新任务可选择使用已审核经验：只检索适用案例，排除当前任务，保留来源与版本。不把结束任务当作用户接受，不把分数变化当作真实效果提升，也不自动训练模型。
+
+[两项目启动与操作指南](docs/posterdatahub-guide.md) · [实施验收记录](docs/posterdatahub-implementation.md)
+
+新增 [素材与知识补全说明](docs/content-enrichment-report.md)：15 张有来源的参考海报、14 条审核知识、3 组真实渲染前后对照。首页展示为公共领域背景的固定排版演示，非生图模型输出；未通过可读性检查的样例明确标记，不作为成功经验发布。使用 `scripts/start_showcase.ps1 -Mode Api` 和 `-Mode Web` 启动独立素材演示（默认 8794/5194）。
+
+无需付费 API 的演示：运行 `scripts/start_datahub_demo.ps1 -Mode Seed` 生成固定测试数据，再分别启动 `-Mode Api` 和 `-Mode Web`，访问 `http://127.0.0.1:5193/#datahub`。需先安装项目依赖，详见操作指南。离线图片和决策均为明确标记的测试样例，不证明真实模型质量提升。
 
 ### 能力边界
 

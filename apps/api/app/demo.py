@@ -145,18 +145,20 @@ class DemoAttentionClient:
 
 
 def create_demo_app(
-    data_root: Path | None = None, *, fail_image: bool = False, synthetic_attention: bool = False
+    data_root: Path | None = None, *, fail_image: bool = False, synthetic_attention: bool = False,
+    text_provider=None, image_provider=None, retriever=None,
 ):
     root = (data_root or PROJECT_ROOT / "data" / "offline-demo").resolve()
     root.mkdir(parents=True, exist_ok=True)
     service = RunService(
+        data_origin="offline_demo",
         repository=RunRepository(f"sqlite:///{(root / 'runs.sqlite3').as_posix()}"),
         artifacts=ArtifactService(root / "runs"),
         event_bus=EventBus(),
         executor=LangGraphAgentExecutor(
-            retriever=DemoRetriever(),
-            text_provider=DemoTextProvider(),
-            image_provider=DemoImageProvider(fail=fail_image),
+            retriever=retriever or DemoRetriever(),
+            text_provider=text_provider or DemoTextProvider(),
+            image_provider=image_provider or DemoImageProvider(fail=fail_image),
             renderer=PosterRenderer(),
             checkpoint_path=root / "checkpoints.sqlite3",
             evaluation=EvaluationDependencies(

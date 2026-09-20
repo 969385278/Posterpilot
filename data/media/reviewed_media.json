@@ -1,0 +1,36 @@
+{
+  "reviewer": "assistant_visual_review",
+  "reviewed_on": "2026-09-20",
+  "assets": [
+    {
+      "page_id": 10036,
+      "id": "irises",
+      "title": "鸢尾花",
+      "theme": "cultural_event",
+      "description": "梵高绘画，蓝紫花朵与绿叶黄土，适合作为艺术展览背景。原图横幅，竖版展示会裁切两侧；不宣称完整复刻画作。",
+      "usage": "public-domain source image; renderer may crop and overlay fictional event text"
+    },
+    {
+      "page_id": 38165284,
+      "id": "nebula",
+      "title": "创生之柱（2014 观测影像，去噪版本）",
+      "theme": "campus_lecture",
+      "description": "完整星云影像，无拼接黑块；适合科学讲座，必须说明是天文影像而不是模型生成。保留 NASA/ESA 与来源加工者信息。",
+      "usage": "public-domain source image; renderer may crop and overlay fictional event text"
+    },
+    {
+      "page_id": 118192,
+      "id": "tetons",
+      "title": "大提顿与蛇河",
+      "theme": "club_recruitment",
+      "description": "Ansel Adams 1942 年黑白风景照片，来源记录为美国国家公园署/NARA；适合摄影社团展示。竖版裁切不改变作者署名。",
+      "usage": "public-domain source image; renderer may crop and overlay fictional event text"
+    }
+  ],
+  "rejected": [
+    {
+      "page_id": 129538,
+      "reason": "原始拼接影像右上存在黑色未覆盖区域，不适合作为默认满版背景，改选完整的 2014 版本。"
+    }
+  ]
+}

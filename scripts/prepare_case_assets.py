@@ -21,6 +21,7 @@ COMMONS_IDS = [8886929, 41905046, 107429666, 106991594, 31793744,
                22408276, 24131151, 24204726, 31912550, 32018105,
                3645151, 46015465]
 ROOT = Path(__file__).resolve().parents[1] / "data/knowledge/cases"
+ALLOWED_LICENSES = {"Public domain", "CC0", "CC BY 4.0", "CC BY-SA 4.0", "CC BY 3.0", "CC BY-SA 3.0"}
 
 
 def fetch(url: str) -> bytes:
@@ -81,17 +82,25 @@ def prepare_commons(ids: list[int], root: Path):
             page = pages[str(item)]
             info = page["imageinfo"][0]
             license_name = info["extmetadata"].get("LicenseShortName", {}).get("value")
-            if license_name != "Public domain":
-                raise ValueError(f"{item}: not an explicitly public-domain candidate")
+            if license_name not in ALLOWED_LICENSES:
+                raise ValueError(f"{item}: unsupported or unclear reuse license: {license_name}")
             record = {"retrieved_at": datetime.now(timezone.utc).isoformat(),
                       "api_url": url, "response": page,
                       "image_url": info.get("thumburl", info["url"])}
-        path = root / "images" / f"commons-{item}.jpg"
+        license_name = record["response"]["imageinfo"][0]["extmetadata"].get("LicenseShortName", {}).get("value")
+        if license_name not in ALLOWED_LICENSES:
+            raise ValueError(f"{item}: unsupported cached license")
+        path = root / "images" / record.get("image_asset", f"commons-{item}.jpg")
         content = path.read_bytes() if path.exists() else fetch(record["image_url"])
         with Image.open(io.BytesIO(content)) as image:
-            if image.format != "JPEG":
-                raise ValueError(f"{item}: JPEG expected, got {image.format}")
+            extension = {"JPEG": "jpg", "PNG": "png"}.get(image.format)
+            if extension is None:
+                raise ValueError(f"{item}: unsupported image format: {image.format}")
             image.verify()
+        asset_name = f"commons-{item}.{extension}"
+        if not metadata_path.exists():
+            record["image_asset"] = asset_name
+            path = root / "images" / asset_name
         digest = hashlib.sha256(content).hexdigest()
         if record.get("image_sha256") not in (None, digest):
             raise ValueError(f"{item}: cached image hash mismatch")
@@ -108,7 +117,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("ids", type=int, nargs="*", default=DEFAULT_IDS)
     parser.add_argument("--root", type=Path, default=ROOT)
-    parser.add_argument("--commons", action="store_true", help="Use explicitly public-domain Wikimedia Commons candidates")
+    parser.add_argument("--commons", action="store_true", help="Use explicitly licensed Wikimedia Commons candidates; visual review is separate")
     args = parser.parse_args()
     if args.commons:
         prepare_commons(COMMONS_IDS if args.ids == DEFAULT_IDS else args.ids, args.root)

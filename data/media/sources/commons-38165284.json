@@ -1,0 +1,108 @@
+{
+  "retrieved_at": "2026-09-20T10:25:36.630073+00:00",
+  "api_url": "https://commons.wikimedia.org/w/api.php?action=query&pageids=38165284&prop=imageinfo&iiprop=url%7Cextmetadata%7Csize&iiurlwidth=800&format=json",
+  "response": {
+    "pageid": 38165284,
+    "ns": 6,
+    "title": "File:Pillars of creation 2014 HST WFC3-UVIS full-res denoised.jpg",
+    "imagerepository": "local",
+    "imageinfo": [
+      {
+        "size": 46930988,
+        "width": 6780,
+        "height": 7071,
+        "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/960px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "thumbwidth": 800,
+        "thumbheight": 834,
+        "responsiveUrls": {
+          "2": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/1920px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail"
+        },
+        "thumbattribs": {
+          "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/960px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+          "decoding": "async",
+          "loading": "lazy",
+          "width": 800,
+          "height": 834,
+          "srcset": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/1920px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail 2x"
+        },
+        "url": "https://upload.wikimedia.org/wikipedia/commons/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+        "descriptionurl": "https://commons.wikimedia.org/wiki/File:Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg",
+        "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=38165284",
+        "extmetadata": {
+          "DateTime": {
+            "value": "2025-04-15 17:52:32",
+            "source": "mediawiki-metadata",
+            "hidden": ""
+          },
+          "ObjectName": {
+            "value": "Pillars of creation 2014 HST WFC3-UVIS full-res denoised",
+            "source": "mediawiki-metadata"
+          },
+          "CommonsMetadataExtension": {
+            "value": 1.2,
+            "source": "extension",
+            "hidden": ""
+          },
+          "Categories": {
+            "value": "PD NASA|Retouched pictures|Pillars of Creation|Herbig–Haro objects|Featured pictures on Wikipedia, English|Hubble images of nebulae|Featured pictures on Wikipedia, German|Featured pictures of astronomy|Featured pictures on Wikipedia, Persian|Derivative versions|Photographs taken on 2014-10-29|Posted to Wikimedia Foundation Pinterest|Featured photographs in the public domain|Featured pictures on Wikipedia, Arabic|Pictures of the Year/2015 (finalist)",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "Assessments": {
+            "value": "featured|potd|poty",
+            "source": "commons-categories",
+            "hidden": ""
+          },
+          "ImageDescription": {
+            "value": "NASA's <a href=\"https://en.wikipedia.org/wiki/Hubble_Space_Telescope\" class=\"extiw\" title=\"w:Hubble Space Telescope\">Hubble Space Telescope</a> has revisited the famous <a href=\"https://en.wikipedia.org/wiki/Pillars_of_Creation\" class=\"extiw\" title=\"w:Pillars of Creation\">Pillars of Creation</a>, originally photographed in 1995, revealing a sharper and wider view of the structures in this visible-light image.<br> Astronomers combined several Hubble exposures to assemble the wider view. The towering pillars are about 5 <a href=\"https://en.wikipedia.org/wiki/light-year\" class=\"extiw\" title=\"w:light-year\">light-years</a> tall. The dark, finger-like feature at bottom right may be a smaller version of the giant pillars. The new image was taken with Hubble's versatile and sharp-eyed <a href=\"https://en.wikipedia.org/wiki/Wide_Field_Camera_3\" class=\"extiw\" title=\"w:Wide Field Camera 3\">Wide Field Camera 3</a>. The pillars are bathed in the blistering ultraviolet light from a grouping of young, massive stars located off the top of the image. Streamers of gas can be seen bleeding off the pillars as the intense radiation heats and evaporates it into space. Denser regions of the pillars are shadowing material beneath them from the powerful radiation. Stars are being born deep inside the pillars, which are made of cold hydrogen gas laced with dust. The pillars are part of a small region of the <a href=\"https://en.wikipedia.org/wiki/Eagle_Nebula\" class=\"extiw\" title=\"w:Eagle Nebula\">Eagle Nebula</a>, a vast <a href=\"https://en.wikipedia.org/wiki/star-forming_region\" class=\"extiw\" title=\"w:star-forming region\">star-forming region</a> 6,500 light-years from Earth.<br> The colors in the image highlight emission from several chemical elements. Oxygen emission is blue, sulfur is orange, and hydrogen and nitrogen are green.<br> A number of <a href=\"https://en.wikipedia.org/wiki/Herbig%E2%80%93Haro_object\" class=\"extiw\" title=\"w:Herbig–Haro object\">Herbig-Haro jets</a> <a rel=\"nofollow\" class=\"external text\" href=\"http://heritage.stsci.edu/2015/01/supplemental.html#\">lengthened noticeably</a> (see lower panel of linked page) in the nearly 20-year interval between the two Hubble images.<br> Object Names: M16, Eagle Nebula, NGC 6611.<br> A longer news release is <a rel=\"nofollow\" class=\"external text\" data-mw-original-href=\"http://www.nasa.gov/content/goddard/hubble-goes-high-definition-to-revisit-iconic-pillars-of-creation/\" href=\"https://www.nasa.gov/content/goddard/hubble-goes-high-definition-to-revisit-iconic-pillars-of-creation/\">linked here</a>.<br> The <a href=\"//commons.wikimedia.org/wiki/File:Pillars_of_creation_2014_HST_WFC3-UVIS_full-res.jpg\" title=\"File:Pillars of creation 2014 HST WFC3-UVIS full-res.jpg\">original image</a> was edited to reduce noise.",
+            "source": "commons-desc-page"
+          },
+          "DateTimeOriginal": {
+            "value": "2014-10-29",
+            "source": "commons-desc-page"
+          },
+          "Credit": {
+            "value": "<a rel=\"nofollow\" class=\"external free\" href=\"http://hubblesite.org/image/3471/news_release/2015-01\">http://hubblesite.org/image/3471/news_release/2015-01</a>",
+            "source": "commons-desc-page"
+          },
+          "Artist": {
+            "value": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)",
+            "source": "commons-desc-page"
+          },
+          "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "UsageTerms": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+          },
+          "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Copyrighted": {
+            "value": "False",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page",
+            "hidden": ""
+          },
+          "License": {
+            "value": "pd",
+            "source": "commons-templates",
+            "hidden": ""
+          }
+        }
+      }
+    ]
+  },
+  "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg/960px-Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+  "image_asset": "commons-38165284.jpg",
+  "image_sha256": "ec950ce73eb17965135807e542f62864371204968e726882c99203a9407313b4"
+}

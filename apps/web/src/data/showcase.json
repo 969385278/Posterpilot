@@ -1,0 +1,562 @@
+{
+  "kind": "reviewed_source_render_walkthrough",
+  "paid_model_calls": 0,
+  "real_user_feedback": false,
+  "quality_improvement_claim": false,
+  "notice": "公共领域背景 + 本项目中文排版与实际工具调整；规划固定，非生图大模型输出，活动为虚构示例。",
+  "entries": [
+    {
+      "id": "nebula",
+      "label": "科学讲座",
+      "title": "看见星云",
+      "brief": {
+        "poster_type": "campus_lecture",
+        "title": "看见星云",
+        "topic": "天文科普讲座",
+        "subtitle": "从星际尘埃到恒星诞生",
+        "target_audience": "对天文学感兴趣的同学",
+        "event_time": "10月16日 19:00",
+        "location": "科学馆 · 星空报告厅",
+        "organizer": "天文兴趣社",
+        "title_font": "zcoolqingkehuangyou",
+        "style_preferences": [
+          "科学",
+          "深蓝",
+          "克制"
+        ],
+        "notes": "虚构演示活动，非真实日程。保留标题和活动信息，主视觉突出星云，不添加机构标志。",
+        "attention_layout": false,
+        "use_case_memory": false
+      },
+      "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+      "lesson": "科学图像细节多，时间地点应独立成组；放大文字后仍要检查局部背景可读性。",
+      "applicable_when": "科学讲座，短标题、两行活动信息，文字排版未锁定。",
+      "avoid_when": "长地址需要更多空间；天文影像不意味着任意科普事实都得到来源支持。",
+      "run_id": "aa30d11b-fc2a-4baf-a4bc-fb6a204f71bf",
+      "case_id": "835f88bb-3fca-4893-a744-576797f1b560",
+      "source": {
+        "page_id": 38165284,
+        "id": "nebula",
+        "title": "创生之柱（2014 观测影像，去噪版本）",
+        "theme": "campus_lecture",
+        "description": "完整星云影像，无拼接黑块；适合科学讲座，必须说明是天文影像而不是模型生成。保留 NASA/ESA 与来源加工者信息。",
+        "usage": "public-domain source image; renderer may crop and overlay fictional event text",
+        "creator": "NASA, ESA, and the Hubble Heritage Team (STScI/AURA)",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg",
+        "rights": "Public domain（来源页标注）",
+        "rights_url": "https://commons.wikimedia.org/wiki/File:Pillars_of_creation_2014_HST_WFC3-UVIS_full-res_denoised.jpg#Licensing",
+        "sha256": "ec950ce73eb17965135807e542f62864371204968e726882c99203a9407313b4",
+        "retrieved_at": "2026-09-20T10:25:36.630073+00:00"
+      },
+      "images": {
+        "initial": "/showcase/nebula-initial.png",
+        "optimized": "/showcase/nebula-optimized.png"
+      },
+      "image_hashes": {
+        "initial": "44cd6c722c4aad082e4d498d64416efee75d231e97128802d506e13ac0c99b5b",
+        "optimized": "2e3fd334f631e816563b4070afdef88c8598762b3552137a4329f54c8504f0d3"
+      },
+      "case_status": "approved",
+      "comparison": {
+        "outcome": "unchanged",
+        "delta": 0.0,
+        "reason": null
+      },
+      "quality_issues": [],
+      "tool_traces": [
+        {
+          "round_number": 1,
+          "step": 1,
+          "decision_summary": "固定演示方案：放大时间地点，随后实际渲染复评。",
+          "tool_name": "modify_typography",
+          "tool_args": {
+            "actions": [
+              {
+                "action": "set_font_size",
+                "target_id": "event_info",
+                "parameters": {
+                  "font_size": 42
+                },
+                "reason": "展示活动信息排版调整，不伪装模型推理"
+              }
+            ]
+          },
+          "observation": "已安全执行 1 个排版动作，影响元素：event_info。",
+          "success": true,
+          "knowledge_card_ids": []
+        }
+      ],
+      "goal_verification": {
+        "checks": [
+          {
+            "key": "invariants",
+            "label": "文字事实与锁定参数",
+            "status": "passed",
+            "detail": "元素、文字事实、主视觉构图与明确锁定的参数保持不变。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "text_fit",
+            "label": "文字区域检查",
+            "status": "passed",
+            "detail": "实际渲染包围框与分配区域比较。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "readability:title",
+            "label": "title 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 8.15:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 8.145
+          },
+          {
+            "key": "readability:subtitle",
+            "label": "subtitle 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 3.80:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 3.8
+          },
+          {
+            "key": "readability:event_info",
+            "label": "event_info 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 6.48:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 6.481
+          },
+          {
+            "key": "readability:organizer",
+            "label": "organizer 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 8.49:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 8.488
+          }
+        ],
+        "outcome": "no_change_requested",
+        "summary": "本轮未指定结构化目标，已检查基础保护条件。"
+      },
+      "evaluation": {
+        "rule_issues": [],
+        "attention": {
+          "availability": "unavailable",
+          "model": null,
+          "device": null,
+          "cached": false,
+          "fixations": [],
+          "predicted_path": [],
+          "heatmap_artifact": null,
+          "inference_ms": null,
+          "error": "DeepGaze evaluation is not configured for this run."
+        },
+        "vision": {
+          "availability": "unavailable",
+          "score": null,
+          "summary": "",
+          "issues": [],
+          "error": "Vision evaluation is not configured for this run.",
+          "subject_regions": []
+        },
+        "scores": {
+          "hard_rules": 40.0,
+          "vision": null,
+          "attention": null,
+          "total": 100.0,
+          "available_weight": 40.0
+        },
+        "primary_issues": [],
+        "evaluator_version": "evaluation-v2-aoi-paint-order",
+        "design_goal_context": {
+          "adjustments": [],
+          "attention_priority": [
+            "title",
+            "main_visual",
+            "event_info",
+            "organizer",
+            "subtitle"
+          ]
+        }
+      },
+      "visual_review": {
+        "id": "nebula",
+        "image_sha256": "2e3fd334f631e816563b4070afdef88c8598762b3552137a4329f54c8504f0d3",
+        "decision": "approve",
+        "note": "逐张核对初版和调整版：背景构图与文字事实保持，时间地点变大且无裁切；当前程序检查通过。只批准作为固定排版动作的参考，不代表真实用户接受，也不证明审美或注意力改善。"
+      }
+    },
+    {
+      "id": "irises",
+      "label": "文化活动",
+      "title": "花间一课",
+      "brief": {
+        "poster_type": "cultural_event",
+        "title": "花间一课",
+        "topic": "绘画与色彩分享会",
+        "subtitle": "在笔触里读懂一束花",
+        "target_audience": "艺术与绘画爱好者",
+        "event_time": "10月18日 14:00",
+        "location": "艺术空间 · 共享画室",
+        "organizer": "校园美术社",
+        "title_font": "mashanzheng",
+        "style_preferences": [
+          "油画",
+          "自然",
+          "书法标题"
+        ],
+        "notes": "虚构演示活动，非真实日程。标题使用可授权中文书法字体，保留事实信息，复杂底图上注意文字可读性。",
+        "attention_layout": false,
+        "use_case_memory": false
+      },
+      "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+      "lesson": "艺术字适合短标题，日期地点使用清晰的常规字形；颜色丰富的底图不能替代实际可读性检查。",
+      "applicable_when": "文化活动、四字短标题、油画背景，活动信息与标题分组。",
+      "avoid_when": "细笔画在亮花瓣处可能消失；裁切后的绘画不代表完整原作，也不能伪称是生图模型创作。",
+      "run_id": "a54733e7-7125-434f-9315-b30cd1d9b1b8",
+      "case_id": "79773130-cdfe-4362-9d91-f996c9e6ad7a",
+      "source": {
+        "page_id": 10036,
+        "id": "irises",
+        "title": "鸢尾花",
+        "theme": "cultural_event",
+        "description": "梵高绘画，蓝紫花朵与绿叶黄土，适合作为艺术展览背景。原图横幅，竖版展示会裁切两侧；不宣称完整复刻画作。",
+        "usage": "public-domain source image; renderer may crop and overlay fictional event text",
+        "creator": "Vincent van Gogh",
+        "source_url": "https://commons.wikimedia.org/wiki/File:VanGogh-Irises_1.jpg",
+        "rights": "Public domain（来源页标注）",
+        "rights_url": "https://commons.wikimedia.org/wiki/File:VanGogh-Irises_1.jpg#Licensing",
+        "sha256": "9933e71df597b67414fff1fd2bdaf43c3c88d0cfc8c8a66ec56f32082ec0d4c1",
+        "retrieved_at": "2026-09-20T10:24:46.633950+00:00"
+      },
+      "images": {
+        "initial": "/showcase/irises-initial.png",
+        "optimized": "/showcase/irises-optimized.png"
+      },
+      "image_hashes": {
+        "initial": "6e9bb71ba5db57d2ed0a44c2b7b62d55a183d3c6aec42729cbd7f0e0da45c37b",
+        "optimized": "1a9f98616aa39105eb5b8386b4100307e841d7bcd32c422ed7ad28670f1c69fd"
+      },
+      "case_status": "candidate",
+      "comparison": {
+        "outcome": "unchanged",
+        "delta": 0.0,
+        "reason": null
+      },
+      "quality_issues": [
+        "当前修改目标仍有未通过项"
+      ],
+      "tool_traces": [
+        {
+          "round_number": 1,
+          "step": 1,
+          "decision_summary": "固定演示方案：放大时间地点，随后实际渲染复评。",
+          "tool_name": "modify_typography",
+          "tool_args": {
+            "actions": [
+              {
+                "action": "set_font_size",
+                "target_id": "event_info",
+                "parameters": {
+                  "font_size": 42
+                },
+                "reason": "展示活动信息排版调整，不伪装模型推理"
+              }
+            ]
+          },
+          "observation": "已安全执行 1 个排版动作，影响元素：event_info。",
+          "success": true,
+          "knowledge_card_ids": []
+        }
+      ],
+      "goal_verification": {
+        "checks": [
+          {
+            "key": "invariants",
+            "label": "文字事实与锁定参数",
+            "status": "passed",
+            "detail": "元素、文字事实、主视觉构图与明确锁定的参数保持不变。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "text_fit",
+            "label": "文字区域检查",
+            "status": "passed",
+            "detail": "实际渲染包围框与分配区域比较。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "readability:title",
+            "label": "title 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 4.61:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 4.613
+          },
+          {
+            "key": "readability:subtitle",
+            "label": "subtitle 文字可读性",
+            "status": "failed",
+            "detail": "包围框背景采样对比度第 10 百分位 1.70:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 1.704
+          },
+          {
+            "key": "readability:event_info",
+            "label": "event_info 文字可读性",
+            "status": "failed",
+            "detail": "包围框背景采样对比度第 10 百分位 2.29:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 2.293
+          },
+          {
+            "key": "readability:organizer",
+            "label": "organizer 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 4.77:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 4.773
+          }
+        ],
+        "outcome": "not_met",
+        "summary": "部分要求未满足，请查看逐项原因，不以总分上涨代替目标达成。"
+      },
+      "evaluation": {
+        "rule_issues": [],
+        "attention": {
+          "availability": "unavailable",
+          "model": null,
+          "device": null,
+          "cached": false,
+          "fixations": [],
+          "predicted_path": [],
+          "heatmap_artifact": null,
+          "inference_ms": null,
+          "error": "DeepGaze evaluation is not configured for this run."
+        },
+        "vision": {
+          "availability": "unavailable",
+          "score": null,
+          "summary": "",
+          "issues": [],
+          "error": "Vision evaluation is not configured for this run.",
+          "subject_regions": []
+        },
+        "scores": {
+          "hard_rules": 40.0,
+          "vision": null,
+          "attention": null,
+          "total": 100.0,
+          "available_weight": 40.0
+        },
+        "primary_issues": [],
+        "evaluator_version": "evaluation-v2-aoi-paint-order",
+        "design_goal_context": {
+          "adjustments": [],
+          "attention_priority": [
+            "title",
+            "main_visual",
+            "event_info",
+            "organizer",
+            "subtitle"
+          ]
+        }
+      },
+      "visual_review": {
+        "id": "irises",
+        "image_sha256": "1a9f98616aa39105eb5b8386b4100307e841d7bcd32c422ed7ad28670f1c69fd",
+        "decision": "hold",
+        "note": "初版和调整版文字均未裁切，书法标题可辨；但油画背景细节多，副标题和活动信息的局部背景对比未通过检查。保留为失败分析样例，不发布为可复用的成功经验。"
+      }
+    },
+    {
+      "id": "tetons",
+      "label": "社团招新",
+      "title": "山河入镜",
+      "brief": {
+        "poster_type": "club_recruitment",
+        "title": "山河入镜",
+        "topic": "摄影社秋季招新",
+        "subtitle": "带上好奇心 一起记录世界",
+        "target_audience": "摄影零基础与进阶同学",
+        "event_time": "10月20日 18:30",
+        "location": "学生活动中心 · 影像教室",
+        "organizer": "光影摄影社",
+        "title_font": "longcang",
+        "style_preferences": [
+          "黑白摄影",
+          "简洁",
+          "手写标题"
+        ],
+        "notes": "虚构演示活动，非真实日程。以摄影作品呈现主题，不添加虚构二维码或录取承诺。",
+        "attention_layout": false,
+        "use_case_memory": false
+      },
+      "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+      "lesson": "黑白风景通过亮度建立层次；摄影社招新可保留主体影像，仅调整信息字号与位置。",
+      "applicable_when": "摄影社团招新，主图固定，活动信息较短。",
+      "avoid_when": "亮天空不总适合白字；原作品构图较宽，竖版裁切需要人工复核。",
+      "run_id": "dca13a1c-7ad4-4909-b973-62240d87388f",
+      "case_id": "9b1bbcbb-2747-4284-95fb-2b89fde894e2",
+      "source": {
+        "page_id": 118192,
+        "id": "tetons",
+        "title": "大提顿与蛇河",
+        "theme": "club_recruitment",
+        "description": "Ansel Adams 1942 年黑白风景照片，来源记录为美国国家公园署/NARA；适合摄影社团展示。竖版裁切不改变作者署名。",
+        "usage": "public-domain source image; renderer may crop and overlay fictional event text",
+        "creator": "Ansel Adams",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Adams_The_Tetons_and_the_Snake_River.jpg",
+        "rights": "Public domain（来源页标注）",
+        "rights_url": "https://commons.wikimedia.org/wiki/File:Adams_The_Tetons_and_the_Snake_River.jpg#Licensing",
+        "sha256": "ce455df0ffa5f7285888c93e44f92e55f0f4ed63450d693b1188c8b95636b750",
+        "retrieved_at": "2026-09-20T10:24:50.896678+00:00"
+      },
+      "images": {
+        "initial": "/showcase/tetons-initial.png",
+        "optimized": "/showcase/tetons-optimized.png"
+      },
+      "image_hashes": {
+        "initial": "70d24017fbe1ee8283d703827b22a7ac0144f35368eb177edefb2c81289e6b8a",
+        "optimized": "275b58a3b68f21f4d9f678f0beb840da72c7982e515ed1ff8ab4754ee091430d"
+      },
+      "case_status": "candidate",
+      "comparison": {
+        "outcome": "unchanged",
+        "delta": 0.0,
+        "reason": null
+      },
+      "quality_issues": [
+        "当前修改目标仍有未通过项"
+      ],
+      "tool_traces": [
+        {
+          "round_number": 1,
+          "step": 1,
+          "decision_summary": "固定演示方案：放大时间地点，随后实际渲染复评。",
+          "tool_name": "modify_typography",
+          "tool_args": {
+            "actions": [
+              {
+                "action": "set_font_size",
+                "target_id": "event_info",
+                "parameters": {
+                  "font_size": 42
+                },
+                "reason": "展示活动信息排版调整，不伪装模型推理"
+              }
+            ]
+          },
+          "observation": "已安全执行 1 个排版动作，影响元素：event_info。",
+          "success": true,
+          "knowledge_card_ids": []
+        }
+      ],
+      "goal_verification": {
+        "checks": [
+          {
+            "key": "invariants",
+            "label": "文字事实与锁定参数",
+            "status": "passed",
+            "detail": "元素、文字事实、主视觉构图与明确锁定的参数保持不变。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "text_fit",
+            "label": "文字区域检查",
+            "status": "passed",
+            "detail": "实际渲染包围框与分配区域比较。",
+            "before": null,
+            "after": null
+          },
+          {
+            "key": "readability:title",
+            "label": "title 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 4.89:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 4.893
+          },
+          {
+            "key": "readability:subtitle",
+            "label": "subtitle 文字可读性",
+            "status": "failed",
+            "detail": "包围框背景采样对比度第 10 百分位 1.56:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 1.561
+          },
+          {
+            "key": "readability:event_info",
+            "label": "event_info 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 8.06:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 8.061
+          },
+          {
+            "key": "readability:organizer",
+            "label": "organizer 文字可读性",
+            "status": "passed",
+            "detail": "包围框背景采样对比度第 10 百分位 5.05:1，参考门槛 3:1；不计描边，不证明实际阅读效果。",
+            "before": null,
+            "after": 5.049
+          }
+        ],
+        "outcome": "not_met",
+        "summary": "部分要求未满足，请查看逐项原因，不以总分上涨代替目标达成。"
+      },
+      "evaluation": {
+        "rule_issues": [],
+        "attention": {
+          "availability": "unavailable",
+          "model": null,
+          "device": null,
+          "cached": false,
+          "fixations": [],
+          "predicted_path": [],
+          "heatmap_artifact": null,
+          "inference_ms": null,
+          "error": "DeepGaze evaluation is not configured for this run."
+        },
+        "vision": {
+          "availability": "unavailable",
+          "score": null,
+          "summary": "",
+          "issues": [],
+          "error": "Vision evaluation is not configured for this run.",
+          "subject_regions": []
+        },
+        "scores": {
+          "hard_rules": 40.0,
+          "vision": null,
+          "attention": null,
+          "total": 100.0,
+          "available_weight": 40.0
+        },
+        "primary_issues": [],
+        "evaluator_version": "evaluation-v2-aoi-paint-order",
+        "design_goal_context": {
+          "adjustments": [],
+          "attention_priority": [
+            "title",
+            "main_visual",
+            "event_info",
+            "organizer",
+            "subtitle"
+          ]
+        }
+      },
+      "visual_review": {
+        "id": "tetons",
+        "image_sha256": "275b58a3b68f21f4d9f678f0beb840da72c7982e515ed1ff8ab4754ee091430d",
+        "decision": "hold",
+        "note": "初版和调整版保留山峰与河流主体，手写标题与活动信息完整；白字副标题位于亮云层，局部背景对比未通过检查。保留为失败分析样例，不发布为可复用的成功经验。"
+      }
+    }
+  ]
+}

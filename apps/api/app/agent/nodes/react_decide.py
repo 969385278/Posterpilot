@@ -3,13 +3,16 @@ from app.agent.prompts.react import build_react_messages
 from app.agent.state import PosterAgentState
 from app.providers.llm.base import JsonChatProvider
 from app.schemas.react import ReactDecision
+from app.agent.experience_context import retrieve_experience
 
 
 async def react_decide(
     state: PosterAgentState,
     *,
     text_provider: JsonChatProvider,
+    experience_source=None,
 ) -> dict[str, object]:
+    experiences = retrieve_experience(state, experience_source, optimization=True)
     controls = state.get("design_controls")
     human = state.get("human_decision")
     selection_only = (controls and controls.selected_candidate_id and human and not human.instruction
@@ -38,11 +41,13 @@ async def react_decide(
                 analysis=state["analysis_current"].model_dump(mode="json") if state.get("analysis_current") else None,
                 background_treatment=state["background_treatment"].model_dump(mode="json") if state.get("background_treatment") else None,
                 selected_cases=state.get("selected_case_context", []),
+                experiences=experiences,
             )
         )
         decision = ReactDecision.model_validate(payload)
     return {
         "react_decision": decision,
+        "experience_references": experiences,
         "events": with_event(
             state,
             node="react_decide",
@@ -51,6 +56,8 @@ async def react_decide(
                 "decision": decision.decision,
                 "tool_name": decision.tool_name,
                 "round_number": state["round_number"],
+                "experience_candidates": experiences,
+                "experience_note": "参考候选，不代表已采纳；当前用户要求和锁定条件优先。",
             },
         ),
     }

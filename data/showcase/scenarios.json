@@ -1,0 +1,47 @@
+[
+  {
+    "id": "nebula", "label": "科学讲座", "title": "看见星云",
+    "brief": {
+      "poster_type": "campus_lecture", "title": "看见星云", "topic": "天文科普讲座",
+      "subtitle": "从星际尘埃到恒星诞生", "target_audience": "对天文学感兴趣的同学",
+      "event_time": "10月16日 19:00", "location": "科学馆 · 星空报告厅", "organizer": "天文兴趣社",
+      "title_font": "zcoolqingkehuangyou", "style_preferences": ["科学", "深蓝", "克制"],
+      "notes": "虚构演示活动，非真实日程。保留标题和活动信息，主视觉突出星云，不添加机构标志。",
+      "attention_layout": false, "use_case_memory": false
+    },
+    "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+    "lesson": "科学图像细节多，时间地点应独立成组；放大文字后仍要检查局部背景可读性。",
+    "applicable_when": "科学讲座，短标题、两行活动信息，文字排版未锁定。",
+    "avoid_when": "长地址需要更多空间；天文影像不意味着任意科普事实都得到来源支持。"
+  },
+  {
+    "id": "irises", "label": "文化活动", "title": "花间一课",
+    "brief": {
+      "poster_type": "cultural_event", "title": "花间一课", "topic": "绘画与色彩分享会",
+      "subtitle": "在笔触里读懂一束花", "target_audience": "艺术与绘画爱好者",
+      "event_time": "10月18日 14:00", "location": "艺术空间 · 共享画室", "organizer": "校园美术社",
+      "title_font": "mashanzheng", "style_preferences": ["油画", "自然", "书法标题"],
+      "notes": "虚构演示活动，非真实日程。标题使用可授权中文书法字体，保留事实信息，复杂底图上注意文字可读性。",
+      "attention_layout": false, "use_case_memory": false
+    },
+    "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+    "lesson": "艺术字适合短标题，日期地点使用清晰的常规字形；颜色丰富的底图不能替代实际可读性检查。",
+    "applicable_when": "文化活动、四字短标题、油画背景，活动信息与标题分组。",
+    "avoid_when": "细笔画在亮花瓣处可能消失；裁切后的绘画不代表完整原作，也不能伪称是生图模型创作。"
+  },
+  {
+    "id": "tetons", "label": "社团招新", "title": "山河入镜",
+    "brief": {
+      "poster_type": "club_recruitment", "title": "山河入镜", "topic": "摄影社秋季招新",
+      "subtitle": "带上好奇心 一起记录世界", "target_audience": "摄影零基础与进阶同学",
+      "event_time": "10月20日 18:30", "location": "学生活动中心 · 影像教室", "organizer": "光影摄影社",
+      "title_font": "longcang", "style_preferences": ["黑白摄影", "简洁", "手写标题"],
+      "notes": "虚构演示活动，非真实日程。以摄影作品呈现主题，不添加虚构二维码或录取承诺。",
+      "attention_layout": false, "use_case_memory": false
+    },
+    "instruction": "把时间地点放大到更容易阅读，保留其他内容。",
+    "lesson": "黑白风景通过亮度建立层次；摄影社招新可保留主体影像，仅调整信息字号与位置。",
+    "applicable_when": "摄影社团招新，主图固定，活动信息较短。",
+    "avoid_when": "亮天空不总适合白字；原作品构图较宽，竖版裁切需要人工复核。"
+  }
+]

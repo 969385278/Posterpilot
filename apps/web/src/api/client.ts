@@ -18,6 +18,7 @@ export type PosterBriefInput = {
   references?: ReferenceSelection[];
   attention_priority?: PriorityRole[];
   attention_layout?: boolean;
+  use_case_memory?: boolean;
 };
 
 export type RunRecord = {
@@ -217,6 +218,8 @@ export function subscribeRunEvents(
     'tool_started',
     'tool_completed',
     'round_completed',
+    'experience_captured',
+    'experience_capture_pending',
     'run_completed',
     'run_failed',
   ];

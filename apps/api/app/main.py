@@ -6,6 +6,7 @@ from app.agent.runtime import create_runtime_executor
 from app.api.routes.runs import router as runs_router
 from app.api.routes.cases import router as cases_router
 from app.api.routes.fonts import router as fonts_router
+from app.api.routes.datahub import router as datahub_router
 from app.core.config import get_settings
 from app.core.exceptions import register_exception_handlers
 from app.core.logging import configure_logging
@@ -40,6 +41,7 @@ def create_app(run_service: RunService | None = None) -> FastAPI:
     app.include_router(runs_router, prefix="/api/v1")
     app.include_router(cases_router, prefix="/api/v1")
     app.include_router(fonts_router, prefix="/api/v1")
+    app.include_router(datahub_router, prefix="/api/v1")
     return app
 
 

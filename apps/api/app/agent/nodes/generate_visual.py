@@ -25,7 +25,8 @@ async def generate_visual(
         "events": with_event(
             state,
             node="generate_visual",
-            message="已生成无文字主视觉。",
+            message=("已载入审核过的公共领域原图作为展示背景，非模型生成。"
+                     if generated.provider == "reviewed-public-domain-image" else "已生成无文字主视觉。"),
             payload={"provider": generated.provider, "model": generated.model},
         ),
     }

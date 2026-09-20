@@ -11,6 +11,7 @@ from app.schemas.layout import PosterLayout
 from app.providers.llm.base import JsonChatProvider
 from app.schemas.brief import PosterBrief
 from app.schemas.design_spec import DesignSpec
+from app.agent.experience_context import retrieve_experience
 
 DEFAULT_PALETTES = {
     "campus_lecture": {
@@ -135,6 +136,7 @@ async def plan_design(
     state: PosterAgentState,
     *,
     text_provider: JsonChatProvider,
+    experience_source=None,
 ) -> dict[str, object]:
     retrieval = state["retrieval_generation"]
     if retrieval is None:
@@ -142,8 +144,9 @@ async def plan_design(
     knowledge_text = "\n\n".join(
         f"[{match.card.id}] {match.card.title}\n{match.card.content}" for match in retrieval.matches
     )
+    experiences = retrieve_experience(state, experience_source, optimization=False)
     payload = await text_provider.complete_json(
-        build_design_messages(state["brief"], knowledge_text=knowledge_text, selected_cases=state.get("selected_case_context", []))
+        build_design_messages(state["brief"], knowledge_text=knowledge_text, selected_cases=state.get("selected_case_context", []), experiences=experiences)
     )
     approved_refs = {match.card.id for match in retrieval.matches}
     normalized = _normalize_design_payload(payload, state["brief"], approved_refs=approved_refs)
@@ -163,6 +166,7 @@ async def plan_design(
     return {
         "design_spec": design_spec,
         "layout": design_spec.layout,
+        "experience_references": experiences,
         "events": with_event(
             state,
             node="plan_design",
@@ -171,6 +175,8 @@ async def plan_design(
                 "template_id": design_spec.template_id,
                 "knowledge_refs": design_spec.knowledge_refs,
                 "reference_adaptations": design_spec.reference_adaptations,
+                "experience_candidates": experiences,
+                "experience_note": "已提供参考；不代表采纳或效果提升。",
             },
         ),
     }
