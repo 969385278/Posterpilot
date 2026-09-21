@@ -25,6 +25,7 @@ import { PosterPreview } from '../features/poster/PosterPreview';
 import { RoundGallery } from '../features/poster/RoundGallery';
 import { ThemeSelect } from '../features/theme/ThemeSelect';
 import { CandidatePicker } from '../features/design/CandidatePicker';
+import { DesignAssistant } from '../features/assistant/DesignAssistant';
 
 type WorkspacePageProps = {
   onOpenHistory: () => void;
@@ -243,6 +244,7 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
           />
         </div>
       )}
+      <DesignAssistant key={run?.id ?? 'general'} run={run} roundNumber={checkpoint?.round_number} onModified={setRun} />
     </main>
   );
 }
