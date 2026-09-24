@@ -26,13 +26,16 @@ import { RoundGallery } from '../features/poster/RoundGallery';
 import { ThemeSelect } from '../features/theme/ThemeSelect';
 import { CandidatePicker } from '../features/design/CandidatePicker';
 import { DesignAssistant } from '../features/assistant/DesignAssistant';
+import { IntentInput } from '../features/brief/IntentInput';
 
 type WorkspacePageProps = {
   onOpenHistory: () => void;
   initialRunId?: string;
+  initialBrief?: Partial<PosterBriefInput>;
+  onNewBrief?: (brief: Partial<PosterBriefInput>) => void;
 };
 
-export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProps) {
+export function WorkspacePage({ onOpenHistory, initialRunId, initialBrief, onNewBrief }: WorkspacePageProps) {
   const [run, setRun] = useState<RunRecord | null>(null);
   const [result, setResult] = useState<RunResult | null>(null);
   const [events, setEvents] = useState<RunEvent[]>([]);
@@ -43,6 +46,8 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
   const [loadingRun, setLoadingRun] = useState(Boolean(initialRunId));
   const [reload, setReload] = useState(0);
   const [selectedCandidateId, setSelectedCandidateId] = useState<string | null>(null);
+  const [suggestedBrief, setSuggestedBrief] = useState<Partial<PosterBriefInput>>();
+  const [suggestedQuestion, setSuggestedQuestion] = useState('');
 
   useEffect(() => {
     if (!initialRunId) return;
@@ -68,7 +73,10 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
     const stopEvents = subscribeRunEvents(
       runId,
       (event) => { if (active) setEvents((current) => (
-        event.created_at && current.some((item) => item.created_at === event.created_at)
+        current.some((item) => event.id ? item.id === event.id : (
+          event.created_at && item.created_at === event.created_at && item.type === event.type
+          && item.node === event.node && item.message === event.message
+        ))
           ? current
           : [...current, event]
       )); },
@@ -177,13 +185,16 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
           })}
         </ol>
       </section>
+      <IntentInput key={`intent:${run?.id ?? 'new'}`} runId={run?.id} roundNumber={checkpoint?.round_number} disabled={isSubmitting || isDeciding || loadingRun || run?.status === 'running' || run?.status === 'queued'}
+        onGenerate={brief => { if (onNewBrief) onNewBrief(brief); else { setSuggestedBrief(brief); if (run) resetWorkspace(); } }}
+        onQuestion={setSuggestedQuestion} onModify={decision => void decide(decision)} />
       {loadingRun || (initialRunId && !run) ? (
         <section className="workspace-loading">
           {loadingRun ? <p role="status">正在恢复任务…</p> : <><p className="inline-error" role="alert">{error}</p><button className="secondary-action" onClick={() => setReload((value) => value + 1)}>重新读取任务</button></>}
         </section>
       ) : !run ? (
         <div className="workspace-grid">
-          <BriefForm onSubmit={submit} isSubmitting={isSubmitting} />
+          <BriefForm onSubmit={submit} isSubmitting={isSubmitting} suggestedBrief={suggestedBrief ?? initialBrief} />
           <div className="workspace-output">
             {error ? <p className="inline-error" role="alert">{error}</p> : null}
             <PosterPreview status={null} />
@@ -244,7 +255,7 @@ export function WorkspacePage({ onOpenHistory, initialRunId }: WorkspacePageProp
           />
         </div>
       )}
-      <DesignAssistant key={run?.id ?? 'general'} run={run} roundNumber={checkpoint?.round_number} onModified={setRun} />
+      <DesignAssistant key={`assistant:${run?.id ?? 'general'}`} run={run} roundNumber={checkpoint?.round_number} onModified={setRun} suggestedQuestion={suggestedQuestion} />
     </main>
   );
 }

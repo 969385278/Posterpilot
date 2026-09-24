@@ -4,6 +4,7 @@ from app.agent.nodes.common import with_event
 from app.agent.state import PosterAgentState
 from app.rag.models import RetrievalRequest, RetrievalResult
 from app.rag.case_repository import CaseRepository
+from app.agent.user_context import personalized_brief
 
 
 class Retriever(Protocol):
@@ -15,7 +16,7 @@ async def retrieve_generation_knowledge(
     *,
     retriever: Retriever,
 ) -> dict[str, object]:
-    brief = state["brief"]
+    brief = personalized_brief(state["brief"], state.get("user_context"))
     selected_cases = CaseRepository().resolve_selections(brief.references)
     query_parts = [brief.topic, " ".join(brief.style_preferences), " ".join(brief.visual_elements)]
     query_parts.extend(" ".join(case["selected_features"].values()) for case in selected_cases)

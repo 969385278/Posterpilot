@@ -1,24 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { askDesign, confirmDesign, type DesignAnswer } from '../../api/assistant';
 import type { RunRecord } from '../../api/client';
 import '../../styles/assistant.css';
 
-type Props = { run?: RunRecord | null; roundNumber?: number; onModified: (run: RunRecord) => void };
+type Props = { run?: RunRecord | null; roundNumber?: number; onModified: (run: RunRecord) => void; suggestedQuestion?: string };
 const toolLabels: Record<string, string> = { search_knowledge: '检索设计知识', search_cases: '检索审核案例', inspect_poster: '查看海报评测', analyze_image: '分析当前图片', read_history: '查看修改历史' };
 
-export function DesignAssistant({ run, roundNumber, onModified }: Props) {
+export function DesignAssistant({ run, roundNumber, onModified, suggestedQuestion }: Props) {
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState<DesignAnswer[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [confirming, setConfirming] = useState<string | null>(null);
   const [applied, setApplied] = useState<string[]>([]);
+  const [useMemory, setUseMemory] = useState(false);
+  useEffect(() => { if (suggestedQuestion) setQuestion(suggestedQuestion); }, [suggestedQuestion]);
 
   async function ask() {
     if (!question.trim() || busy) return;
     setBusy(true); setError('');
     try {
-      const answer = await askDesign(question.trim(), run?.id, answers.at(-1)?.conversation_id);
+      const answer = await askDesign(question.trim(), run?.id, answers.at(-1)?.conversation_id, useMemory);
       setAnswers(current => [...current, answer]); setQuestion('');
     } catch (reason) { setError(reason instanceof Error ? reason.message : '问答失败。'); }
     finally { setBusy(false); }
@@ -53,6 +55,7 @@ export function DesignAssistant({ run, roundNumber, onModified }: Props) {
     </div>
     <form onSubmit={event => { event.preventDefault(); void ask(); }}>
       <label htmlFor="design-question">你的设计问题</label>
+      <label className="inline-checkbox"><input type="checkbox" checked={useMemory} disabled={busy} onChange={e => setUseMemory(e.target.checked)} />允许读取本机偏好并保留本次问题原话</label>
       <textarea id="design-question" value={question} maxLength={1000} rows={3} placeholder={run ? '为什么标题不够醒目？怎样调整，同时保留主视觉？' : '社团招新海报怎样安排标题和活动信息？'} onChange={event => setQuestion(event.target.value)} disabled={busy} />
       <div className="design-question-actions"><small>问答不会自动修改海报。</small><button className="secondary-action" disabled={busy || !question.trim() || confirming !== null}>{busy ? '正在检索与分析…' : '发送问题'}</button></div>
     </form>

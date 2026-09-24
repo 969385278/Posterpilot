@@ -1,0 +1,68 @@
+{
+  "testedAt": "2026-09-19T16:13:45.880Z",
+  "passed": [
+    "initial paused and actual initial poster visible",
+    "first next plays first business step and stops exactly",
+    "continue from stop does not stop at same frame",
+    "4x next and replay cannot miss teaching stop",
+    "previous and directory jump stay paused",
+    "scrub syncs source, data, explanation and poster without future output",
+    "replay resets current step and does not carry future poster",
+    "paused JSON expands and copies without playback",
+    "source copies and text selection ignores keyboard shortcuts",
+    "data object click selects captured data without resuming",
+    "counterfactual is separate and restores exact paused main position",
+    "continuous mode passes stops, manual pause and next still works",
+    "rapid navigation has one final target",
+    "4x learning mode stops at each remaining boundary",
+    "all nine directory entries reflect same panels and stay paused",
+    "layout collapses and resizes without playback",
+    "keyboard on ordinary page advances a business step",
+    "pointer scrubbing pauses and synchronizes the visible step",
+    "desktop sizes have no horizontal page overflow",
+    "entire replay makes only static GET requests and has no browser errors"
+  ],
+  "requests": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/",
+      "type": "document"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/assets/index-C9cnKc1A.js",
+      "type": "script"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/assets/index-D4FCEfpB.css",
+      "type": "stylesheet"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/case/record.json",
+      "type": "fetch"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/case/poster_initial.png",
+      "type": "image"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/case/poster_round_1.png",
+      "type": "image"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/case/poster_round_1.png",
+      "type": "image"
+    },
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8891/case/poster_initial.png",
+      "type": "image"
+    }
+  ],
+  "errors": []
+}

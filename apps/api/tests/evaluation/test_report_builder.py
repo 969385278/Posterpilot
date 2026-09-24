@@ -29,4 +29,4 @@ def test_report_prioritizes_critical_rule_and_vision_issue() -> None:
     report = build_report(rules, attention, vision, scores)
 
     assert report.primary_issues == ["标题出界", "对比不足"]
-    assert report.evaluator_version == "evaluation-v2-aoi-paint-order"
+    assert report.evaluator_version == "evaluation-v4-element-goals"

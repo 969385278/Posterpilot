@@ -43,6 +43,7 @@ class RunRecord(BaseModel):
 
 
 class RunEvent(BaseModel):
+    id: UUID = Field(default_factory=uuid4)
     run_id: UUID
     type: RunEventType
     node: str | None = None

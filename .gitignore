@@ -53,6 +53,9 @@ credentials.json
 /data/datahub-verification/
 /data/datahub-demo/
 /data/reviewed-showcase/
+/data/visual-assets/
+/data/tool-harness/
+/work/
 /data/knowledge/pdf_inventory.json
 .DS_Store
 Thumbs.db
@@ -60,6 +63,16 @@ Thumbs.db
 .vscode/
 
 *.log
+*.runtime.lock
 *.bak
 *.corrupted
 *.pre-rewrite
+
+data/chroma-runtime/
+
+# Machine-specific resume evidence guide (public guidance lives in docs/)
+/docs/简历项目数据与评测核验指南_*.md
+/docs/resume-completion-status.md
+
+# Local application process state and screenshots
+.runtime/

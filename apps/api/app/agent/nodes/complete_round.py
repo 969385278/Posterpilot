@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 from app.agent.nodes.common import with_event
 from app.agent.state import PosterAgentState
@@ -35,6 +36,28 @@ def render_round(
         background_color=design_spec.palette.background,
         treatment=treatment,
     )
+    # Repair sampled contrast after an explicit opacity edit, without changing the
+    # requested opacity, position, or any locked/explicitly requested text color.
+    opacity_ids = {goal.element_id for goal in controls.element_goals if goal.kind == "opacity"}
+    color_changes = []
+    if opacity_ids and not re.search(r"颜色|色值|#[0-9a-fA-F]{6}", state.get("human_instruction", "")):
+        from app.poster.initial_text_colors import _adapt_colors_for_background
+        from app.schemas.design_control import ElementLock
+        locked = {lock.element_id: lock for lock in controls.locks}
+        for element in layout.elements:
+            if element.content and element.id not in opacity_ids:
+                locked[element.id] = ElementLock(element_id=element.id, properties=["typography"])
+        adapted, color_changes = _adapt_colors_for_background(
+            layout, palette=design_spec.palette, main_visual_path=main_visual_path,
+            treatment=treatment, text_facts=result.text_facts,
+            controls=controls.model_copy(update={"locks": list(locked.values())}),
+        )
+        if color_changes:
+            assert_design_constraints(base, adapted, controls, before_treatment=base_treatment, after_treatment=treatment)
+            layout = adapted
+            result = renderer.render(layout, main_visual_path=main_visual_path,
+                output_path=Path(run_directory) / name, background_color=design_spec.palette.background,
+                treatment=treatment)
     rejection_reason = None
     if state.get("analysis_before_round"):
         measured = analyze_design(layout, main_visual_path=main_visual_path, treatment=treatment, text_facts=result.text_facts)
@@ -54,7 +77,8 @@ def render_round(
             state,
             node="render_round",
             message=f"第 {state['round_number']} 轮触发渲染保护，已保留本轮开始的版本：{rejection_reason}" if rejection_reason else f"已渲染第 {state['round_number']} 轮海报。",
-            payload={"round_number": state["round_number"], "artifact": name},
+            payload={"round_number": state["round_number"], "artifact": name,
+                     "opacity_readability_color_adjustments": color_changes},
         ),
     }
 

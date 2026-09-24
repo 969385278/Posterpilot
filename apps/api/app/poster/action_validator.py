@@ -23,6 +23,20 @@ def validate_actions(actions: Sequence[OptimizationAction], layout: PosterLayout
 
 def _validate_action(action: OptimizationAction, role: str) -> None:
     params = action.parameters
+    accepted = {
+        "set_font_size": {"font_size"},
+        "set_brightness": {"brightness"},
+        "set_opacity": {"opacity"},
+        "set_line_spacing": {"line_spacing"},
+        "set_color": {"color"},
+        "set_alignment": {"alignment"},
+        "set_position": {"x", "y"},
+        "set_size": {"width", "height"},
+    }.get(action.action)
+    if accepted is not None and (unknown := set(params) - accepted):
+        raise ActionValidationError(
+            f"{action.action} received unsupported parameters: {', '.join(sorted(unknown))}"
+        )
     if action.action == "set_font_size":
         _require_number(params, "font_size", minimum=10, maximum=240)
         if role == "main_visual":

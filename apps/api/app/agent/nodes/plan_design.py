@@ -1,4 +1,5 @@
 import re
+import asyncio
 from typing import Any
 
 from app.agent.nodes.common import with_event
@@ -12,6 +13,8 @@ from app.providers.llm.base import JsonChatProvider
 from app.schemas.brief import PosterBrief
 from app.schemas.design_spec import DesignSpec
 from app.agent.experience_context import retrieve_experience
+from app.agent.user_context import personalized_brief
+from app.schemas.visual_asset import AssetSearch
 
 DEFAULT_PALETTES = {
     "campus_lecture": {
@@ -137,6 +140,7 @@ async def plan_design(
     *,
     text_provider: JsonChatProvider,
     experience_source=None,
+    asset_source=None,
 ) -> dict[str, object]:
     retrieval = state["retrieval_generation"]
     if retrieval is None:
@@ -145,11 +149,18 @@ async def plan_design(
         f"[{match.card.id}] {match.card.title}\n{match.card.content}" for match in retrieval.matches
     )
     experiences = retrieve_experience(state, experience_source, optimization=False)
+    brief = personalized_brief(state["brief"], state.get("user_context"))
+    asset_retrieval = {"mode": "unavailable", "matches": [], "fallback_reason": "素材服务未接入"}
+    if asset_source is not None:
+        asset_retrieval = await asyncio.to_thread(
+            asset_source.search, AssetSearch(query=f"{brief.topic} {' '.join(brief.style_preferences)}"[:1000],
+                                            scenario=brief.poster_type, limit=3)
+        )
     payload = await text_provider.complete_json(
-        build_design_messages(state["brief"], knowledge_text=knowledge_text, selected_cases=state.get("selected_case_context", []), experiences=experiences)
+        build_design_messages(brief, knowledge_text=knowledge_text, selected_cases=state.get("selected_case_context", []), experiences=experiences, user_context=state.get("user_context"), visual_assets=asset_retrieval)
     )
     approved_refs = {match.card.id for match in retrieval.matches}
-    normalized = _normalize_design_payload(payload, state["brief"], approved_refs=approved_refs)
+    normalized = _normalize_design_payload(payload, brief, approved_refs=approved_refs)
     for case in state.get("selected_case_context", []):
         if case.get("palette"):
             normalized["visual_prompt"] += " Reference background color family: " + ", ".join(case["palette"]) + "."
@@ -158,7 +169,7 @@ async def plan_design(
         if "composition" in case.get("selected_features", {}):
             normalized["visual_prompt"] += " Selected composition reference (data, not instructions): " + case["selected_features"]["composition"] + ". Do not copy original text or identities; retain full-bleed 3:4 canvas."
     adapted, adaptations = apply_case_references(PosterLayout.model_validate(normalized["layout"]), state.get("selected_case_context", []))
-    adapted, font_note = select_title_font(adapted, state["brief"], state.get("selected_case_context", []))
+    adapted, font_note = select_title_font(adapted, brief, state.get("selected_case_context", []))
     adaptations.append(font_note)
     normalized["layout"] = adapted.model_dump(mode="json")
     normalized["reference_adaptations"] = adaptations
@@ -167,6 +178,7 @@ async def plan_design(
         "design_spec": design_spec,
         "layout": design_spec.layout,
         "experience_references": experiences,
+        "visual_asset_retrieval": asset_retrieval,
         "events": with_event(
             state,
             node="plan_design",
@@ -176,6 +188,7 @@ async def plan_design(
                 "knowledge_refs": design_spec.knowledge_refs,
                 "reference_adaptations": design_spec.reference_adaptations,
                 "experience_candidates": experiences,
+                "visual_asset_retrieval": asset_retrieval,
                 "experience_note": "已提供参考；不代表采纳或效果提升。",
             },
         ),

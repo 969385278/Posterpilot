@@ -1,0 +1,272 @@
+{
+  "dataset_kind": "agent_authored_development_not_holdout",
+  "source_note": "Two constructed inputs based on the template/reference example. Synthetic source_run_id values, no observed outcomes. Alignment is also expressible with original modify_layout; this is not a label of missing baseline capability.",
+  "tasks": [
+    {
+      "id": "development-opacity",
+      "source_run_id": "a16b3a9e-1b3d-4b88-9097-590188939a44",
+      "brief": {
+        "poster_type": "cultural_event",
+        "topic": "春日读书会",
+        "target_audience": "",
+        "title": "春日读书会",
+        "title_font": "auto",
+        "subtitle": null,
+        "event_time": "周六下午",
+        "location": "图书馆",
+        "organizer": "",
+        "style_preferences": [],
+        "color_preferences": [],
+        "visual_elements": [],
+        "avoid_elements": [],
+        "notes": "",
+        "canvas": {
+          "width": 1080,
+          "height": 1440
+        },
+        "references": [],
+        "attention_priority": [],
+        "attention_layout": false,
+        "use_case_memory": true,
+        "user_id": "local",
+        "use_user_memory": false
+      },
+      "design_spec": {
+        "design_goal": "强调活动标题并保持活动信息可读",
+        "template_id": "cultural_event",
+        "expected_attention_path": [
+          "title",
+          "main_visual",
+          "event_info"
+        ],
+        "layout": {
+          "canvas": {
+            "width": 1080,
+            "height": 1440
+          },
+          "elements": [
+            {
+              "id": "title",
+              "role": "title",
+              "box": {
+                "x": 0.08,
+                "y": 0.07,
+                "width": 0.84,
+                "height": 0.15
+              },
+              "content": "春日读书会",
+              "font_size": 88,
+              "font_family": "Microsoft YaHei",
+              "color": "#F8FAFC",
+              "alignment": "left",
+              "line_spacing": 1.2,
+              "opacity": 1.0
+            },
+            {
+              "id": "main_visual",
+              "role": "main_visual",
+              "box": {
+                "x": 0.0,
+                "y": 0.0,
+                "width": 1.0,
+                "height": 1.0
+              },
+              "content": null,
+              "font_size": null,
+              "font_family": null,
+              "color": null,
+              "alignment": "left",
+              "line_spacing": 1.2,
+              "opacity": 1.0
+            },
+            {
+              "id": "event_info",
+              "role": "event_info",
+              "box": {
+                "x": 0.08,
+                "y": 0.76,
+                "width": 0.84,
+                "height": 0.12
+              },
+              "content": "周六下午\n图书馆",
+              "font_size": 32,
+              "font_family": "Microsoft YaHei",
+              "color": "#F8FAFC",
+              "alignment": "left",
+              "line_spacing": 1.45,
+              "opacity": 1.0
+            }
+          ]
+        },
+        "palette": {
+          "background": "#EEE8DA",
+          "primary": "#111111",
+          "secondary": "#333333",
+          "accent": null
+        },
+        "visual_prompt": "Imported development reference; no image model was called",
+        "negative_prompt": "",
+        "knowledge_refs": [],
+        "reference_adaptations": []
+      },
+      "main_visual": "..\\media\\images\\commons-118192.jpg",
+      "instruction": "标题不透明度设为80%，保留活动信息位置",
+      "controls": {
+        "element_goals": [
+          {
+            "kind": "opacity",
+            "element_id": "title",
+            "opacity": 0.8
+          }
+        ],
+        "locks": [
+          {
+            "element_id": "event_info",
+            "properties": [
+              "position",
+              "content"
+            ]
+          }
+        ]
+      },
+      "background_treatment": {
+        "contrast": 1.0,
+        "saturation": 1.0
+      },
+      "user_context": {}
+    },
+    {
+      "id": "development-alignment",
+      "source_run_id": "bcd7e603-c4c3-4d5e-bc57-294f804d77de",
+      "brief": {
+        "poster_type": "cultural_event",
+        "topic": "春日读书会",
+        "target_audience": "",
+        "title": "春日读书会",
+        "title_font": "auto",
+        "subtitle": null,
+        "event_time": "周六下午",
+        "location": "图书馆",
+        "organizer": "",
+        "style_preferences": [],
+        "color_preferences": [],
+        "visual_elements": [],
+        "avoid_elements": [],
+        "notes": "",
+        "canvas": {
+          "width": 1080,
+          "height": 1440
+        },
+        "references": [],
+        "attention_priority": [],
+        "attention_layout": false,
+        "use_case_memory": true,
+        "user_id": "local",
+        "use_user_memory": false
+      },
+      "design_spec": {
+        "design_goal": "强调活动标题并保持活动信息可读",
+        "template_id": "cultural_event",
+        "expected_attention_path": [
+          "title",
+          "main_visual",
+          "event_info"
+        ],
+        "layout": {
+          "canvas": {
+            "width": 1080,
+            "height": 1440
+          },
+          "elements": [
+            {
+              "id": "title",
+              "role": "title",
+              "box": {
+                "x": 0.08,
+                "y": 0.07,
+                "width": 0.84,
+                "height": 0.15
+              },
+              "content": "春日读书会",
+              "font_size": 88,
+              "font_family": "Microsoft YaHei",
+              "color": "#F8FAFC",
+              "alignment": "left",
+              "line_spacing": 1.2,
+              "opacity": 1.0
+            },
+            {
+              "id": "main_visual",
+              "role": "main_visual",
+              "box": {
+                "x": 0.0,
+                "y": 0.0,
+                "width": 1.0,
+                "height": 1.0
+              },
+              "content": null,
+              "font_size": null,
+              "font_family": null,
+              "color": null,
+              "alignment": "left",
+              "line_spacing": 1.2,
+              "opacity": 1.0
+            },
+            {
+              "id": "event_info",
+              "role": "event_info",
+              "box": {
+                "x": 0.15,
+                "y": 0.76,
+                "width": 0.55,
+                "height": 0.12
+              },
+              "content": "周六下午\n图书馆",
+              "font_size": 32,
+              "font_family": "Microsoft YaHei",
+              "color": "#F8FAFC",
+              "alignment": "left",
+              "line_spacing": 1.45,
+              "opacity": 1.0
+            }
+          ]
+        },
+        "palette": {
+          "background": "#EEE8DA",
+          "primary": "#111111",
+          "secondary": "#333333",
+          "accent": null
+        },
+        "visual_prompt": "Imported development reference; no image model was called",
+        "negative_prompt": "",
+        "knowledge_refs": [],
+        "reference_adaptations": []
+      },
+      "main_visual": "..\\media\\images\\commons-118192.jpg",
+      "instruction": "活动信息文字框右边与标题文字框右边对齐，保持标题位置",
+      "controls": {
+        "element_goals": [
+          {
+            "kind": "alignment",
+            "element_id": "event_info",
+            "reference_id": "title",
+            "edge": "right"
+          }
+        ],
+        "locks": [
+          {
+            "element_id": "title",
+            "properties": [
+              "position"
+            ]
+          }
+        ]
+      },
+      "background_treatment": {
+        "contrast": 1.0,
+        "saturation": 1.0
+      },
+      "user_context": {}
+    }
+  ]
+}

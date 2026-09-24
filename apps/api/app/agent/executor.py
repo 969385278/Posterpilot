@@ -1,4 +1,5 @@
 import asyncio
+import json
 from pathlib import Path
 from typing import Any
 from uuid import UUID
@@ -36,6 +37,7 @@ class LangGraphAgentExecutor:
         evaluation: EvaluationDependencies | None = None,
         checkpoint_path: Path | str | None = None,
         experience_source: Any | None = None,
+        asset_source: Any | None = None,
     ) -> None:
         self.retriever = retriever
         self.text_provider = text_provider
@@ -44,6 +46,8 @@ class LangGraphAgentExecutor:
         self.evaluation = evaluation
         self.tools = ReactToolRegistry(retriever)
         self.experience_source = experience_source
+        self.asset_source = asset_source
+        self.event_sink = None
         self.checkpoint_path = Path(checkpoint_path).resolve() if checkpoint_path else None
         self._graph: Any | None = None
         self._sqlite_context: Any | None = None
@@ -60,6 +64,12 @@ class LangGraphAgentExecutor:
         initial = initial_agent_state(brief)
         initial["run_id"] = str(run_id)
         initial["run_directory"] = str(Path(run_directory).resolve())
+        profile_path = Path(run_directory) / "user_context.json"
+        if brief.use_user_memory and profile_path.exists():
+            profile = json.loads(profile_path.read_text(encoding="utf-8"))
+            if profile.get("user_id") != brief.user_id:
+                raise ValueError("Profile snapshot belongs to a different user")
+            initial["user_context"] = profile
         result = await graph.ainvoke(initial, config=self._config(run_id))
         return self._outcome(result, event_start=0)
 
@@ -117,6 +127,8 @@ class LangGraphAgentExecutor:
                 checkpointer=checkpointer,
                 evaluation=self.evaluation,
                 experience_source=self.experience_source,
+                asset_source=self.asset_source,
+                event_sink=self.event_sink,
             )
             return self._graph
 
@@ -126,7 +138,8 @@ class LangGraphAgentExecutor:
 
     @staticmethod
     def _outcome(result: dict[str, Any], *, event_start: int) -> AgentExecutionOutcome:
-        events = result.get("events", [])[event_start:]
+        events = [event for event in result.get("events", [])[event_start:]
+                  if not event.get("_streamed")]
         interrupts = result.get("__interrupt__", ())
         if interrupts:
             checkpoint = HumanCheckpoint.model_validate(interrupts[0].value)

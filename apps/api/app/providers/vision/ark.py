@@ -10,6 +10,8 @@ class ArkVisionResponseError(RuntimeError):
 
 
 class ArkVisionProvider:
+    provider_name = "Ark"
+
     def __init__(
         self,
         *,
@@ -25,9 +27,9 @@ class ArkVisionProvider:
 
     async def analyze_json(self, *, image_url: str, prompt: str) -> dict[str, Any]:
         if not self.api_key:
-            raise ArkVisionResponseError("Ark API key is not configured.")
+            raise ArkVisionResponseError(f"{self.provider_name} API key is not configured.")
         if not self.model:
-            raise ArkVisionResponseError("Ark vision model is not configured.")
+            raise ArkVisionResponseError(f"{self.provider_name} vision model is not configured.")
         payload = {
             "model": self.model,
             "messages": [
@@ -53,19 +55,23 @@ class ArkVisionProvider:
                     json=payload,
                 )
         except httpx.HTTPError as error:
-            message = self._sanitize(f"Ark vision request failed: {error}")
+            message = self._sanitize(f"{self.provider_name} vision request failed: {error}")
             raise ArkVisionResponseError(message) from error
         if response.is_error:
             detail = response.text.strip() or "No error detail returned."
-            message = self._sanitize(f"Ark vision returned HTTP {response.status_code}: {detail}")
+            message = self._sanitize(
+                f"{self.provider_name} vision returned HTTP {response.status_code}: {detail}"
+            )
             raise ArkVisionResponseError(message)
         try:
             content = response.json()["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError, ValueError) as error:
-            message = "Ark vision returned an unexpected response shape."
+            message = f"{self.provider_name} vision returned an unexpected response shape."
             raise ArkVisionResponseError(message) from error
         if not isinstance(content, str) or not content.strip():
-            raise ArkVisionResponseError("Ark vision returned no message content.")
+            raise ArkVisionResponseError(
+                f"{self.provider_name} vision returned no message content."
+            )
         content = content.strip()
         fenced = re.fullmatch(r"```(?:json)?\s*(\{.*\})\s*```", content, flags=re.DOTALL)
         if fenced:
@@ -73,10 +79,12 @@ class ArkVisionProvider:
         try:
             parsed = json.loads(content)
         except json.JSONDecodeError as error:
-            message = "Ark vision did not return a valid JSON object."
+            message = f"{self.provider_name} vision did not return a valid JSON object."
             raise ArkVisionResponseError(message) from error
         if not isinstance(parsed, dict):
-            raise ArkVisionResponseError("Ark vision did not return a valid JSON object.")
+            raise ArkVisionResponseError(
+                f"{self.provider_name} vision did not return a valid JSON object."
+            )
         return parsed
 
     def _sanitize(self, message: str) -> str:

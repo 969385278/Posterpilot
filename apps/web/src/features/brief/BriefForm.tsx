@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 
 import type { PosterBriefInput } from '../../api/client';
 import { CaseGallery } from '../design/CaseGallery';
@@ -10,6 +10,7 @@ import showcase from '../../data/showcase.json';
 type BriefFormProps = {
   onSubmit: (brief: PosterBriefInput) => void;
   isSubmitting: boolean;
+  suggestedBrief?: Partial<PosterBriefInput>;
 };
 
 const blankBrief: PosterBriefInput = {
@@ -28,9 +29,12 @@ const blankBrief: PosterBriefInput = {
   notes: '',
 };
 
-export function BriefForm({ onSubmit, isSubmitting }: BriefFormProps) {
+export function BriefForm({ onSubmit, isSubmitting, suggestedBrief }: BriefFormProps) {
   const [brief, setBrief] = useState<PosterBriefInput>(blankBrief);
   const [showCases, setShowCases] = useState(false);
+  useEffect(() => {
+    if (suggestedBrief) setBrief({ ...blankBrief, ...suggestedBrief, subtitle: suggestedBrief.subtitle ?? '' });
+  }, [suggestedBrief]);
 
   function update(field: keyof PosterBriefInput, value: string) {
     setBrief((current) => {
@@ -126,6 +130,7 @@ export function BriefForm({ onSubmit, isSubmitting }: BriefFormProps) {
         {isSubmitting ? '正在创建任务' : '开始生成'}
       </button>
       <label className="inline-checkbox form-span"><input type="checkbox" checked={brief.use_case_memory ?? true} disabled={isSubmitting} onChange={event => setBrief(current => ({ ...current, use_case_memory: event.target.checked }))} />参考已审核的历史经验（不匹配时沿用原流程）</label>
+      <label className="inline-checkbox form-span"><input type="checkbox" checked={brief.use_user_memory ?? false} disabled={isSubmitting} onChange={event => setBrief(current => ({ ...current, use_user_memory: event.target.checked }))} />使用本机用户已确认的设计偏好（本次要求优先）</label>
       <p className="form-footnote form-span">生成可能需要一些时间。初版完成后，你可以选择保留结果或继续优化。</p>
     </form>
   );

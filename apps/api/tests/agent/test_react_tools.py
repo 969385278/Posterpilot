@@ -196,3 +196,20 @@ async def test_layout_tool_rejects_out_of_bounds_result() -> None:
             ),
             layout=make_layout(),
         )
+
+
+async def test_color_action_rejects_smuggled_opacity_without_mutating_layout():
+    from app.poster.action_validator import ActionValidationError
+
+    layout = make_layout()
+    before = layout.model_dump()
+    with pytest.raises(ActionValidationError, match="unsupported parameters: opacity"):
+        await ReactToolRegistry(FakeRetriever()).execute(
+            _decision("modify_typography", {"actions": [{
+                "action": "set_color", "target_id": "title",
+                "parameters": {"color": "#F8FAFC", "opacity": 0.8},
+                "reason": "Live model attempted an unsupported combined operation",
+            }]}),
+            layout=layout,
+        )
+    assert layout.model_dump() == before

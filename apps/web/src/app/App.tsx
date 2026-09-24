@@ -7,6 +7,7 @@ import { ThemeSelect } from '../features/theme/ThemeSelect';
 import { DataHubPage } from '../pages/DataHubPage';
 import { ShowcaseGallery } from '../features/showcase/ShowcaseGallery';
 import showcase from '../data/showcase.json';
+import type { PosterBriefInput } from '../api/client';
 
 const workflow = [
   { title: '描述你的活动', description: '填写主题、时间与地点，把创作意图交给系统。' },
@@ -16,6 +17,8 @@ const workflow = [
 
 export function App() {
   const [route, setRoute] = useState(readRoute);
+  const [draftBrief, setDraftBrief] = useState<Partial<PosterBriefInput>>();
+  useEffect(() => { if (route.runId) setDraftBrief(undefined); }, [route.runId]);
   const page = route.page;
   useEffect(() => {
     const update = () => setRoute(readRoute());
@@ -28,7 +31,8 @@ export function App() {
   }
 
   if (page === 'workspace') {
-    return <WorkspacePage key={route.runId ?? 'new'} initialRunId={route.runId} onOpenHistory={() => navigate('history')} />;
+    return <WorkspacePage key={route.runId ?? 'new'} initialRunId={route.runId} initialBrief={draftBrief}
+      onNewBrief={brief => { setDraftBrief(brief); navigate('workspace'); }} onOpenHistory={() => navigate('history')} />;
   }
 
   if (page === 'history') {

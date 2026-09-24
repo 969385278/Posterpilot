@@ -3,6 +3,10 @@ import { captureRun, caseQuality, editCase, hubImage, hubStats, listHubCases, re
   type CaseFeedback, type CaseNotes, type CaseStatus, type ExperienceReference, type HubCase, type HubStats } from '../api/datahub';
 import { ThemeSelect } from '../features/theme/ThemeSelect';
 import '../styles/datahub.css';
+import { MemoryPanel } from '../features/memory/MemoryPanel';
+import { DecisionPanel } from '../features/memory/DecisionPanel';
+import { HarnessPanel } from '../features/memory/HarnessPanel';
+import { VisualAssetsPanel } from '../features/memory/VisualAssetsPanel';
 
 const statusNames: Record<CaseStatus, string> = { candidate: '待整理审核', approved: '已发布', rejected: '已驳回', withdrawn: '已撤回' };
 const feedbackNames = { unknown: '未明确评价', accepted: '用户接受', rejected: '用户拒绝' };
@@ -14,7 +18,7 @@ export function DataHubPage({ initialRunId }: { initialRunId?: string }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [reload, setReload] = useState(0);
-  const [tab, setTab] = useState<'cases' | 'feedback' | 'quality' | 'retrieval'>('cases');
+  const [tab, setTab] = useState<'cases' | 'feedback' | 'quality' | 'retrieval' | 'memory' | 'decisions' | 'harness' | 'assets'>('cases');
   const [status, setStatus] = useState('all');
   const [search, setSearch] = useState('');
   const [onlyRun, setOnlyRun] = useState(Boolean(initialRunId));
@@ -49,9 +53,9 @@ export function DataHubPage({ initialRunId }: { initialRunId?: string }) {
     <header className="workspace-topbar"><div><a className="wordmark" href="#datahub">PosterHub</a><span>案例与反馈工作台</span></div><div className="topbar-actions"><ThemeSelect /><a className="text-action" href="#workspace">返回海报创作</a><a className="text-action" href="#history">任务历史</a></div></header>
     <section className="hub-intro"><h1>让每一次修改，都有迹可循。</h1><p>整理案例，保留反馈，审核后再供 Agent 参考。用户接受、评测分数与允许复用，是三个不同的判断。</p><p className="hub-muted">本机单用户工作台。审核记录不代表企业账号认证；没有采集的反馈保持未知，离线样例单独标记。</p></section>
     {stats && <dl className="hub-stats" aria-label="案例统计"><div><dt>全部案例</dt><dd>{stats.total}</dd></div><div><dt>待整理审核</dt><dd>{stats.statuses.candidate}</dd></div><div><dt>已发布参考</dt><dd>{stats.statuses.approved}</dd></div><div><dt>未明确评价</dt><dd>{stats.feedback.unknown}</dd></div></dl>}
-    <nav className="hub-tabs" aria-label="数据工作台功能">{([['cases', '案例库'], ['feedback', '反馈记录'], ['quality', '质量与审核'], ['retrieval', '检索验证']] as const).map(([key, label]) => <button key={key} aria-pressed={tab === key} onClick={() => { setTab(key); setSelectedId(null); }}>{label}</button>)}</nav>
+    <nav className="hub-tabs" aria-label="数据工作台功能">{([['cases', '案例库'], ['feedback', '反馈记录'], ['quality', '质量与审核'], ['retrieval', '检索验证'], ['memory', '用户记忆'], ['decisions', '决策卡'], ['harness', '工具与能力'], ['assets', '视觉素材']] as const).map(([key, label]) => <button key={key} aria-pressed={tab === key} onClick={() => { setTab(key); setSelectedId(null); }}>{label}</button>)}</nav>
     {notice && <p role="status">{notice}</p>}{error && <p className="inline-error" role="alert">{error}</p>}
-    {tab === 'retrieval' ? <RetrievalLab excludeRunId={initialRunId} /> : <>
+    {tab === 'assets' ? <VisualAssetsPanel /> : tab === 'harness' ? <HarnessPanel /> : tab === 'decisions' ? <DecisionPanel /> : tab === 'memory' ? <MemoryPanel /> : tab === 'retrieval' ? <RetrievalLab excludeRunId={initialRunId} /> : <>
       <section className="hub-filters" aria-label="筛选案例"><label>搜索案例<input value={search} onChange={event => setSearch(event.target.value)} placeholder="标题、问题或风格" /></label><label>审核状态<select value={status} onChange={event => setStatus(event.target.value)}><option value="all">全部状态</option>{Object.entries(statusNames).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
         {initialRunId && <label className="inline-checkbox"><input type="checkbox" checked={onlyRun} onChange={event => setOnlyRun(event.target.checked)} />仅当前任务</label>}
         <button className="secondary-action" disabled={loading || busy} onClick={() => setReload(value => value + 1)}>刷新</button>{initialRunId && <button className="secondary-action" disabled={busy} onClick={() => void collect()}>{busy ? '收集中…' : '重新收集此任务'}</button>}

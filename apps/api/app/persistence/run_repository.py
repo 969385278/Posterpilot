@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from datetime import UTC, datetime
 from uuid import UUID
 
@@ -41,6 +43,25 @@ class RunRepository:
             session.commit()
         return record
 
+    def interrupt_abandoned_runs(self) -> list[RunRecord]:
+        """Caller must own the exclusive runtime lock; preserve paused/final runs."""
+        with self.database.session() as session:
+            rows = session.scalars(
+                update(RunRow)
+                .where(RunRow.status.in_(["queued", "running"]))
+                .values(
+                    status="failed",
+                    current_node="startup_recovery",
+                    error_code="execution_interrupted",
+                    error_message="上次服务退出时执行尚未完成。已有版本已保留，请检查后新建任务；未自动重放模型调用。",
+                    updated_at=datetime.now(UTC),
+                )
+                .returning(RunRow)
+            ).all()
+            records = [self._to_record(row) for row in rows]
+            session.commit()
+            return records
+
     def get(self, run_id: UUID) -> RunRecord | None:
         with self.database.session() as session:
             row = session.get(RunRow, str(run_id))
@@ -79,6 +100,15 @@ class RunRepository:
             session.commit()
             session.refresh(row)
             return self._to_record(row)
+
+    def failed_page(self, *, after_id: UUID | None = None, limit: int = 100) -> list[RunRecord]:
+        """Keyset page for recoverable failure projections, without the UI history cap."""
+        statement = select(RunRow).where(RunRow.status == "failed")
+        if after_id is not None:
+            statement = statement.where(RunRow.id > str(after_id))
+        statement = statement.order_by(RunRow.id).limit(max(1, min(limit, 200)))
+        with self.database.session() as session:
+            return [self._to_record(row) for row in session.scalars(statement).all()]
 
     def transition_status(
         self,

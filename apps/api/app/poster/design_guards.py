@@ -12,6 +12,12 @@ _TYPOGRAPHY_FIELDS = ("font_size", "font_family", "color", "alignment", "line_sp
 
 
 def validate_control_targets(controls: DesignControls, layout: PosterLayout) -> None:
+    if controls.fact_edits:
+        from app.poster.fact_edits import edited_layout
+        edited_layout(layout, controls.fact_edits, allow_applied=True)
+        changed = {edit.element_id for edit in controls.fact_edits}
+        if any(lock.element_id in changed and "content" in lock.properties for lock in controls.locks):
+            raise DesignConstraintError("文字修改与内容锁定冲突，请先明确要求")
     elements = {element.id: element for element in layout.elements}
     unknown = {lock.element_id for lock in controls.locks} - elements.keys()
     if unknown:
@@ -19,6 +25,13 @@ def validate_control_targets(controls: DesignControls, layout: PosterLayout) -> 
     unknown_roles = set(controls.attention_priority) - {element.role for element in layout.elements}
     if unknown_roles:
         raise DesignConstraintError(f"当前海报没有这些优先级元素：{', '.join(sorted(unknown_roles))}")
+    for goal in controls.element_goals:
+        ids = [goal.element_id]
+        if goal.kind == "alignment":
+            ids.append(goal.reference_id)
+        if any(key not in elements or not elements[key].content
+               or elements[key].role == "main_visual" for key in ids):
+            raise DesignConstraintError("透明度和对齐目标必须指向存在的文字元素")
 
 
 def assert_design_constraints(
@@ -31,14 +44,18 @@ def assert_design_constraints(
 ) -> None:
     validate_control_targets(controls, before)
     original = {element.id: element for element in before.elements}
+    from app.poster.fact_edits import edited_layout
+    expected = {element.id: element for element in edited_layout(before, controls.fact_edits, allow_applied=True).elements}
     updated = {element.id: element for element in after.elements}
+    if before.readability_scrims != after.readability_scrims:
+        raise DesignConstraintError("本轮不允许改变已确定的文字背景渐变模式")
     if original.keys() != updated.keys() or before.canvas != after.canvas:
         raise DesignConstraintError("本轮不允许增删元素或改变画布尺寸")
     if [element.id for element in before.elements] != [element.id for element in after.elements]:
         raise DesignConstraintError("本轮不允许改变图层绘制顺序")
     for key, element in original.items():
         candidate = updated[key]
-        if element.role != candidate.role or element.content != candidate.content:
+        if element.role != candidate.role or candidate.content not in (element.content, expected[key].content):
             raise DesignConstraintError(f"必须保留元素 {key} 的角色和文字事实")
         if element.role == "main_visual" and element != candidate:
             raise DesignConstraintError("主视觉构图固定，只能通过专用工具处理背景色彩")

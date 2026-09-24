@@ -6,6 +6,7 @@ from app.schemas.design_control import (
 )
 from app.schemas.layout import PosterLayout
 from app.schemas.evaluation import AttentionPrediction
+from app.evaluation.element_goals import element_goal_checks
 
 
 def verify_design_goals(
@@ -17,6 +18,14 @@ def verify_design_goals(
     rejection_reason: str | None = None,
 ) -> GoalVerification:
     checks: list[VerificationCheck] = []
+    from app.poster.fact_edits import field_value
+    for edit in controls.fact_edits:
+        try:
+            passed = field_value(after_layout, edit.field) == edit.after
+        except ValueError:
+            passed = False
+        checks.append(VerificationCheck(key=f"fact:{edit.field}", label=f"{edit.field} 文字更新",
+            status="passed" if passed else "failed", detail=f"确认的新值：{edit.after}"))
     if rejection_reason:
         checks.append(VerificationCheck(key="render_guard", label="渲染保护", status="failed", detail=f"本轮尝试违反保留条件，已恢复到本轮开始的海报：{rejection_reason}"))
     try:
@@ -58,6 +67,8 @@ def verify_design_goals(
         available = attention is not None and attention.availability != "unavailable" and bool(attention.predicted_path)
         matched = available and attention.predicted_path[:len(controls.attention_priority)] == controls.attention_priority
         checks.append(VerificationCheck(key="attention_priority", label="信息注意力优先级", status="passed" if matched else "failed" if available else "unavailable", detail=f"当前预测角色序列：{attention.predicted_path if available else '不可用'}；与用户优先级比较，仅是模型预测代理，不证明真实阅读顺序。"))
+    checks.extend(element_goal_checks(controls, before_layout, after_layout,
+                                     before_analysis, after_analysis))
     checks.extend(after_analysis.readability_checks)
     if any(check.status == "failed" for check in checks):
         outcome, summary = "not_met", "部分要求未满足，请查看逐项原因，不以总分上涨代替目标达成。"

@@ -1,6 +1,6 @@
 import json
 from collections.abc import Sequence
-from typing import Any
+from typing import Any, Literal
 
 import httpx
 
@@ -8,7 +8,18 @@ from app.providers.llm.base import ChatMessage
 
 
 class ProviderResponseError(RuntimeError):
-    pass
+    def __init__(
+        self,
+        message: str,
+        *,
+        kind: Literal[
+            "unavailable", "timeout", "transport", "http", "invalid_response"
+        ] = "transport",
+        status_code: int | None = None,
+    ):
+        super().__init__(message)
+        self.kind = kind
+        self.status_code = status_code
 
 
 class DeepSeekProvider:
@@ -27,9 +38,11 @@ class DeepSeekProvider:
 
     async def complete_json(self, messages: Sequence[ChatMessage]) -> dict[str, Any]:
         if not self.api_key:
-            raise ProviderResponseError("DeepSeek API key is not configured.")
+            raise ProviderResponseError("DeepSeek API key is not configured.", kind="unavailable")
         if not self.model:
-            raise ProviderResponseError("DeepSeek text model is not configured.")
+            raise ProviderResponseError(
+                "DeepSeek text model is not configured.", kind="unavailable",
+            )
 
         payload = {
             "model": self.model,
@@ -48,6 +61,8 @@ class DeepSeekProvider:
                     },
                     json=payload,
                 )
+        except httpx.TimeoutException as error:
+            raise ProviderResponseError("DeepSeek request timed out.", kind="timeout") from error
         except httpx.HTTPError as error:
             message = self._sanitize(f"DeepSeek request failed: {error}")
             raise ProviderResponseError(message) from error
@@ -55,7 +70,8 @@ class DeepSeekProvider:
         if response.is_error:
             detail = response.text.strip() or "No error detail returned."
             raise ProviderResponseError(
-                self._sanitize(f"DeepSeek returned HTTP {response.status_code}: {detail}")
+                self._sanitize(f"DeepSeek returned HTTP {response.status_code}: {detail}"),
+                kind="http", status_code=response.status_code,
             )
 
         try:
@@ -63,15 +79,21 @@ class DeepSeekProvider:
             content = data["choices"][0]["message"]["content"]
         except (KeyError, IndexError, TypeError, ValueError) as error:
             message = "DeepSeek returned an unexpected response shape."
-            raise ProviderResponseError(message) from error
+            raise ProviderResponseError(message, kind="invalid_response") from error
         if not isinstance(content, str) or not content.strip():
-            raise ProviderResponseError("DeepSeek returned no message content.")
+            raise ProviderResponseError(
+                "DeepSeek returned no message content.", kind="invalid_response",
+            )
         try:
             parsed = json.loads(content)
         except json.JSONDecodeError as error:
-            raise ProviderResponseError("DeepSeek did not return a valid JSON object.") from error
+            raise ProviderResponseError(
+                "DeepSeek did not return a valid JSON object.", kind="invalid_response",
+            ) from error
         if not isinstance(parsed, dict):
-            raise ProviderResponseError("DeepSeek did not return a valid JSON object.")
+            raise ProviderResponseError(
+                "DeepSeek did not return a valid JSON object.", kind="invalid_response",
+            )
         return parsed
 
     def _sanitize(self, message: str) -> str:

@@ -159,7 +159,10 @@ class IgnoreLockThenAdjust:
             return await FakeTextProvider().complete_json(messages)
         payload = json.loads(messages[-1]["content"])
         assert payload["design_controls"]["locks"][0]["element_id"] == "title"
-        assert payload["measured_design_analysis"]["features"]
+        if any(t["success"] and t["tool_name"] == "adjust_background" for t in payload["recent_tool_observations"]):
+            assert payload["measured_design_analysis"] == {}
+        else:
+            assert payload["measured_design_analysis"]["features"]
         self.calls += 1
         if self.calls == 1:
             return {"decision": "tool_call", "summary": "尝试违反锁定", "tool_name": "modify_typography", "arguments": {"actions": [{"action": "set_font_size", "target_id": "title", "parameters": {"font_size": 120}, "reason": "fixture"}]}}

@@ -3,6 +3,8 @@ import type { RunRecord } from './client';
 export type DesignAnswer = {
   id: string; conversation_id: string; question: string; answer: string;
   run_id: string | null; round_number: number | null; degraded: boolean;
+  degradation_reason?: 'model_unavailable' | 'model_timeout' | 'invalid_model_response'
+    | 'model_request_failed' | 'tool_budget_exhausted' | 'invalid_citation' | null;
   citations: { id: string; title: string; source: string; excerpt: string }[];
   trace: { tool: string; summary: string; success: boolean }[];
   proposal: { scope: string; instruction: string } | null;
@@ -16,10 +18,10 @@ async function checked<T>(response: Response): Promise<T> {
   return response.json() as Promise<T>;
 }
 
-export async function askDesign(question: string, runId?: string, conversationId?: string): Promise<DesignAnswer> {
+export async function askDesign(question: string, runId?: string, conversationId?: string, useUserMemory = false): Promise<DesignAnswer> {
   return checked(await fetch('/api/v1/assistant/questions', {
     method: 'POST', headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ question, run_id: runId, conversation_id: conversationId }),
+    body: JSON.stringify({ question, run_id: runId, conversation_id: conversationId, use_user_memory: useUserMemory }),
   }));
 }
 

@@ -4,11 +4,16 @@ export type PriorityRole = 'title' | 'subtitle' | 'main_visual' | 'event_info' |
 export type ReferenceAspect = 'palette' | 'typography' | 'composition' | 'hierarchy';
 export type LockProperty = 'content' | 'position' | 'typography';
 export type ReferenceSelection = { case_id: string; aspects: ReferenceAspect[] };
+export type ElementGoal =
+  | { kind: 'opacity'; element_id: string; opacity: number }
+  | { kind: 'alignment'; element_id: string; reference_id: string; edge: 'left' | 'center' | 'right' };
 export type DesignControls = {
   adjustments: { trait: TraitKey; direction: TraitDirection; strength: number }[];
   locks: { element_id: string; properties: LockProperty[] }[];
   attention_priority: PriorityRole[];
   selected_candidate_id?: string | null;
+  element_goals?: ElementGoal[];
+  fact_edits?: { field: 'title' | 'subtitle' | 'event_time' | 'location' | 'organizer'; element_id: string; before: string; after: string }[];
 };
 export type PosterLayout = {
   canvas: { width: number; height: number };

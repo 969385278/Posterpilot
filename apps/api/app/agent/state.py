@@ -53,6 +53,10 @@ class PosterAgentState(TypedDict):
     round_rejection_reason: str | None
     selected_case_context: list[dict]
     experience_references: list[dict]
+    user_context: dict
+    decision_card_references: list[dict]
+    tool_catalog: list[dict]
+    visual_asset_retrieval: dict
 
 
 def initial_agent_state(brief: PosterBrief) -> PosterAgentState:
@@ -95,5 +99,9 @@ def initial_agent_state(brief: PosterBrief) -> PosterAgentState:
         layout_candidates=[],
         round_rejection_reason=None,
         selected_case_context=[],
+        visual_asset_retrieval={},
         experience_references=[],
+        user_context={},
+        decision_card_references=[],
+        tool_catalog=[],
     )

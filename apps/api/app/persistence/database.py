@@ -18,3 +18,5 @@ class Database:
     def session(self) -> Session:
         return self.session_factory()
 
+    def close(self) -> None:
+        self.engine.dispose()

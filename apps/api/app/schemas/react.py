@@ -13,6 +13,8 @@ ReactToolName = Literal[
     "modify_layout",
     "modify_visual",
     "adjust_background",
+    "set_text_opacity",
+    "align_text_group",
     "finish_round",
 ]
 HumanDecisionAction = Literal["approve", "instruct", "finish"]
@@ -74,6 +76,7 @@ class ToolTrace(BaseModel):
     tool_args: dict[str, Any] = Field(default_factory=dict)
     observation: NonEmptyText
     success: bool
+    tool_publication: dict[str, Any] | None = None
     knowledge_card_ids: list[NonEmptyText] = Field(default_factory=list)
 
 

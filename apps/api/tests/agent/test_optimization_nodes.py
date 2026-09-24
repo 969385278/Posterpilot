@@ -60,7 +60,7 @@ async def test_evaluate_plan_apply_and_reevaluate_layout_optimization(tmp_path: 
     title = next(element for element in optimized["layout"].elements if element.id == "title")
     assert title.font_size == 108
     assert Path(optimized["poster_optimized_path"]).is_file()
-    assert reevaluated["evaluation_optimized"].evaluator_version == "evaluation-v2-aoi-paint-order"
+    assert reevaluated["evaluation_optimized"].evaluator_version == "evaluation-v4-element-goals"
     assert [event["node"] for event in reevaluated["events"]][-4:] == [
         "evaluate_draft",
         "plan_optimization",

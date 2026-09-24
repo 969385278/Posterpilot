@@ -1,0 +1,38 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {"title": "PosterPilot：生成与人工反馈", "locale": "zh-CN", "quality_profile": "showcase", "animation": "trace"},
+  "lanes": [
+    {"id":"generation","label":"固定生成步骤"},
+    {"id":"human","label":"用户决定"},
+    {"id":"optimization","label":"受约束的修改循环"}
+  ],
+  "mainPath":["knowledge","planning","visual","rendering","evaluation","review","done"],
+  "nodes":[
+    {"id":"knowledge","lane":"generation","col":0,"type":"database","label":"检索知识","sublabel":"可用规则与引用","width":144},
+    {"id":"planning","lane":"generation","col":1,"type":"backend","label":"设计规划","sublabel":"模型输出结构化方案","width":144},
+    {"id":"visual","lane":"generation","col":2,"type":"cloud","label":"生成主视觉","sublabel":"无文字背景","width":144},
+    {"id":"rendering","lane":"generation","col":3,"type":"backend","label":"排版与渲染","sublabel":"程序绘制准确中文","width":144},
+    {"id":"evaluation","lane":"generation","col":4,"type":"backend","label":"评测与候选","sublabel":"缺失信号单独标明","width":144},
+    {"id":"review","lane":"human","col":4,"type":"frontend","label":"人工确认","sublabel":"继续修改或结束","width":144},
+    {"id":"done","lane":"human","col":5,"type":"database","label":"保存结果","sublabel":"海报、轮次和依据","width":144},
+    {"id":"decide","lane":"optimization","col":4,"type":"backend","label":"选择下一步","sublabel":"单轮最多三个工具","width":144},
+    {"id":"tool","lane":"optimization","col":3,"type":"security","label":"校验并执行","sublabel":"返回工具观察结果","width":144}
+  ],
+  "edges":[
+    {"from":"knowledge","to":"planning"},
+    {"from":"planning","to":"visual"},
+    {"from":"visual","to":"rendering"},
+    {"from":"rendering","to":"evaluation"},
+    {"from":"evaluation","to":"review","label":"暂停等待"},
+    {"from":"review","to":"done","label":"结束"},
+    {"from":"review","to":"decide","label":"修改意见"},
+    {"from":"decide","to":"tool","label":"工具调用"},
+    {"from":"tool","to":"decide","label":"观察结果","variant":"dashed","role":"return"},
+    {"from":"decide","to":"rendering","label":"本轮结束后统一复评","variant":"dashed","role":"return"}
+  ],
+  "cards":[
+    {"dot":"emerald","title":"谁负责决定","items":["程序规定生成顺序与安全边界","模型在允许的工具中选择；用户决定继续或结束"]},
+    {"dot":"amber","title":"阅读边界","items":["按现有 graph.py 整理，评测节点包含候选建议","这是流程示意动画，不是付费模型的实时执行记录"]}
+  ]
+}

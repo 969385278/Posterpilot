@@ -143,6 +143,7 @@ async def _evaluate_layout(
     report = build_report(rule_issues, attention, vision, scores)
     report.design_goal_context = {
         "adjustments": [goal.model_dump(mode="json") for goal in controls.adjustments],
+        "element_goals": [goal.model_dump(mode="json") for goal in controls.element_goals],
         "attention_priority": controls.attention_priority or design_spec.expected_attention_path,
     }
     return report

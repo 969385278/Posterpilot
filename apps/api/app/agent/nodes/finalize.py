@@ -19,6 +19,7 @@ def finalize(state: PosterAgentState) -> dict[str, object]:
         "score_delta": score_delta,
         "outcome": outcome,
         "comparison_reason": comparison.reason,
+        "layout": state["layout"].model_dump(mode="json") if state.get("layout") else None,
         "rounds": [snapshot.model_dump(mode="json") for snapshot in state["round_snapshots"]],
         "tool_traces": [trace.model_dump(mode="json") for trace in state["tool_traces"]],
         "analysis_initial": state["analysis_initial"].model_dump(mode="json") if state.get("analysis_initial") else None,
@@ -28,6 +29,9 @@ def finalize(state: PosterAgentState) -> dict[str, object]:
         "background_treatment": state["background_treatment"].model_dump(mode="json") if state.get("background_treatment") else {},
         "selected_case_references": state.get("selected_case_context", []),
         "experience_references": state.get("experience_references", []),
+        "user_context": state.get("user_context", {}),
+        "decision_card_references": state.get("decision_card_references", []),
+        "visual_asset_retrieval": state.get("visual_asset_retrieval", {}),
     }
     return {
         "result": result,

@@ -1,3 +1,4 @@
+import json
 from types import SimpleNamespace
 from uuid import uuid4
 
@@ -7,6 +8,7 @@ from fastapi.testclient import TestClient
 from app.core.exceptions import PosterPilotError
 from app.main import create_app
 from app.persistence.run_repository import RunRepository
+from app.providers.llm.deepseek import DeepSeekProvider
 from app.rag.models import KnowledgeCard, RetrievalMatch, RetrievalResult
 from app.schemas.assistant import QuestionRequest
 from app.schemas.brief import PosterBrief
@@ -58,6 +60,70 @@ def setup(tmp_path, steps):
 
 def answer(**kwargs):
     return {"action": "answer", "answer": "标题与正文需要形成层级。", **kwargs}
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("legacy", [False, True])
+async def test_finalized_evidence_survives_persistence_and_read_only_inspection(tmp_path, legacy):
+    from app.agent.nodes.finalize import finalize
+    from app.agent.state import initial_agent_state
+    from app.schemas.design_control import BackgroundTreatment, DesignControls, GoalVerification
+    from app.schemas.evaluation import EvaluationReport
+    from tests.poster.test_action_validator import make_layout
+
+    runs, assistant, provider = setup(tmp_path, [
+        {"action": "tool", "tool": "inspect_poster"},
+        answer(proposal={"scope": "layout", "instruction": "移动标题"}),
+    ])
+    state = initial_agent_state(PosterBrief(title="完成不等于达标"))
+    state["layout"] = make_layout()
+    state["layout"].readability_scrims = False
+    state["poster_initial_path"] = "poster_initial.png"
+    state["evaluation_initial"] = EvaluationReport.model_validate({
+        "attention": {"availability": "unavailable"},
+        "vision": {"availability": "unavailable"},
+        "scores": {"hard_rules": 20, "total": 50, "available_weight": 40},
+        "evaluator_version": "test-fixture",
+    })
+    state["design_controls"] = DesignControls(
+        locks=[{"element_id": "title", "properties": ["position"]}],
+    )
+    state["background_treatment"] = BackgroundTreatment(saturation=0.8)
+    state["goal_verification"] = GoalVerification(outcome="not_met", summary="目标未达到")
+    result = finalize(state)["result"]
+    if legacy:
+        for key in ("layout", "goal_verification", "design_controls"):
+            result.pop(key)
+
+    class CompletedExecutor:
+        async def start(self, brief, *, run_id, run_directory):
+            return AgentExecutionOutcome(status="completed", result=result)
+
+    runs.executor = CompletedExecutor()
+    run = runs.create(state["brief"])
+    await runs.execute(run.id)
+    before = runs.get(run.id).model_dump(mode="json")
+    saved = runs.artifact_path(run.id, "result.json").read_bytes()
+    response = await assistant.ask(QuestionRequest(question="目标达到了吗？", run_id=run.id))
+    observation = json.loads(provider.messages[-1][-1]["content"].split("：", 1)[1])
+    assert observation["status"] == "completed"
+    assert observation["outcome"] == "unchanged"
+    assert observation["background_treatment"]["saturation"] == 0.8
+    if legacy:
+        assert observation["layout"] is None
+        assert observation["goal_verification"] is None
+        assert observation["controls"] is None
+        assert set(observation["missing_evidence"]) == {
+            "layout", "goal_verification", "design_controls",
+        }
+    else:
+        assert observation["layout"] == state["layout"].model_dump(mode="json")
+        assert observation["goal_verification"]["outcome"] == "not_met"
+        assert observation["controls"]["locks"][0]["properties"] == ["position"]
+        assert observation["missing_evidence"] == []
+    assert response.proposal is None
+    assert runs.get(run.id).model_dump(mode="json") == before
+    assert runs.artifact_path(run.id, "result.json").read_bytes() == saved
 
 
 @pytest.mark.asyncio
@@ -119,6 +185,9 @@ async def test_grounded_citations_and_follow_up(tmp_path):
     runs.executor.retriever = Retriever()
     first = await assistant.ask(QuestionRequest(question="标题层级怎么安排？"))
     assert [c.id for c in first.citations] == ["hierarchy"]
+    assert first.degraded and first.degradation_reason == "invalid_citation"
+    assert "已移除" in first.answer
+    assert '"citation_id": "hierarchy"' in provider.messages[-1][-1]["content"]
     second = await assistant.ask(
         QuestionRequest(question="那正文呢？", conversation_id=first.conversation_id)
     )
@@ -142,6 +211,8 @@ async def test_invalid_tool_and_model_failure_are_explicit(tmp_path):
     _, assistant, _ = setup(tmp_path, [{"action": "tool", "tool": "delete_files"}])
     result = await assistant.ask(QuestionRequest(question="删除全部文件"))
     assert result.degraded and result.proposal is None and not result.trace
+    assert result.degradation_reason == "invalid_model_response"
+    assert "格式无效" in result.answer
 
 
 @pytest.mark.asyncio
@@ -151,6 +222,7 @@ async def test_tool_budget_is_bounded(tmp_path):
     )
     result = await assistant.ask(QuestionRequest(question="分析"))
     assert len(result.trace) == 4 and len(provider.messages) == 5 and result.degraded
+    assert result.degradation_reason == "tool_budget_exhausted"
 
 
 @pytest.mark.asyncio
@@ -249,3 +321,73 @@ async def test_offline_mode_does_not_pretend_to_call_model(tmp_path):
     response = await assistant.ask(QuestionRequest(question="帮我分析海报"))
     assert response.degraded and not provider.messages
     assert "离线演示" in response.answer
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure, reason", [
+    (TimeoutError("private provider detail"), "model_timeout"),
+    (RuntimeError("private provider detail"), "model_request_failed"),
+])
+async def test_failure_reason_does_not_claim_unconfigured_or_expose_provider_detail(tmp_path, failure, reason):
+    _, assistant, _ = setup(tmp_path, [])
+
+    class FailingProvider:
+        async def complete_json(self, messages):
+            raise failure
+
+    assistant.provider = FailingProvider()
+    result = await assistant.ask(QuestionRequest(question="解释标题层级"))
+    assert result.degraded and result.degradation_reason == reason
+    assert "private provider detail" not in result.answer
+    assert "未配置" not in result.answer
+    assert result.proposal is None
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize("failure, reason, kind, status", [
+    ("timeout", "model_timeout", "timeout", None),
+    ("transport", "model_request_failed", "transport", None),
+    ("http", "model_request_failed", "http", 429),
+    ("json", "invalid_model_response", "invalid_response", None),
+    ("shape", "invalid_model_response", "invalid_response", None),
+    ("empty", "invalid_model_response", "invalid_response", None),
+    ("array", "invalid_model_response", "invalid_response", None),
+    ("unconfigured", "model_unavailable", "unavailable", None),
+])
+async def test_provider_failure_classification_survives_adapter_and_persistence(
+    tmp_path, caplog, failure, reason, kind, status,
+):
+    import httpx
+    import respx
+
+    _, assistant, _ = setup(tmp_path, [])
+    assistant.provider = DeepSeekProvider(
+        api_key="" if failure == "unconfigured" else "private-api-key",
+        model="test-model", base_url="https://api.deepseek.test",
+    )
+    responses = {
+        "http": httpx.Response(429, text="private-api-key private response body"),
+        "json": httpx.Response(200, json={"choices": [{"message": {"content": "bad json"}}]}),
+        "shape": httpx.Response(200, json={"private": "response body"}),
+        "empty": httpx.Response(200, json={"choices": [{"message": {"content": ""}}]}),
+        "array": httpx.Response(200, json={"choices": [{"message": {"content": "[]"}}]}),
+    }
+    with respx.mock as mock:
+        route = mock.post("https://api.deepseek.test/chat/completions")
+        if failure in {"timeout", "transport"}:
+            error = httpx.ReadTimeout if failure == "timeout" else httpx.ConnectError
+            route.mock(side_effect=error("private-api-key private response body"))
+        else:
+            route.mock(return_value=responses.get(failure, httpx.Response(200)))
+        result = await assistant.ask(QuestionRequest(question="private question text"))
+        # Invalid JSON/shape receives exactly one bounded repair attempt;
+        # transport/auth/rate-limit failures are not blindly retried.
+        expected_calls = 0 if failure == "unconfigured" else 2 if kind == "invalid_response" else 1
+        assert route.call_count == expected_calls
+    assert result.degraded and result.degradation_reason == reason
+    assert result.proposal is None
+    assert assistant.repository.get(result.id).degradation_reason == reason
+    assert f"kind={kind} status={status}" in caplog.text
+    for sensitive in ("private-api-key", "private response body", "private question text"):
+        assert sensitive not in caplog.text
+        assert sensitive not in result.answer

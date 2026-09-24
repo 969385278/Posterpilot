@@ -18,6 +18,7 @@ async def execute_react_tool(
     step = state["tool_calls_in_round"] + 1
     citations = list(state["knowledge_citations"])
     treatment = state.get("background_treatment") or BackgroundTreatment()
+    publication = None
     try:
         result = await tools.execute(
             decision, layout=layout, controls=state.get("design_controls"),
@@ -29,6 +30,7 @@ async def execute_react_tool(
         observation = result.observation
         citations.extend(result.citations)
         success = True
+        publication = result.publication
         retrieval = result.retrieval or state["retrieval_optimization"]
     except Exception as error:
         updated_layout = layout
@@ -43,6 +45,7 @@ async def execute_react_tool(
         tool_args=decision.arguments,
         observation=observation,
         success=success,
+        tool_publication=publication,
         knowledge_card_ids=decision.knowledge_card_ids,
     )
     return {

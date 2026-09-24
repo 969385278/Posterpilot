@@ -3,6 +3,7 @@ import asyncio
 from collections.abc import Sequence
 
 from app.core.config import get_settings
+from app.experiments.retrieval import retrieval_metrics
 from app.providers.embedding.ollama import create_ollama_embeddings
 from app.rag.langchain_chroma_store import ChromaVectorStore, create_remote_chroma
 from app.rag.models import KnowledgeCard, RetrievalRequest, VectorHit
@@ -23,7 +24,9 @@ class OfflineLexicalStore:
         limit: int,
     ) -> list[VectorHit]:
         hits = [
-            VectorHit(id=card_id, similarity=lexical_similarity(self.cards[card_id], query))
+            VectorHit(
+                id=card_id, similarity=lexical_similarity(self.cards[card_id], query)
+            )
             for card_id in candidate_ids
             if card_id in self.cards
         ]
@@ -53,6 +56,7 @@ async def evaluate(*, offline: bool) -> int:
     cases = repository.list_retrieval_cases()
     recalled = 0
     reciprocal_rank_total = 0.0
+    recall_total = 0.0
     failures: list[str] = []
     for case in cases:
         target_roles = case.context.get("targetAois", [])
@@ -70,7 +74,10 @@ async def evaluate(*, offline: bool) -> int:
         if forbidden:
             failures.append(f"{case.id}: excluded cards returned: {sorted(forbidden)}")
         expected = set(case.expected_card_ids)
-        matching_ranks = [index + 1 for index, card_id in enumerate(result_ids) if card_id in expected]
+        recall_total += retrieval_metrics(expected, result_ids)["recall"]
+        matching_ranks = [
+            index + 1 for index, card_id in enumerate(result_ids) if card_id in expected
+        ]
         if matching_ranks:
             recalled += 1
             reciprocal_rank_total += 1 / min(matching_ranks)
@@ -78,17 +85,22 @@ async def evaluate(*, offline: bool) -> int:
             failures.append(f"{case.id}: expected {sorted(expected)}, got {result_ids}")
 
     total = len(cases)
-    recall_at_3 = recalled / total if total else 0.0
+    hit_rate_at_3 = recalled / total if total else 0.0
+    recall_at_3 = recall_total / total if total else 0.0
     mrr = reciprocal_rank_total / total if total else 0.0
     mode = "offline lexical baseline" if offline else "Ollama + Chroma"
-    print(f"Retrieval evaluation ({mode}): Recall@3={recall_at_3:.3f}, MRR={mrr:.3f}")
+    print(
+        f"Retrieval evaluation ({mode}): Recall@3={recall_at_3:.3f}, HitRate@3={hit_rate_at_3:.3f}, MRR={mrr:.3f}"
+    )
     for failure in failures:
         print(f"FAIL {failure}")
     return 0 if not failures else 1
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Evaluate fixed PosterPilot retrieval cases.")
+    parser = argparse.ArgumentParser(
+        description="Evaluate fixed PosterPilot retrieval cases."
+    )
     parser.add_argument("--offline", action="store_true")
     args = parser.parse_args()
     raise SystemExit(asyncio.run(evaluate(offline=args.offline)))

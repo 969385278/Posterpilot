@@ -1,4 +1,4 @@
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 import json
 
 from app.agent.nodes.retrieve_knowledge import Retriever
@@ -12,6 +12,8 @@ from app.poster.design_guards import assert_design_constraints, validate_control
 from app.rag.case_repository import CaseRepository
 from app.schemas.poster_case import CaseSearchArguments
 from app.schemas.design_control import ReferenceSelection
+from app.agent.tools.catalog import BASE_TOOLS, EXTENSION_SCHEMAS, bundled_catalog
+from app.agent.tools.extensions import execute_extension
 
 
 class ReactToolValidationError(ValueError):
@@ -25,6 +27,7 @@ class ReactToolResult:
     citations: list[KnowledgeCitationSummary] = field(default_factory=list)
     retrieval: RetrievalResult | None = None
     treatment: BackgroundTreatment | None = None
+    publication: dict | None = None
 
 
 class ReactToolRegistry:
@@ -39,8 +42,23 @@ class ReactToolRegistry:
     def __init__(self, retriever: Retriever, cases: CaseRepository | None = None):
         self.retriever = retriever
         self.cases = cases or CaseRepository()
+        self.release_source = None
 
-    async def execute(
+    def public_catalog(self) -> list[dict]:
+        return self.release_source.public_catalog() if self.release_source else bundled_catalog()
+
+    async def execute(self, decision: ReactDecision, **kwargs) -> ReactToolResult:
+        name = decision.tool_name
+        publication = None
+        if name not in {"modify_visual", "finish_round", None}:
+            if self.release_source:
+                publication = self.release_source.authorization(name)
+            elif name not in BASE_TOOLS:
+                raise ReactToolValidationError("Extension tool is not published")
+        result = await self._execute_registered(decision, **kwargs)
+        return replace(result, publication=publication)
+
+    async def _execute_registered(
         self,
         decision: ReactDecision,
         *,
@@ -58,6 +76,11 @@ class ReactToolRegistry:
         validate_control_targets(controls, baseline_layout)
         if decision.decision != "tool_call" or tool_name is None:
             raise ReactToolValidationError("A tool_call decision is required.")
+        if tool_name in EXTENSION_SCHEMAS:
+            updated, observation = execute_extension(
+                tool_name, decision.arguments, layout, controls=controls, baseline=baseline_layout,
+            )
+            return ReactToolResult(layout=updated, observation=observation)
         if tool_name == "search_design_knowledge":
             return await self._search(decision, layout)
         if tool_name == "search_poster_cases":

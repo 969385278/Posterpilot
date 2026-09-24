@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "dataset_kind": "agent_authored_development_not_independent_holdout",
+  "annotation_note": "Simulated conversations, frozen candidate extractions and explicit confirmation actions. This is a governance ablation, not a live extraction or 60-group resume benchmark.",
+  "sequences": [
+    {"id":"temporary-isolation","description":"临时偏好不覆盖长期偏好","steps":[
+      {"id":"remember","text":"以后海报都用蓝色","suggestions":[{"quote":"以后海报都用蓝色","key":"color","value":"蓝色","kind":"explicit"}],"confirmations":[{"quote":"以后海报都用蓝色","key":"color","value":"蓝色"}],"checks":[{"values":{"color":"蓝色"}}]},
+      {"id":"temporary","conversation":"session-2","text":"这次用红色就好","suggestions":[{"quote":"这次用红色就好","key":"color","value":"红色","kind":"temporary"}],"checks":[{"values":{"color":"蓝色"}}]}
+    ]},
+    {"id":"weak-isolation","description":"弱推断不替代已确认偏好","steps":[
+      {"id":"remember","text":"记住我喜欢极简风格","suggestions":[{"quote":"记住我喜欢极简风格","key":"style","value":"极简","kind":"explicit"}],"confirmations":[{"quote":"记住我喜欢极简风格","key":"style","value":"极简"}],"checks":[{"values":{"style":"极简"}}]},
+      {"id":"weak","conversation":"session-2","text":"这张复古图挺有趣","suggestions":[{"quote":"这张复古图挺有趣","key":"style","value":"复古","kind":"weak"}],"checks":[{"values":{"style":"极简"}}]}
+    ]},
+    {"id":"unconfirmed-explicit","description":"模型判为明确偏好仍需确认","steps":[
+      {"id":"proposal","text":"以后或许可以用暖色","suggestions":[{"quote":"以后或许可以用暖色","key":"color","value":"暖色","kind":"explicit"}],"checks":[{"values":{}}]}
+    ]},
+    {"id":"revise-retract","description":"修订后撤销不复活旧偏好","steps":[
+      {"id":"old","text":"记住使用蓝色","suggestions":[{"quote":"记住使用蓝色","key":"color","value":"蓝色","kind":"explicit"}],"confirmations":[{"quote":"记住使用蓝色","key":"color","value":"蓝色"}],"checks":[{"values":{"color":"蓝色"}}]},
+      {"id":"new","conversation":"session-2","text":"改成以后使用绿色","suggestions":[{"quote":"改成以后使用绿色","key":"color","value":"绿色","kind":"explicit"}],"confirmations":[{"quote":"改成以后使用绿色","key":"color","value":"绿色"}],"checks":[{"values":{"color":"绿色"}}]},
+      {"id":"retract-new","action":"retract","text":"撤销绿色长期偏好","retract_step":"new","retract_key":"color","checks":[{"values":{}}]}
+    ]},
+    {"id":"scenario-override","description":"特定场景优先于更新的通用偏好","steps":[
+      {"id":"lecture","text":"以后讲座海报用极简风格","suggestions":[{"quote":"以后讲座海报用极简风格","key":"style","value":"极简","scope":"campus_lecture","kind":"explicit"}],"confirmations":[{"quote":"以后讲座海报用极简风格","key":"style","value":"极简","scope":"campus_lecture"}],"checks":[{"scope":"campus_lecture","values":{"style":"极简"}},{"scope":"cultural_event","values":{}}]},
+      {"id":"general","conversation":"session-2","text":"一般活动以后都用复古风","suggestions":[{"quote":"一般活动以后都用复古风","key":"style","value":"复古","kind":"explicit"}],"confirmations":[{"quote":"一般活动以后都用复古风","key":"style","value":"复古"}],"checks":[{"scope":"campus_lecture","values":{"style":"极简"}},{"scope":"cultural_event","values":{"style":"复古"}}]},
+      {"id":"temporary-lecture","conversation":"session-3","text":"本次讲座用科技风格","suggestions":[{"quote":"本次讲座用科技风格","key":"style","value":"科技","scope":"campus_lecture","kind":"temporary"}],"checks":[{"scope":"campus_lecture","values":{"style":"极简"}},{"scope":"cultural_event","values":{"style":"复古"}}]}
+    ]},
+    {"id":"user-isolation","description":"不同用户不共享偏好","steps":[
+      {"id":"user-a","user":"alice","text":"记住我喜欢蓝色","suggestions":[{"quote":"记住我喜欢蓝色","key":"color","value":"蓝色","kind":"explicit"}],"confirmations":[{"quote":"记住我喜欢蓝色","key":"color","value":"蓝色"}],"checks":[{"user":"alice","values":{"color":"蓝色"}},{"user":"bob","values":{}}]},
+      {"id":"user-b","user":"bob","text":"记住我喜欢绿色","suggestions":[{"quote":"记住我喜欢绿色","key":"color","value":"绿色","kind":"explicit"}],"confirmations":[{"quote":"记住我喜欢绿色","key":"color","value":"绿色"}],"checks":[{"user":"alice","values":{"color":"蓝色"}},{"user":"bob","values":{"color":"绿色"}}]}
+    ]},
+    {"id":"selective-confirmation","description":"同句多偏好只采纳确认的部分","steps":[
+      {"id":"mixed","text":"以后用复古风，这次用红色","suggestions":[{"quote":"以后用复古风","key":"style","value":"复古","kind":"explicit"},{"quote":"这次用红色","key":"color","value":"红色","kind":"temporary"}],"confirmations":[{"quote":"以后用复古风","key":"style","value":"复古"}],"checks":[{"values":{"style":"复古"}}]},
+      {"id":"neutral","conversation":"session-2","text":"帮我做一个校园活动海报","checks":[{"values":{"style":"复古"}}]}
+    ]},
+    {"id":"retract-obsolete","description":"撤销已替代偏好不影响当前偏好","steps":[
+      {"id":"old","text":"记住用蓝色","suggestions":[{"quote":"记住用蓝色","key":"color","value":"蓝色","kind":"explicit"}],"confirmations":[{"quote":"记住用蓝色","key":"color","value":"蓝色"}],"checks":[{"values":{"color":"蓝色"}}]},
+      {"id":"new","conversation":"session-2","text":"以后改成绿色","suggestions":[{"quote":"以后改成绿色","key":"color","value":"绿色","kind":"explicit"}],"confirmations":[{"quote":"以后改成绿色","key":"color","value":"绿色"}],"checks":[{"values":{"color":"绿色"}}]},
+      {"id":"retract-old","action":"retract","text":"撤销旧蓝色事件","retract_step":"old","retract_key":"color","checks":[{"values":{"color":"绿色"}}]}
+    ]}
+  ]
+}

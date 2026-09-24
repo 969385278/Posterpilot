@@ -21,8 +21,13 @@ def human_review(state: PosterAgentState) -> dict[str, object]:
             "pending_human": None,
         }
     prior_controls = state.get("design_controls") or DesignControls()
-    controls = decision.controls or prior_controls.model_copy(update={"selected_candidate_id": None})
+    controls = decision.controls or prior_controls.model_copy(update={
+        "selected_candidate_id": None, "fact_edits": [],
+        "adjustments": [item for item in prior_controls.adjustments if item.direction == "preserve"],
+    })
     layout = state["layout"] or state["design_spec"].layout
+    from app.poster.fact_edits import bind_instruction_edits
+    controls = bind_instruction_edits(controls, decision.instruction, layout)
     validate_control_targets(controls, layout)
     selected_layout = layout
     if controls.selected_candidate_id:
@@ -33,6 +38,10 @@ def human_review(state: PosterAgentState) -> dict[str, object]:
         if state.get("analysis_current"):
             assert_rendered_locks(state["analysis_current"], selected.analysis, controls)
         selected_layout = selected.layout.model_copy(deep=True)
+    if controls.fact_edits:
+        from app.poster.fact_edits import edited_layout
+        selected_layout = edited_layout(selected_layout, controls.fact_edits)
+        assert_design_constraints(layout, selected_layout, controls)
     return {
         "human_decision": decision,
         "human_instruction": (

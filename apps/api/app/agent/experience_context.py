@@ -6,6 +6,18 @@ from app.schemas.datahub import ExperienceQuery
 logger = logging.getLogger(__name__)
 
 
+def retrieve_decision_cards(state, source, *, tool_catalog=None) -> list[dict]:
+    service = getattr(source, "decisions", None)
+    if service is None:
+        return []
+    try:
+        names = {item["name"] for item in tool_catalog} if tool_catalog is not None else None
+        return service.retrieve(state, available_tools=names)
+    except Exception:
+        logger.warning("Decision cards unavailable; using current task evidence", exc_info=True)
+        return []
+
+
 def retrieve_experience(state, source, *, optimization: bool) -> list[dict]:
     if source is None or not state["brief"].use_case_memory:
         return []

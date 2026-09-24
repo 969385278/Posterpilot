@@ -19,6 +19,8 @@ export type PosterBriefInput = {
   attention_priority?: PriorityRole[];
   attention_layout?: boolean;
   use_case_memory?: boolean;
+  use_user_memory?: boolean;
+  user_id?: string;
 };
 
 export type RunRecord = {
@@ -36,6 +38,7 @@ export type ArtifactReference = {
 };
 
 export type RunEvent = {
+  id?: string;
   type: string;
   node: string | null;
   message: string;
@@ -50,6 +53,8 @@ export type ReactToolName =
   | 'modify_layout'
   | 'modify_visual'
   | 'adjust_background'
+  | 'set_text_opacity'
+  | 'align_text_group'
   | 'finish_round';
 
 export type ToolTrace = {
@@ -228,9 +233,9 @@ export function subscribeRunEvents(
       onEvent(JSON.parse((message as MessageEvent<string>).data) as RunEvent);
     });
   }
-  // A replay can contain an earlier human pause before newer rounds. Do not
-  // stop at historical terminal events. EOF/error closes this subscription;
-  // task polling remains the recovery path instead of an automatic replay loop.
-  source.onerror = () => { source.close(); onError(); };
+  // Historical pauses do not terminate a replay. Only the server's explicit end
+  // marker closes it; transient failures retain native Last-Event-ID reconnects.
+  source.addEventListener('stream_end', () => source.close());
+  source.onerror = () => { onError(); };
   return () => source.close();
 }

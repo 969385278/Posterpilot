@@ -53,6 +53,8 @@ class LayoutElement(BaseModel):
 
 
 class PosterLayout(BaseModel):
+    # Older persisted layouts retain their original dark edge scrims.
+    readability_scrims: bool = True
     canvas: CanvasSize
     elements: list[LayoutElement] = Field(min_length=1, max_length=32)
 

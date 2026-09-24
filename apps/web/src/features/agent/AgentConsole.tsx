@@ -32,6 +32,14 @@ export function AgentConsole({
   const waiting = status === 'waiting_for_human' && checkpoint !== null;
   const traces = checkpoint?.tool_traces ?? completedRounds.flatMap((round) => round.tool_traces);
   const references = new Map<string, { case_id: string; revision: number; problem: string; lesson: string }>();
+  const assetReferences = new Map<string, { asset_id: string; revision: number; title: string; sources: { creator: string; source_url: string | null; rights: string }[] }>();
+  for (const event of events) {
+    const retrieval = event.payload?.visual_asset_retrieval as { matches?: unknown[] } | undefined;
+    for (const candidate of retrieval?.matches ?? []) {
+      const reference = candidate as { asset_id: string; revision: number; title: string; sources: { creator: string; source_url: string | null; rights: string }[] };
+      if (reference && typeof reference.asset_id === 'string' && Array.isArray(reference.sources)) assetReferences.set(`${reference.asset_id}:${reference.revision}`, reference);
+    }
+  }
   for (const event of events) {
     const candidates = event.payload?.experience_candidates;
     if (!Array.isArray(candidates)) continue;
@@ -119,6 +127,8 @@ export function AgentConsole({
           <small>案例 {reference.case_id.slice(0, 8)} · v{reference.revision} · <a href="#datahub">查看案例与审核</a></small>
         </p>)}
       </section>}
+
+      {assetReferences.size > 0 && <section className="agent-citations" aria-label="视觉素材参考"><h3>本任务获得的素材参考</h3><p>已向模型提供描述与主色，不代表复制原图或保证采纳。来源状态以素材库当前审核为准。</p>{[...assetReferences.values()].map(reference => <div key={`${reference.asset_id}:${reference.revision}`}><strong>{reference.title} · v{reference.revision}</strong>{reference.sources.map((source, index) => <p key={index}>{source.creator} · {source.source_url ? <a href={source.source_url} target="_blank" rel="noreferrer">素材来源</a> : '提供者声明原创'}<small>{source.rights}</small></p>)}</div>)}</section>}
 
       {waiting && checkpoint.layout && checkpoint.analysis && onControlledDecision ? (
         <DesignReviewPanel checkpoint={checkpoint} selectedCandidateId={selectedCandidateId} disabled={isSubmitting} onSubmit={onControlledDecision} />

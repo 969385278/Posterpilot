@@ -9,6 +9,8 @@ class QuestionRequest(BaseModel):
     question: str = Field(min_length=1, max_length=1000)
     run_id: UUID | None = None
     conversation_id: UUID | None = None
+    user_id: str = Field(default="local", pattern=r"^[A-Za-z0-9_-]{1,80}$")
+    use_user_memory: bool = False
 
 
 class AssistantCitation(BaseModel):
@@ -40,6 +42,12 @@ class AssistantAnswer(BaseModel):
     run_id: UUID | None = None
     round_number: int | None = None
     degraded: bool = False
+    degradation_reason: Literal[
+        "model_unavailable", "model_timeout", "invalid_model_response",
+        "model_request_failed", "tool_budget_exhausted", "invalid_citation",
+    ] | None = None
+    user_id: str = "local"
+    memory_source_id: UUID | None = None
 
 
 class AssistantStep(BaseModel):
@@ -47,7 +55,8 @@ class AssistantStep(BaseModel):
     action: Literal["tool", "answer"]
     tool: (
         Literal[
-            "search_knowledge", "search_cases", "inspect_poster", "analyze_image", "read_history"
+            "search_knowledge", "search_cases", "inspect_poster", "analyze_image", "read_history",
+            "read_user_profile", "read_memory_events", "search_visual_assets"
         ]
         | None
     ) = None

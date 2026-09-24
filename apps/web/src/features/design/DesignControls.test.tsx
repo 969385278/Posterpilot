@@ -8,6 +8,21 @@ import { PriorityEditor } from './PriorityEditor';
 import { candidateFixture, checkpointFixture } from './fixtures';
 
 describe('controlled design requests', () => {
+  it('submits and removes exact opacity and frame alignment goals', () => {
+    const onSubmit = vi.fn();
+    render(<DesignReviewPanel checkpoint={checkpointFixture} selectedCandidateId={null} disabled={false} onSubmit={onSubmit} />);
+    fireEvent.change(screen.getByLabelText('标题不透明度'), { target: { value: '0.8' } });
+    fireEvent.change(screen.getByLabelText('活动信息文字框对齐参考'), { target: { value: 'title' } });
+    fireEvent.change(screen.getByLabelText('活动信息文字框对齐边'), { target: { value: 'right' } });
+    fireEvent.click(screen.getByRole('button', { name: '提交这一轮要求' }));
+    expect(onSubmit.mock.calls[0][0].controls.element_goals).toEqual([
+      { kind: 'opacity', element_id: 'title', opacity: 0.8 },
+      { kind: 'alignment', element_id: 'event_info', reference_id: 'title', edge: 'right' },
+    ]);
+    fireEvent.change(screen.getByLabelText('标题不透明度'), { target: { value: '' } });
+    fireEvent.click(screen.getByRole('button', { name: '提交这一轮要求' }));
+    expect(onSubmit.mock.calls[1][0].controls.element_goals).toHaveLength(1);
+  });
   it('moves a reference dimension without mutating the old choices', () => {
     const current: ReferenceSelection[] = [{ case_id: 'first', aspects: ['palette', 'composition'] }];
     expect(selectReferenceAspect(current, 'second', 'palette', true)).toEqual([

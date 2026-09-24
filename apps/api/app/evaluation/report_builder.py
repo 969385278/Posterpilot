@@ -29,5 +29,5 @@ def build_report(
         vision=vision,
         scores=scores,
         primary_issues=primary[:5],
-        evaluator_version="evaluation-v2-aoi-paint-order",
+        evaluator_version="evaluation-v4-element-goals",
     )

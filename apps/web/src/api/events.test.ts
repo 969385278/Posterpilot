@@ -3,7 +3,7 @@ import { subscribeRunEvents } from './client';
 
 afterEach(() => vi.unstubAllGlobals());
 
-it('reads newer events after a historical pause and closes on stream EOF', () => {
+it('reconnects after transient errors and closes only on an explicit stream end', () => {
   const listeners = new Map<string, (event: {data: string}) => void>();
   const close = vi.fn();
   let instance: {onerror?: () => void};
@@ -24,8 +24,10 @@ it('reads newer events after a historical pause and closes on stream EOF', () =>
   expect(onEvent).toHaveBeenCalledTimes(4);
   expect(close).not.toHaveBeenCalled();
   instance!.onerror!();
-  expect(close).toHaveBeenCalledOnce();
+  expect(close).not.toHaveBeenCalled();
   expect(onError).toHaveBeenCalledOnce();
+  listeners.get('stream_end')!({data: '{}'});
+  expect(close).toHaveBeenCalledOnce();
   stop();
   expect(close).toHaveBeenCalledTimes(2);
 });

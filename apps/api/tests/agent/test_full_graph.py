@@ -56,6 +56,7 @@ async def test_full_graph_generates_evaluates_optimizes_and_finalizes(tmp_path: 
     assert Path(result["poster_initial_path"]).is_file()
     assert Path(result["poster_optimized_path"]).is_file()
     assert result["result"]["outcome"] in {"improved", "unchanged", "declined"}
+    assert result["result"]["layout"] == result["layout"].model_dump(mode="json")
     assert [event["node"] for event in result["events"]] == [
         "retrieve_generation_knowledge",
         "plan_design",

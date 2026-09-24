@@ -63,7 +63,8 @@ class PosterRenderer:
         if main_visual is not None:
             _draw_main_visual(canvas, visual_path, full_canvas_box, treatment)
 
-        _draw_readability_scrims(canvas)
+        if layout.readability_scrims:
+            _draw_readability_scrims(canvas)
         draw = ImageDraw.Draw(canvas)
 
         for element in layout.elements:
@@ -71,7 +72,15 @@ class PosterRenderer:
             if element.role == "main_visual":
                 rendered.append(RenderedElement(id=element.id, actual_box=full_canvas_box))
             elif element.content:
-                actual_box, fact = _draw_text(draw, element, pixel_box)
+                if element.opacity < 1:
+                    text_layer = Image.new("RGBA", canvas.size, (0, 0, 0, 0))
+                    actual_box, fact = _draw_text(ImageDraw.Draw(text_layer), element, pixel_box)
+                    alpha = text_layer.getchannel("A").point(
+                        [round(value * element.opacity) for value in range(256)]
+                    )
+                    canvas.paste(text_layer, (0, 0), alpha)
+                else:
+                    actual_box, fact = _draw_text(draw, element, pixel_box)
                 rendered.append(RenderedElement(id=element.id, actual_box=actual_box))
                 text_facts.append(fact)
 
@@ -172,6 +181,7 @@ def _draw_text(
         actual_font_size=layout.font_size,
         font_name=bundled_font_name(font_path) if font_path.is_relative_to(FONT_ROOT) else " ".join(font.getname()),
         color=element.color or "#F8FAFC",
+        opacity=element.opacity,
         line_count=len(layout.lines),
         fits_box=(
             layout.width <= box.width and layout.height <= box.height

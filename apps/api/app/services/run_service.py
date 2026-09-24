@@ -4,7 +4,7 @@ import json
 import logging
 from pathlib import Path
 from typing import Any, Protocol
-from uuid import UUID
+from uuid import NAMESPACE_URL, UUID, uuid5
 
 from app.core.exceptions import PosterPilotError
 from app.persistence.run_repository import RunNotFoundError, RunRepository
@@ -20,6 +20,10 @@ from app.poster.template_loader import TemplateLoader
 from app.schemas.design_control import DesignControls
 from app.persistence.datahub_repository import DataHubRepository
 from app.services.datahub_service import DataHubService
+from app.services.user_memory import UserMemoryService
+from app.services.decision_cards import DecisionCardService
+from app.services.tool_harness import ToolHarness
+from app.services.visual_assets import VisualAssetService
 
 logger = logging.getLogger(__name__)
 
@@ -51,29 +55,58 @@ class RunService:
         event_bus: EventBus,
         executor: AgentExecutor | None = None,
         data_origin: str = "runtime",
+        asset_embeddings=None,
+        asset_embedding_id: str = "unconfigured",
     ) -> None:
         self.repository = repository
         self.artifacts = artifacts
         self.event_bus = event_bus
         self.executor = executor
+        if executor is not None and hasattr(executor, "event_sink"):
+            executor.event_sink = self._emit_agent_events
         self.data_origin = data_origin
+        self.memory = UserMemoryService(artifacts.root.parent / "user-memory.sqlite3")
+        self.visual_assets = VisualAssetService(
+            artifacts.root.parent / "visual-assets", embeddings=asset_embeddings,
+            embedding_id=asset_embedding_id,
+        )
+        if executor is not None and hasattr(executor, "asset_source"):
+            executor.asset_source = self.visual_assets
         self.datahub = DataHubService(
             DataHubRepository(repository.database), artifacts.root.parent / "datahub-assets",
             include_demo=data_origin == "offline_demo",
         )
         if executor is not None and hasattr(executor, "experience_source"):
             executor.experience_source = self.datahub
+        self.datahub.decisions = DecisionCardService(self.datahub)
+        self.harness = ToolHarness(artifacts.root.parent / "tool-harness", self.datahub)
+        if executor is not None and hasattr(executor, "tools"):
+            executor.tools.release_source = self.harness
 
     @property
     def can_execute(self) -> bool:
         return self.executor is not None
 
     async def aclose(self) -> None:
-        if self.executor is None:
-            return
-        close = getattr(self.executor, "aclose", None)
-        if close is not None:
-            await close()
+        try:
+            close = getattr(self.executor, "aclose", None)
+            if close is not None:
+                await close()
+        finally:
+            self.repository.database.close()
+
+    def reconcile_interrupted_runs(self) -> None:
+        for record in self.repository.interrupt_abandoned_runs():
+            try:
+                self._emit(
+                    record.id, "run_failed", record.error_message,
+                    node="startup_recovery", payload={"error_code": record.error_code},
+                )
+                self.harness.record_run_failure(record, origin=self.data_origin)
+            except Exception:
+                # The durable failed status is authoritative even if projection
+                # fails. Harness also supports backfilling failed run records.
+                logger.warning("Could not project interrupted run %s", record.id, exc_info=True)
 
     def create(self, brief: PosterBrief) -> RunRecord:
         if brief.attention_priority:
@@ -89,6 +122,10 @@ class RunService:
         record = self.repository.create(brief)
         artifact = self.artifacts.write_json(record.id, "brief.json", brief.model_dump(mode="json"))
         record = self.repository.add_artifact(record.id, artifact)
+        if brief.use_user_memory:
+            profile = self.memory.profile(brief.user_id, scope=brief.poster_type)
+            snapshot = self.artifacts.write_json(record.id, "user_context.json", profile)
+            record = self.repository.add_artifact(record.id, snapshot)
         self._emit(record.id, "run_created", "任务已创建，等待执行。")
         return record
 
@@ -143,6 +180,17 @@ class RunService:
             )
         if decision.controls is not None and decision.controls.has_request and checkpoint.layout is None:
             raise PosterPilotError("旧检查点缺少结构化布局，不能应用新控制；可以继续原有文字反馈流程。", code="design_controls_unavailable", status_code=409)
+        if decision.action == "instruct" and checkpoint.layout is not None:
+            from app.poster.fact_edits import bind_instruction_edits
+            controls = decision.controls or checkpoint.controls.model_copy(update={
+                "fact_edits": [], "selected_candidate_id": None,
+                "adjustments": [g for g in checkpoint.controls.adjustments if g.direction == "preserve"],
+            })
+            try:
+                decision.controls = bind_instruction_edits(controls, decision.instruction,
+                    PosterLayout.model_validate(checkpoint.layout))
+            except ValueError as error:
+                raise PosterPilotError(str(error), code="invalid_design_controls", status_code=422) from error
         if decision.controls is not None and checkpoint.layout is not None:
             try:
                 validate_control_targets(decision.controls, PosterLayout.model_validate(checkpoint.layout))
@@ -215,6 +263,10 @@ class RunService:
             error_message=str(error),
         )
         self._emit(run_id, "run_failed", "任务执行或结果保存失败。", node=node)
+        try:
+            self.harness.record_run_failure(failed, origin=self.data_origin)
+        except Exception:
+            logger.warning("Could not collect failure evidence for %s", run_id, exc_info=True)
         return failed
 
     def pending(self, run_id: UUID) -> HumanCheckpoint:
@@ -253,11 +305,15 @@ class RunService:
         path = self.artifacts.run_directory(run_id) / "events.jsonl"
         if not path.is_file():
             return []
-        return [
-            RunEvent.model_validate(json.loads(line))
-            for line in path.read_text(encoding="utf-8").splitlines()
-            if line.strip()
-        ]
+        events = []
+        for index, line in enumerate(path.read_text(encoding="utf-8").splitlines()):
+            if not line.strip():
+                continue
+            value = json.loads(line)
+            # Stable read-only IDs for old logs, without rewriting their evidence.
+            value.setdefault("id", str(uuid5(NAMESPACE_URL, f"{run_id}:{index}:{line}")))
+            events.append(RunEvent.model_validate(value))
+        return events
 
     def _emit(
         self,
@@ -339,11 +395,26 @@ class RunService:
         # Data curation is a recoverable projection, not a reason to fail a rendered poster.
         try:
             cases = self.datahub.capture(self, run_id, origin=self.data_origin)
+            self.harness.collect()
             self._emit(run_id, "experience_captured", "本轮证据已收集到 PosterHub，尚未审核或推断用户接受。",
                        payload={"case_ids": [str(case.id) for case in cases]})
         except Exception:
             logger.warning("DataHub capture unavailable for %s; manual capture can retry", run_id, exc_info=True)
             self._emit(run_id, "experience_capture_pending", "案例证据暂未收集，可在数据工作台重试；不影响已生成海报。")
+
+    def collect_failure_evidence(self) -> dict:
+        collected = self.harness.collect()
+        after_id = None
+        added = 0
+        scanned = 0
+        while page := self.repository.failed_page(after_id=after_id):
+            for record in page:
+                scanned += 1
+                added += self.harness.record_run_failure(record, origin=self.data_origin)
+            after_id = page[-1].id
+        return {"new_observations": collected["new_observations"] + added,
+                "new_run_observations": added, "failed_runs_scanned": scanned,
+                "gaps": self.harness.gaps()}
 
     def _emit_agent_events(self, run_id: UUID, events: list[dict[str, Any]]) -> None:
         tool_nodes = {
@@ -353,22 +424,31 @@ class RunService:
             "modify_layout",
             "modify_visual",
             "adjust_background",
+            "set_text_opacity",
+            "align_text_group",
         }
         for item in events:
             node = str(item.get("node") or "agent")
             message = str(item.get("message") or "Agent 节点已完成。")
             payload = item.get("payload")
             safe_payload = payload if isinstance(payload, dict) else {}
+            if item.get("phase") == "started":
+                self._emit(
+                    run_id, "tool_started" if node in tool_nodes else "node_started",
+                    message, node=node, payload=safe_payload,
+                )
+                continue
             if node == "react_decide":
                 event_type = "agent_decision"
             elif node in tool_nodes:
-                self._emit(
-                    run_id,
-                    "tool_started",
-                    f"Agent 调用工具：{node}",
-                    node=node,
-                    payload=safe_payload,
-                )
+                if not item.get("_started"):
+                    self._emit(
+                        run_id,
+                        "tool_started",
+                        f"Agent 调用工具：{node}",
+                        node=node,
+                        payload=safe_payload,
+                    )
                 event_type = "tool_completed"
             elif node == "complete_round":
                 event_type = "round_completed"

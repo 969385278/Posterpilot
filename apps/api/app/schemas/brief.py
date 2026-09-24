@@ -2,6 +2,7 @@ from typing import Annotated, Literal
 
 from pydantic import BaseModel, Field, StringConstraints, field_validator, model_validator
 from app.schemas.design_control import PriorityRole, ReferenceSelection
+from app.schemas.title_font import TitleFont
 
 NonEmptyText = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
 PosterType = Literal["campus_lecture", "cultural_event", "club_recruitment"]
@@ -23,7 +24,7 @@ class PosterBrief(BaseModel):
     topic: str = ""
     target_audience: str = ""
     title: NonEmptyText
-    title_font: Literal["auto", "standard", "mashanzheng", "longcang", "zhimangxing", "zcoolkuaile", "zcoolqingkehuangyou", "zcoolxiaowei"] = "auto"
+    title_font: TitleFont = "auto"
     subtitle: NonEmptyText | None = None
     event_time: str = ""
     location: str = ""
@@ -38,6 +39,8 @@ class PosterBrief(BaseModel):
     attention_priority: list[PriorityRole] = Field(default_factory=list, max_length=5)
     attention_layout: bool = True
     use_case_memory: bool = True
+    user_id: str = Field(default="local", pattern=r"^[A-Za-z0-9_-]{1,80}$")
+    use_user_memory: bool = False
 
     @field_validator("topic", "target_audience", "event_time", "location", "organizer", mode="before")
     @classmethod

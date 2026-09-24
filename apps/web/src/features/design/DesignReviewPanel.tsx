@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ElementGoalsEditor } from './ElementGoalsEditor';
 import type { HumanCheckpoint, HumanDecision } from '../../api/client';
 import { emptyControls, roleLabels, traitLabels, type DesignControls, type LockProperty, type PriorityRole, type TraitDirection, type TraitKey } from '../../api/design';
 import { PriorityEditor } from './PriorityEditor';
@@ -6,7 +7,11 @@ import { PriorityEditor } from './PriorityEditor';
 type Props = { checkpoint: HumanCheckpoint; selectedCandidateId: string | null; disabled: boolean; onSubmit: (decision: HumanDecision) => void };
 
 export function DesignReviewPanel({ checkpoint, selectedCandidateId, disabled, onSubmit }: Props) {
-  const [controls, setControls] = useState<DesignControls>(() => structuredClone(checkpoint.controls ?? emptyControls()));
+  const [controls, setControls] = useState<DesignControls>(() => {
+    const previous = structuredClone(checkpoint.controls ?? emptyControls());
+    delete previous.fact_edits;
+    return { ...previous, adjustments: previous.adjustments.filter(item => item.direction === 'preserve') };
+  });
   const [instruction, setInstruction] = useState('');
   const available = [...new Set(checkpoint.layout?.elements.map(element => element.role).filter(role => role in roleLabels))] as PriorityRole[];
   function changeTrait(trait: TraitKey, direction: TraitDirection | '', strength?: number) {
@@ -25,7 +30,7 @@ export function DesignReviewPanel({ checkpoint, selectedCandidateId, disabled, o
   function submit() {
     const request = { ...controls, selected_candidate_id: selectedCandidateId };
     const text = instruction.trim();
-    const hasRequest = request.adjustments.length || request.locks.length || request.attention_priority.length || selectedCandidateId;
+    const hasRequest = request.adjustments.length || request.locks.length || request.attention_priority.length || request.element_goals?.length || selectedCandidateId;
     onSubmit(text || hasRequest ? { action: 'instruct', instruction: text || undefined, controls: request } : { action: 'approve', controls: request });
   }
   return <section className="design-review-panel" aria-label="选择本轮修改要求">
@@ -46,8 +51,9 @@ export function DesignReviewPanel({ checkpoint, selectedCandidateId, disabled, o
         </div>;
       })}
     </fieldset>
+    <ElementGoalsEditor layout={checkpoint.layout} controls={controls} disabled={disabled} onChange={element_goals => setControls(current => ({ ...current, element_goals }))} />
     <details className="element-locks"><summary>锁定不想改变的内容（{controls.locks.length} 项）</summary>
-      <p className="design-help">活动文字与主视觉构图始终保护。位置锁定包含尺寸；样式锁定包含字体、字号、颜色、行距与对齐。</p>
+      <p className="design-help">活动文字与主视觉构图始终保护。位置锁定包含尺寸；样式锁定包含字体、字号、颜色、行距、对齐与不透明度。</p>
       {checkpoint.layout?.elements.filter(element => element.content).map(element => <fieldset disabled={disabled} key={element.id}>
         <legend>{roleLabels[element.role] ?? element.id}</legend>
         {(['position', 'typography'] as LockProperty[]).map(property => <label className="inline-checkbox" key={property}>

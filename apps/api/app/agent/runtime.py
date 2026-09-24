@@ -8,7 +8,8 @@ from app.providers.embedding.ollama import create_ollama_embeddings
 from app.providers.image.ark import ArkImageProvider
 from app.providers.llm.deepseek import DeepSeekProvider
 from app.providers.vision.ark import ArkVisionProvider
-from app.rag.langchain_chroma_store import ChromaVectorStore, create_remote_chroma
+from app.providers.vision.deepseek import DeepSeekVisionProvider
+from app.rag.lazy_chroma_store import LazyRemoteChromaStore
 from app.rag.repository import KnowledgeRepository
 from app.rag.retriever import KnowledgeRetriever
 
@@ -19,14 +20,14 @@ def create_runtime_executor(settings: Settings) -> LangGraphAgentExecutor:
         base_url=settings.ollama_base_url,
         timeout_seconds=settings.embedding_timeout_seconds,
     )
-    chroma = create_remote_chroma(
+    vector_store = LazyRemoteChromaStore(
         chroma_url=settings.chroma_url,
         collection_name=settings.rag_collection_name,
         embedding_function=embeddings,
     )
     retriever = KnowledgeRetriever(
         KnowledgeRepository(settings.data_dir / "knowledge"),
-        ChromaVectorStore(chroma),
+        vector_store,
     )
     return LangGraphAgentExecutor(
         retriever=retriever,
@@ -51,14 +52,23 @@ def create_runtime_executor(settings: Settings) -> LangGraphAgentExecutor:
                 base_url=settings.deepgaze_base_url,
                 timeout_seconds=settings.deepgaze_timeout_seconds,
             ),
-            vision=VisionEvaluator(
-                ArkVisionProvider(
-                    api_key=settings.ark_api_key,
-                    model=settings.ark_vision_model,
-                    base_url=settings.ark_base_url,
-                    timeout_seconds=settings.vision_model_timeout_seconds,
-                )
-            ),
+            vision=VisionEvaluator(create_vision_provider(settings)),
         ),
         checkpoint_path=settings.langgraph_checkpoint_path,
+    )
+
+
+def create_vision_provider(settings: Settings):
+    if settings.vision_provider == "deepseek":
+        return DeepSeekVisionProvider(
+            api_key=settings.deepseek_api_key,
+            model=settings.deepseek_vision_model or settings.deepseek_text_model,
+            base_url=settings.deepseek_base_url,
+            timeout_seconds=settings.vision_model_timeout_seconds,
+        )
+    return ArkVisionProvider(
+        api_key=settings.ark_api_key,
+        model=settings.ark_vision_model,
+        base_url=settings.ark_base_url,
+        timeout_seconds=settings.vision_model_timeout_seconds,
     )

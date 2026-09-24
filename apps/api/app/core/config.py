@@ -1,5 +1,6 @@
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
 from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -57,6 +58,15 @@ class Settings(BaseSettings):
         default="deepseek-v4-flash",
         validation_alias="DEEPSEEK_TEXT_MODEL",
     )
+    intent_routing_mode: Literal["deepseek", "rules"] = Field(
+        default="deepseek",
+        validation_alias="INTENT_ROUTING_MODE",
+    )
+    vision_provider: Literal["deepseek", "ark"] = Field(
+        default="deepseek",
+        validation_alias="VISION_PROVIDER",
+    )
+    deepseek_vision_model: str = Field(default="", validation_alias="DEEPSEEK_VISION_MODEL")
     text_model_timeout_seconds: float = Field(
         default=60,
         validation_alias="TEXT_MODEL_TIMEOUT_SECONDS",

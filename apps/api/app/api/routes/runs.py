@@ -1,3 +1,4 @@
+import asyncio
 from uuid import UUID
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Request
@@ -73,18 +74,36 @@ async def read_artifact(run_id: UUID, artifact_name: str, request: Request) -> F
 @router.get("/runs/{run_id}/events")
 async def stream_events(run_id: UUID, request: Request) -> StreamingResponse:
     service = _service(request)
+    service.require(run_id)
+    last_id = request.headers.get("last-event-id")
 
     async def event_stream():
-        for event in service.events(run_id):
-            yield _serialize_event(event)
-        if service.get(run_id).status in {"waiting_for_human", "completed", "failed"}:
-            return
+        # Subscribe before reading history to close the replay/live race.
         queue = service.event_bus.subscribe(run_id)
         try:
+            history = service.events(run_id)
+            seen = {event.id for event in history}
+            start = next((index + 1 for index, event in enumerate(history)
+                          if str(event.id) == last_id), 0)
+            for event in history[start:]:
+                yield _serialize_event(event)
             while True:
-                event = await queue.get()
+                if queue.empty() and service.get(run_id).status in {
+                    "waiting_for_human", "completed", "failed",
+                }:
+                    yield "event: stream_end\ndata: {}\n\n"
+                    return
+                try:
+                    event = await asyncio.wait_for(queue.get(), timeout=15)
+                except TimeoutError:
+                    yield ": keepalive\n\n"
+                    continue
+                if event.id in seen:
+                    continue
+                seen.add(event.id)
                 yield _serialize_event(event)
                 if event.type in {"human_input_required", "run_completed", "run_failed"}:
+                    yield "event: stream_end\ndata: {}\n\n"
                     return
         finally:
             service.event_bus.unsubscribe(run_id, queue)
@@ -93,4 +112,4 @@ async def stream_events(run_id: UUID, request: Request) -> StreamingResponse:
 
 
 def _serialize_event(event) -> str:
-    return f"event: {event.type}\ndata: {event.model_dump_json()}\n\n"
+    return f"id: {event.id}\nevent: {event.type}\ndata: {event.model_dump_json()}\n\n"

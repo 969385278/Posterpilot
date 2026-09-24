@@ -46,3 +46,21 @@ it('preserves an explicit topic and removes priorities for cleared optional cont
   fireEvent.click(screen.getByRole('button', { name: '开始生成' }));
   expect(submit).toHaveBeenCalledWith(expect.objectContaining({ topic: '摄影社招新', attention_priority: [] }));
 });
+
+it('normalizes an API null subtitle and clears it when a later suggestion omits it', () => {
+  const submit = vi.fn();
+  const errors = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+  try {
+    const suggestion = JSON.parse('{"title":"验收活动","subtitle":null}');
+    const { rerender } = render(<BriefForm onSubmit={submit} isSubmitting={false} suggestedBrief={suggestion} />);
+    expect(screen.getByLabelText('副标题')).toHaveValue('');
+    fireEvent.change(screen.getByLabelText('副标题'), { target: { value: '补充文字' } });
+    fireEvent.click(screen.getByRole('button', { name: '开始生成' }));
+    expect(submit).toHaveBeenCalledWith(expect.objectContaining({ subtitle: '补充文字' }));
+    rerender(<BriefForm onSubmit={submit} isSubmitting={false} suggestedBrief={{ title: '另一个活动' }} />);
+    expect(screen.getByLabelText('副标题')).toHaveValue('');
+    expect(errors).not.toHaveBeenCalled();
+  } finally {
+    errors.mockRestore();
+  }
+});

@@ -48,11 +48,42 @@ class ElementLock(StrictModel):
         return self
 
 
+class TextOpacityGoal(StrictModel):
+    kind: Literal["opacity"]
+    element_id: Identifier
+    opacity: float = Field(ge=0.3, le=1)
+
+
+class TextAlignmentGoal(StrictModel):
+    kind: Literal["alignment"]
+    element_id: Identifier
+    reference_id: Identifier
+    edge: Literal["left", "center", "right"]
+
+    @model_validator(mode="after")
+    def different_reference(self):
+        if self.element_id == self.reference_id:
+            raise ValueError("alignment reference must differ from target")
+        return self
+
+
+ElementGoal = Annotated[TextOpacityGoal | TextAlignmentGoal, Field(discriminator="kind")]
+
+
+class TextFactEdit(StrictModel):
+    field: Literal["title", "subtitle", "event_time", "location", "organizer"]
+    element_id: Identifier
+    before: str = Field(min_length=1, max_length=300)
+    after: str = Field(min_length=1, max_length=300, pattern=r"^[^\r\n]+$")
+
+
 class DesignControls(StrictModel):
     adjustments: list[TraitAdjustment] = Field(default_factory=list, max_length=3)
     locks: list[ElementLock] = Field(default_factory=list, max_length=32)
     attention_priority: list[PriorityRole] = Field(default_factory=list, max_length=5)
     selected_candidate_id: Identifier | None = None
+    element_goals: list[ElementGoal] = Field(default_factory=list, max_length=32)
+    fact_edits: list[TextFactEdit] = Field(default_factory=list, max_length=5)
 
     @model_validator(mode="after")
     def unique_targets(self):
@@ -60,6 +91,8 @@ class DesignControls(StrictModel):
             ([item.trait for item in self.adjustments], "trait adjustments"),
             ([item.element_id for item in self.locks], "locked elements"),
             (self.attention_priority, "attention priorities"),
+            ([(item.kind, item.element_id) for item in self.element_goals], "element goals"),
+            ([item.field for item in self.fact_edits], "fact edits"),
         ):
             if len(values) != len(set(values)):
                 raise ValueError(f"{description} must be unique")
@@ -67,7 +100,10 @@ class DesignControls(StrictModel):
 
     @property
     def has_request(self) -> bool:
-        return bool(self.adjustments or self.locks or self.attention_priority or self.selected_candidate_id)
+        return bool(
+            self.adjustments or self.locks or self.attention_priority
+            or self.selected_candidate_id or self.element_goals or self.fact_edits
+        )
 
 
 class BackgroundTreatment(StrictModel):
@@ -105,13 +141,14 @@ class RenderedTextFact(StrictModel):
     actual_font_size: int
     font_name: str
     color: str
+    opacity: float = Field(default=1, ge=0, le=1)
     line_count: int
     fits_box: bool
     box: dict[str, int]
 
 
 class PosterAnalysis(StrictModel):
-    version: str = "design-analysis-v1"
+    version: str = "design-analysis-v2-opacity"
     features: list[FeatureObservation] = Field(default_factory=list)
     palette: list[str] = Field(default_factory=list)
     text_facts: list[RenderedTextFact] = Field(default_factory=list)

@@ -22,6 +22,7 @@ from app.agent.nodes.render_draft import render_draft
 from app.agent.nodes.retrieve_knowledge import Retriever, retrieve_generation_knowledge
 from app.agent.nodes.retrieve_optimization_knowledge import retrieve_optimization_knowledge
 from app.agent.state import PosterAgentState
+from app.agent.progress import with_progress
 from app.agent.tools.react_tools import ReactToolRegistry
 from app.poster.renderer import PosterRenderer
 from app.providers.image.base import ImageProvider
@@ -38,6 +39,8 @@ def create_hitl_react_graph(
     checkpointer: Any,
     evaluation: EvaluationDependencies | None = None,
     experience_source: Any | None = None,
+    asset_source: Any | None = None,
+    event_sink: Any | None = None,
 ) -> Any:
     """Compile the persisted end-to-end graph with native human interrupts."""
 
@@ -45,7 +48,8 @@ def create_hitl_react_graph(
         return await retrieve_generation_knowledge(state, retriever=retriever)
 
     async def plan_node(state: PosterAgentState) -> dict[str, object]:
-        return await plan_design(state, text_provider=text_provider, experience_source=experience_source)
+        return await plan_design(state, text_provider=text_provider, experience_source=experience_source,
+                                 asset_source=asset_source)
 
     async def generate_node(state: PosterAgentState) -> dict[str, object]:
         return await generate_visual(
@@ -69,7 +73,8 @@ def create_hitl_react_graph(
         )
 
     async def decide_node(state: PosterAgentState) -> dict[str, object]:
-        return await react_decide(state, text_provider=text_provider, experience_source=experience_source)
+        return await react_decide(state, text_provider=text_provider, experience_source=experience_source,
+                                  tool_catalog=tools.public_catalog())
 
     async def tool_node(state: PosterAgentState) -> dict[str, object]:
         return await execute_react_tool(state, tools=tools)
@@ -94,19 +99,16 @@ def create_hitl_react_graph(
         return await propose_layout_candidates(state, renderer=renderer, evaluation=evaluation, run_directory=_run_directory(state))
 
     workflow = StateGraph(PosterAgentState)
-    workflow.add_node("retrieve_generation_knowledge", retrieve_node)
-    workflow.add_node("plan_design", plan_node)
-    workflow.add_node("generate_visual", generate_node)
-    workflow.add_node("render_draft", render_initial_node)
-    workflow.add_node("evaluate_draft", evaluate_initial_node)
-    workflow.add_node("human_review", human_review)
-    workflow.add_node("react_decide", decide_node)
-    workflow.add_node("execute_react_tool", tool_node)
-    workflow.add_node("render_round", render_round_node)
-    workflow.add_node("evaluate_round", evaluate_round_node)
-    workflow.add_node("complete_round", complete_round)
-    workflow.add_node("propose_layout_candidates", candidates_node)
-    workflow.add_node("finalize", finalize)
+    for name, function in (
+        ("retrieve_generation_knowledge", retrieve_node), ("plan_design", plan_node),
+        ("generate_visual", generate_node), ("render_draft", render_initial_node),
+        ("evaluate_draft", evaluate_initial_node), ("human_review", human_review),
+        ("react_decide", decide_node), ("execute_react_tool", tool_node),
+        ("render_round", render_round_node), ("evaluate_round", evaluate_round_node),
+        ("complete_round", complete_round), ("propose_layout_candidates", candidates_node),
+        ("finalize", finalize),
+    ):
+        workflow.add_node(name, with_progress(name, function, event_sink))
 
     initial_sequence = [
         "retrieve_generation_knowledge",

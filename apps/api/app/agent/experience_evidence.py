@@ -18,6 +18,7 @@ def write_experience_evidence(state, report, updates, *, initial: bool, run_dire
         "schema_version": 1,
         "round_number": round_number,
         "brief": state["brief"].model_dump(mode="json"),
+        "design_spec": state["design_spec"].model_dump(mode="json"),
         "layout": layout.model_dump(mode="json"),
         "instruction": "" if initial else state.get("human_instruction", ""),
         "controls": state["design_controls"].model_dump(mode="json")
@@ -34,6 +35,10 @@ def write_experience_evidence(state, report, updates, *, initial: bool, run_dire
         else {},
         "poster_artifact": "poster_initial.png" if initial else f"poster_round_{round_number}.png",
         "experience_references": state.get("experience_references", []),
+        "user_context": state.get("user_context", {}),
+        "decision_card_references": state.get("decision_card_references", []),
+        "tool_catalog": state.get("tool_catalog", []),
+        "visual_asset_retrieval": state.get("visual_asset_retrieval", {}),
     }
     path = Path(run_directory) / f"experience_round_{round_number}.json"
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")

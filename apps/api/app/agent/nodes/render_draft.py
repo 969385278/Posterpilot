@@ -2,8 +2,9 @@ from pathlib import Path
 
 from app.agent.nodes.common import with_event
 from app.agent.state import PosterAgentState
+from app.poster.initial_text_colors import adapt_initial_text_colors
 from app.poster.renderer import PosterRenderer
-from app.schemas.design_control import BackgroundTreatment
+from app.schemas.design_control import BackgroundTreatment, DesignControls
 
 
 def render_draft(
@@ -23,13 +24,38 @@ def render_draft(
         background_color=design_spec.palette.background,
         treatment=state.get("background_treatment") or BackgroundTreatment(),
     )
+    adapted, changes = adapt_initial_text_colors(
+        design_spec.layout,
+        palette=design_spec.palette,
+        main_visual_path=main_visual_path,
+        treatment=state.get("background_treatment") or BackgroundTreatment(),
+        text_facts=result.text_facts,
+        controls=state.get("design_controls") or DesignControls(),
+    )
+    scrims_before = design_spec.layout.readability_scrims
+    if changes or adapted.readability_scrims != scrims_before:
+        design_spec = design_spec.model_copy(update={"layout": adapted})
+        result = renderer.render(
+            adapted,
+            main_visual_path=main_visual_path,
+            output_path=Path(run_directory) / "poster_initial.png",
+            background_color=design_spec.palette.background,
+            treatment=state.get("background_treatment") or BackgroundTreatment(),
+        )
     return {
+        "design_spec": design_spec,
+        "layout": design_spec.layout,
         "poster_initial_path": str(result.path),
         "rendered_text_facts": result.text_facts,
         "events": with_event(
             state,
             node="render_draft",
             message="已完成初版海报程序化排版。",
-            payload={"element_count": len(result.elements)},
+            payload={
+                "element_count": len(result.elements),
+                "initial_color_adjustments": changes,
+                "readability_scrims_before": scrims_before,
+                "readability_scrims_after": design_spec.layout.readability_scrims,
+            },
         ),
     }
