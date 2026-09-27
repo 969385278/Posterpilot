@@ -55,15 +55,15 @@ PosterHub 的主要实现：
 - 支持可控文字和布局调整，不支持任意主视觉对象的精确局部编辑。
 - `BackgroundTasks` 是进程内后台任务，不是生产级可靠队列。SSE 不承诺模型 token 级实时输出。
 
-## 运行案例
+## 运行案例：校园讲座「看见宇宙」
 
-文化活动海报的一轮定向编辑：用户要求增强时间、地点信息，保持主视觉不变。Agent 首次检索无结果后调整查询，获取设计依据，再修改活动信息字号与颜色。
+学生学术部先生成蓝色科技风讲座海报，再要求降低背景饱和度、保持标题位置和字号，随后将地点从“图书馆一楼报告厅”改为“图书馆二楼报告厅”，其余活动信息不变。
 
-| 初版 | 定向编辑后 |
+| 初版：一楼报告厅 | 两轮修改后：二楼报告厅 |
 |---|---|
-| ![初版海报](docs/demo/assets/red-mansion-initial.png) | ![编辑后海报](docs/demo/assets/red-mansion-round-1.png) |
+| ![校园讲座初版](docs/demo/assets/student-lecture-initial.png) | ![校园讲座两轮修改后](docs/demo/assets/student-lecture-round-2.png) |
 
-[查看输入、工具轨迹、引用和评测记录](docs/demo/golden-demo-red-mansion.md)。这是单次运行案例；两轮可用评测信号不同，综合分不作直接效果对比。
+[查看请求、修改过程与验收说明](docs/demo/student-lecture.md)。图片来自虚构用户故事的真实 API 运行，未经额外修图；该案例展示背景调整与定向事实修改，不作为总体成功率或审美提升的证明。
 
 ## 代码结构
 

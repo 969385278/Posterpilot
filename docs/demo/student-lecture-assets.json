@@ -1,0 +1,12 @@
+[
+  {
+    "file": "assets/student-lecture-initial.png",
+    "source": "work/interview-evaluation/user-stories-906d491f84a74b249b9872d4cdec563a/student-lecture/run-artifacts/poster_initial.png",
+    "sha256": "49747e5d1e1cabbd0cba44edeebd385f907275a5c242fdec7a44e161f1cb6e9f"
+  },
+  {
+    "file": "assets/student-lecture-round-2.png",
+    "source": "work/interview-evaluation/user-stories-906d491f84a74b249b9872d4cdec563a/student-lecture/run-artifacts/poster_round_2.png",
+    "sha256": "79a24b690e885d70843f073cf166a61be13e225de5509acf465f54a54c0f10f9"
+  }
+]
