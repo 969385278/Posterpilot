@@ -58,7 +58,7 @@ PosterHub 的主要实现：
 
 ### 能力边界
 
-- 这是**固定生成工作流 + 单个受约束 ReAct 循环 + 人工决策**，不是多 Agent 系统。
+- 这是**固定生成工作流 + 单个受约束 ReAct 循环 + 人工决策**。
 - 代码约束优化轮上限和工具预算，用户决定是否在上限内继续。工具先修改结构参数，轮末统一渲染和完整复评。
 - DeepGaze 预测视觉注意分布，不是真实眼动，也不是审美优劣或实际传播效果的证明。
 - 支持可控文字和布局调整，不支持任意主视觉对象的精确局部编辑。
@@ -217,42 +217,5 @@ npm run dev:deepgaze
 
 模型依赖与 GPU/CUDA 版本有关，需按本机环境核对，权重不随仓库分发。详见 [DeepGaze 说明](docs/deepgaze-feasibility.md)。完成全部环境准备后，可用 `npm run dev` 启动完整开发环境。
 
-## 测试与验证
 
-```powershell
-.\.venv\Scripts\python.exe -m pytest apps/api/tests -q
-.\.venv\Scripts\python.exe -m ruff check apps/api scripts
-npm --prefix apps/web test
-npm --prefix apps/web run build
-.\.venv\Scripts\python.exe scripts/evaluate_retrieval.py --offline
-```
-
-安装独立 DeepGaze 开发依赖后可运行 `npm run verify`，统一脚本为 `scripts/verify.ps1`；已移除重复且引用旧路径的 `verify-project.ps1`。单元测试使用可替换依赖，不代表每次都会真实生图或 GPU 推理。历史发布检查见 [发布检查](docs/publication-check.md)，本次检查及尚存问题见 [清理记录](docs/repository-cleanup-20260925.md)。
-
-## 发布说明与许可
-
-这是从原本地 GazePoster 项目整理的独立发布副本，品牌、包名和 `POSTERPILOT_` 前缀已统一。新安装使用新的默认数据库/知识集合，不携带旧任务数据、密钥或历史提交。旧 `.env` 不能不经检查直接复用。
-
-仓库排除了简历、头像、原始设计 PDF、旧摄像头/表情代码、虚拟环境、模型缓存、日志、数据库和运行产物。示例海报是明确选取的演示资料。
-
-第三方字体、案例和模型各有独立许可，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。本次公开代码及明确列出的演示资料，未擅自选择 MIT 等整仓开源许可；第三方许可不代表整个项目使用同一许可。
-
-## 2026-09-24：DeepSeek 临时替代 Jev
-
-生产服务默认 `INTENT_ROUTING_MODE=deepseek`：使用现有 DeepSeek 文本接口一次完成意图分类与需求解析，返回 `route_method=llm_direct`、`fallback_used=false`、`classifier_confidence=null`。这是通用模型直接解析，不代表 Jev 级联或经过校准的决策概率。原规则加低置信度回退仍可通过 `INTENT_ROUTING_MODE=rules` 使用。原话校验、活动事实校验、确定性控制解析和用户确认继续生效。
-
-`VISION_PROVIDER=deepseek` 默认复用 `DEEPSEEK_API_KEY`、`DEEPSEEK_BASE_URL` 与 `DEEPSEEK_TEXT_MODEL`；可用 `DEEPSEEK_VISION_MODEL` 覆盖视觉模型。请求通过 `/chat/completions` 发送文字与 `image_url`（含本地图片 data URL）。`VISION_PROVIDER=ark` 可恢复旧视觉配置。
-
-Seedream 仍使用 `ARK_API_KEY`、`ARK_BASE_URL` 和 `ARK_IMAGE_MODEL`。因此默认需要两套凭证：DeepSeek 与 Seedream。平台若使用其他网关，必须提供对应 base URL 与精确模型 ID。用户提到的“DeepSeek v4.1 flash”尚未在实际平台上联调，不能把显示名称当作已验证的 API 模型 ID；现有模型默认值未猜测替换。
-
-以上为适配方式说明。后续本地路由、编辑、记忆和工具选择实验分别保存了真实模型响应，证据范围见 [实验记录导航](docs/evaluation-evidence-map.md)；这些实验不证明所有模型配置和能力均已通过。Jev 仍未接入，相关分流和成本数字属于情景估算。
-
-### 本机 Chroma（不用 Docker）
-
-在独立终端运行 `.\scripts\run_chroma.ps1`（默认 localhost:8000，持久化目录 `data/chroma-runtime`），然后运行 `.\.venv\Scripts\python.exe scripts/build_knowledge_index.py` 建立审核知识索引。停止服务时在该终端按 Ctrl+C。端口修改后同步设置 `.env` 的 `CHROMA_URL`。Ollama 与 bge-m3 仍需可用。
-
-DeepGaze 使用独立 `.venv-deepgaze` 环境；安装时先运行 `python -m venv .venv-deepgaze`，再运行 `.\.venv-deepgaze\Scripts\python.exe -m pip install -e services/deepgaze -r services/deepgaze/requirements-model.txt`。启动命令为 `.\scripts\run_deepgaze.ps1`。`/health` 只证明服务存活，首次真实 `/v1/predict` 才能证明模型及权重可用。
-
-### 初版文字可读性
-
-生成背景后，初次排版会检查文字包围框的背景采样对比，从设计色板和中性黑白色中选择更清晰的文字颜色；必要时关闭固定暗色渐变。选择结果写入布局的文字颜色和 `readability_scrims`，旧布局缺省保留渐变。该步骤仅用于初版，后续修改按明确参数和锁定执行。采样对比达标不代表所有字形、复杂背景或真人阅读体验都已通过验收，视觉评测意见仍保留。
+aze.ps1`。`/health` 只证明服务存活，首次真实 `/v1/predict` 才能证明模型及权重可用。
