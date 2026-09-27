@@ -24,5 +24,5 @@
 - Jev未接入，分流比例来自人工标注推演；三轮排版修改节省75%生图费用来自4次与1次调用的同价假设，而非账单对照。
 - 失败样例、负结果和作废轮次保留，不属于待删除垃圾。不得只保留成功结果。
 
-开发集与运行方法见 [可复现实验](reproducible-evaluations.md) 和 [评测协议](interview-evaluation-protocol.md)。
+开发集与运行方法见 [可复现实验](reproducible-evaluations.md) 和 [评测协议](evaluation-protocol.md)。
 运行真实模型评测可能产生费用；阅读已有 JSON/Markdown 不会调用模型。部分验证脚本会重写汇总，执行前检查脚本。

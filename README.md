@@ -35,14 +35,13 @@ PosterHub 的主要实现：
 
 [两项目启动与操作指南](docs/posterdatahub-guide.md) · [实施验收记录](docs/posterdatahub-implementation.md)
 
-[简历功能补全与当前验收状态](docs/resume-implementation-audit.md)：记录新增实现、验证结果和未完成项。
 用户记忆、决策卡可在 PosterHub 对应页签管理。“工具与能力”页提供代码注册的工具目录、
 实际回归报告、审查发布/撤回，以及失败证据归集和人工分类。两个新增文字工具默认不启用，
 通过当前代码的回归和审查后才进入 ReAct 可用目录；代码变化会使发布失效。
 “视觉素材”页支持图片上传、像素去重/近似提示、来源与使用权、主色提取、视觉模型候选、
 版本审核、撤回和语义索引。只有已审核资料进入生成与问答；模型不可用或索引过期时明确退回
 词法检索。语义向量来自素材描述文本，不是图片向量；独立效果实验仍在建设中。
-功能测试结果不等于简历中的效果百分比。
+功能回归与模型效果评测分别记录。
 
 [可复现实验说明](docs/reproducible-evaluations.md)：提供同条件纯向量/混合排序对照、意图路由
 开发集评测和记忆更新规则对照，保存输入、代码、模型版本与逐条结果。现有数据不是独立评测集。
@@ -56,18 +55,15 @@ PosterHub 的主要实现：
 - 支持可控文字和布局调整，不支持任意主视觉对象的精确局部编辑。
 - `BackgroundTasks` 是进程内后台任务，不是生产级可靠队列。SSE 不承诺模型 token 级实时输出。
 
-## 案例展示
+## 运行案例
 
+文化活动海报的一轮定向编辑：用户要求增强时间、地点信息，保持主视觉不变。Agent 首次检索无结果后调整查询，获取设计依据，再修改活动信息字号与颜色。
 
-### AI 视觉迭代示意：《梦红楼》淡彩人物画版
-
-米色绢纸底、细线人物与赭红淡彩，搭配纵向毛笔行书；以少量枝石和留白衬托主角。迭代重点：适度放大左下角活动信息，调整日期、时间的分行与间距。
-
-| 初版（淡彩人物画） | 迭代优化版（信息排版） |
+| 初版 | 定向编辑后 |
 |---|---|
-| <img src="docs/demo/assets/menghonglou-ink-initial.png" alt="梦红楼淡彩人物画初版，AI 风格参考生成示意" width="420"> | <img src="docs/demo/assets/menghonglou-ink-optimized.png" alt="梦红楼淡彩人物画排版迭代版，非 Agent 运行结果" width="420"> |
+| ![初版海报](docs/demo/assets/red-mansion-initial.png) | ![编辑后海报](docs/demo/assets/red-mansion-round-1.png) |
 
-[迭代说明、参考图来源边界与提示词](docs/demo/menghonglou-ink-iteration.md) · [此前的摄影社书法风格示意](docs/demo/assets/calligraphy-photography-concept.png)
+[查看输入、工具轨迹、引用和评测记录](docs/demo/golden-demo-red-mansion.md)。这是单次运行案例；两轮可用评测信号不同，综合分不作直接效果对比。
 
 ## 代码结构
 
@@ -88,9 +84,7 @@ posterpilot/
 │  │  │  ├─ experiments/  检索、记忆、决策和工具集对照实验支持
 │  │  │  └─ core/         配置、项目路径和日志
 │  │  └─ tests/           后端单元、契约、API 和回归测试
-│  ├─ web/                正式 React + TypeScript 工作台
-│  ├─ learn/              独立 Python 本地学习台，无需模型密钥
-│  └─ execution-learner/   独立 React/Remotion 代码执行教学网页
+│  └─ web/                React + TypeScript 工作台及前端测试
 ├─ services/deepgaze/      可选的注意力预测服务及独立测试
 ├─ data/
 │  ├─ knowledge/          规则卡、来源清单、已选案例与检索开发集
@@ -101,20 +95,15 @@ posterpilot/
 │  └─ showcase/           演示场景与审核结果清单
 ├─ infra/                 Ollama、Chroma 的 Docker Compose 配置
 ├─ scripts/               启动、入库、素材准备、评测与统一验证
-├─ docs/                  架构、操作指南、实验协议、计划及历史验收
-├─ work/                  本地实验快照/原始响应/报告，不上传 Git
-├─ output/、outputs/      本地导出文档和预览，不上传 Git
+├─ docs/                  架构、操作指南、实验协议与运行案例
 ├─ .env.example           可提交的配置模板；真实 .env 仅存本机
 └─ package.json           统一启动、测试和构建入口
 ```
 
-### 正式应用、学习工具与运行数据
+### 应用与运行数据
 
-正式产品由 `apps/web` + `apps/api` 组成；PosterHub 是其中的数据管理功能，不是独立服务。
-`services/deepgaze` 可选。两个学习网页是独立入口，保留不同的教学方式，不参与正式生成流程，
-不能把教学回放当作真实模型运行。详见 [Python 学习台](apps/learn/README.md) 与
-[代码执行学习器](apps/execution-learner/README.md)。根目录的 `开始学习.cmd` / `停止学习.cmd`
-对应前者。
+正式产品由 `apps/web` + `apps/api` 组成；PosterHub 是其中的数据管理模块，共用后端服务。
+`services/deepgaze` 是可选的独立注意力预测服务。
 
 `data/` 同时是默认运行数据根目录：本机还可能出现 `runs/`、`chroma-runtime/`、
 `datahub-assets/`、`visual-assets/`、`tool-harness/` 和 SQLite 文件，这些不随仓库发布。
@@ -138,14 +127,8 @@ posterpilot/
 |启动、PosterHub 审核与操作|[操作指南](docs/posterdatahub-guide.md)|
 |后端模块及请求链路|[功能映射](docs/framework-and-feature-map.md)、[生命周期](docs/request-lifecycle.md)|
 |问答助手与确认修改|[问答助手](docs/design-assistant.md)|
-|评测脚本、输入和指标边界|[可复现实验](docs/reproducible-evaluations.md)、[评测协议](docs/interview-evaluation-protocol.md)|
+|评测脚本、输入和指标边界|[可复现实验](docs/reproducible-evaluations.md)、[评测协议](docs/evaluation-protocol.md)|
 |当前本地实验放在哪里|[实验记录导航](docs/evaluation-evidence-map.md)|
-|哪些文件被清理、哪些应保留|[清理记录](docs/repository-cleanup-20260925.md)|
-|未来方案|[团队工作台计划](docs/team-workbench-upgrade-plan.md)，不代表已实现|
-
-`docs/*plan*` 是设计计划；`*implementation*`、`*status*` 和验收记录是当时的快照，
-不能将其中的待办、目标值或旧统计直接当成当前效果。`docs/demo/` 保留演示及来源说明，
-不同图像版本有引用关系，不因文件较旧而删除。
 
 ## 本地启动（Windows）
 
@@ -210,4 +193,23 @@ npm run dev:deepgaze
 模型依赖与 GPU/CUDA 版本有关，需按本机环境核对，权重不随仓库分发。详见 [DeepGaze 说明](docs/deepgaze-feasibility.md)。完成全部环境准备后，可用 `npm run dev` 启动完整开发环境。
 
 
-aze.ps1`。`/health` 只证明服务存活，首次真实 `/v1/predict` 才能证明模型及权重可用。
+## 测试与评测
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest apps/api/tests -q
+npm --prefix apps/web test -- --run
+npm --prefix apps/web run build
+.\.venv\Scripts\python.exe scripts/evaluate_retrieval.py --offline
+```
+
+后端测试覆盖工具契约、事实与锁定保护、状态恢复、记忆、审核和 API 行为；前端测试覆盖需求输入、设计控制、事件同步与管理界面。2026-09-25 的回归快照为后端419项、前端58项通过，前端构建通过；这是历史测试记录，不代表所有模型效果或部署环境已验收。
+
+完整检查入口为 `npm run verify`，还要求 DeepGaze 开发依赖和 Ruff 检查通过。最近检查仍存在静态检查问题，独立 DeepGaze 环境缺少测试依赖，因此不标记完整检查通过。真实模型评测与单元测试分开，运行前确认配置和调用费用。
+
+[实验方法与复现命令](docs/reproducible-evaluations.md) · [评测协议](docs/evaluation-protocol.md) · [实验记录说明](docs/evaluation-evidence-map.md)
+
+## 运行边界与许可
+
+默认使用本地 SQLite 和单 worker。任务执行使用进程内后台任务，尚未提供持久化任务队列和完整多租户权限体系。用户偏好采用显式确认及状态治理；Jev 门控与跨会话弱证据巩固尚未接入。
+
+公开仓库不包含真实密钥、用户数据库、模型权重和本地实验原始日志。字体、素材和依赖的来源及许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。当前未指定整仓开源许可证。

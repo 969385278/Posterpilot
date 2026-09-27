@@ -76,3 +76,11 @@ data/chroma-runtime/
 
 # Local application process state and screenshots
 .runtime/
+
+# Personal learning tools and working notes stay outside the public product
+/apps/learn/
+/apps/execution-learner/
+/开始学习.cmd
+/停止学习.cmd
+/docs/resume-implementation-audit.md
+/docs/repository-cleanup-*.md
