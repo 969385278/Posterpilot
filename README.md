@@ -32,7 +32,6 @@ PosterHub 的主要实现：
 
 代码入口：[后台页面](apps/web/src/pages/DataHubPage.tsx) · [API](apps/api/app/api/routes/datahub.py) · [业务服务](apps/api/app/services/datahub_service.py) · [持久化](apps/api/app/persistence/datahub_repository.py) · [Agent 经验上下文](apps/api/app/agent/experience_context.py)
 
-新任务可选择使用已审核经验：只检索适用案例，排除当前任务，保留来源与版本。不把结束任务当作用户接受，不把分数变化当作真实效果提升，也不自动训练模型。
 
 [两项目启动与操作指南](docs/posterdatahub-guide.md) · [实施验收记录](docs/posterdatahub-implementation.md)
 
@@ -48,13 +47,6 @@ PosterHub 的主要实现：
 [可复现实验说明](docs/reproducible-evaluations.md)：提供同条件纯向量/混合排序对照、意图路由
 开发集评测和记忆更新规则对照，保存输入、代码、模型版本与逐条结果。现有数据不是独立评测集。
 
-素材检索真实模型检查（需要本地 Ollama 已安装 `bge-m3`）：
-`python scripts/verify_visual_asset_retrieval.py`。脚本在 `work/` 下创建独立数据目录，保留输入、
-来源、模型摘要和逐条结果；这是三条试查，不是独立标注评测集。
-
-新增 [素材与知识补全说明](docs/content-enrichment-report.md)：15 张有来源的参考海报、14 条审核知识、3 组真实渲染前后对照。首页展示为公共领域背景的固定排版演示，非生图模型输出；未通过可读性检查的样例明确标记，不作为成功经验发布。使用 `scripts/start_showcase.ps1 -Mode Api` 和 `-Mode Web` 启动独立素材演示（默认 8794/5194）。
-
-无需付费 API 的演示：运行 `scripts/start_datahub_demo.ps1 -Mode Seed` 生成固定测试数据，再分别启动 `-Mode Api` 和 `-Mode Web`，访问 `http://127.0.0.1:5193/#datahub`。需先安装项目依赖，详见操作指南。离线图片和决策均为明确标记的测试样例，不证明真实模型质量提升。
 
 ### 能力边界
 
